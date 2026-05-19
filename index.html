@@ -1462,6 +1462,19 @@
 
         form.addEventListener("submit", function(ev) {
             ev.preventDefault();
+            // Pošalji podatke i na Make webhook (paralelno sa Formspree)
+            var makeUrl = 'https://hook.eu1.make.com/8mhw9i9ddcv3prq9sp7fixf6b5nnbg9p'; // <-- zameni pravim URL
+            var formDataObj = {};
+            new FormData(form).forEach(function(value, key){
+                formDataObj[key] = value;
+            });
+            fetch(makeUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formDataObj)
+            }).catch(function(err) {
+                console.log('Make webhook error (ignored):', err);
+});
             var data = new FormData(form);
             button.innerHTML = "Processing...";
             button.disabled = true;
