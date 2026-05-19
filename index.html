@@ -554,7 +554,7 @@
 
             if (uvecaniNaziv.includes("riba") || uvecaniNaziv.includes("ribarnica") || uvecaniNaziv.includes("fish") || uvecaniNaziv.includes("tuna")) {
                 podnaslov = "Najsvježiji plodovi mora direktno iz plavih dubina!";
-                opisBranse = "Svakodnevno nudimo divlju, svježe ulovljenu jadransku riba, škampe i školjke. Naša mreža garantuje vrhunsku svježinu na vašoj trpezi.";
+                opisBranse = "Svakodnevno nudimo divlju, svježe ulovljenu jadransku ribu, škampe i školjke. Naša mreža garantuje vrhunsku svježinu na vašoj trpezi.";
                 slikaPozadina = "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?q=80&w=1200";
                 stavka1 = "Domaća Orada (Kg)"; cijena1 = "15.00€";
                 stavka2 = "Svježi Brancin (Kg)"; cijena2 = "16.00€";
@@ -621,7 +621,7 @@
                     "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400",
                     "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=400"
                 ];
-                recenzijaIme = "Anel B."; recenzijaTekst = "Najbolje opremljena teretana u gradu. Higijena je na vrhunskom nivou, a treneri su izuzetno stručni.";
+                recenzijaIme = "Anel B."; recenzijaTekst = "Najbolje opremljena teretana u gradu. Higijena je na vrhunskom neurom, a treneri su izuzetno stručni.";
             } else if (uvecaniNaziv.includes("gradnja") || uvecaniNaziv.includes("krov") || uvecaniNaziv.includes("moler") || uvecaniNaziv.includes("vodoinstalater") || uvecaniNaziv.includes("keramika")) {
                 podnaslov = "Kvalitetni građevinski i zanatski radovi sa garancijom!";
                 opisBranse = "Vršimo renoviranje stanova, molerske radove, postavljanje keramike, vodoinstalacije i elektroinstalacije. Radove izvodimo pedantno i brzo.";
@@ -645,15 +645,12 @@
             if (ukljuciIskustva) navLinkovi += `<li><a href="#iskustva">Utisci</a></li>`;
             navLinkovi += `<li><a href="#lokacija">Kontakt</a></li>`;
 
-            // --- 4. BLOKOVI SEKCIJA (POPRAVLJENE OTVORENE ZAGRADE I STRUKTURA) ---
+            // --- 4. BLOKOVI SEKCIJA ---
             var sekcijaPonuda = ukljuciMeni ? `<section class="section" id="ponuda"><h2 class="section-title">Naš Cjenovnik</h2><div class="menu-grid"><div class="menu-item"><h3>${stavka1} <span>${cijena1}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka2} <span>${cijena2}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka3} <span>${cijena3}</span></h3><p>${opisStavke}</p></div></div></section>` : "";
-            
-            # POPRAVLJENO: Zatvoren tag na trećoj slici slika (> na kraju)
             var sekcijaGalerija = ukljuciGaleriju ? `<section class="section" id="galerija"><h2 class="section-title">Naš Rad</h2><div class="gallery-grid"><img src="${galerijaSlike[0]}"><img src="${galerijaSlike[1]}"><img src="${galerijaSlike[2]}"></div></section>` : "";
-            
             var sekcijaIskustva = ukljuciIskustva ? `<section class="section" id="iskustva" style="background-color: rgba(0,0,0,0.02);"><h2 class="section-title">Zadovoljni Klijenti</h2><div class="review-card"><p style="font-style: italic;">"${recenzijaTekst}"</p><h4>- ${recenzijaIme}</h4></div></section>` : "";
 
-            // --- 5. STILOVI DIZAJNA (POPRAVLJEN GRID I RAZMAKNUTE SEKCIJE) ---
+            // --- 5. STILOVI DIZAJNA ---
             var CSS_STIL = "";
             if (stil === "moderan") {
                 CSS_STIL = `:root { --p-color: #3b82f6; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.5rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 500; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 800px; height: 350px; margin: 2rem auto; border-radius: 16px; object-fit: cover; display: block; box-shadow: 0 10px 20px rgba(0,0,0,0.05); } .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; display: block; width: 100%; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; text-align: left; } .menu-item { background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); } .menu-item h3 { display: flex; justify-content: space-between; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; } .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block; } .review-card { background: #ffffff; padding: 2.5rem; border-radius: 16px; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.02); display: inline-block; } .info-card { background-color: #ffffff; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 4px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; }`;
