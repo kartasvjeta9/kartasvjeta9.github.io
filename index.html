@@ -111,6 +111,7 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            text-align: center;
         }
 
         .btn:hover {
@@ -127,8 +128,15 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             color: #f8fafc;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
         }
 
         .services-grid {
@@ -158,6 +166,87 @@
 
         .service-card p {
             color: #94a3b8;
+        }
+
+        /* Sekcija za Cjenovnik i Pakete */
+        .pricing {
+            padding: 5rem 5%;
+            background-color: #0b0f19;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 2.5rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        /* Istaknuti Pro paket */
+        .pricing-card.featured {
+            border: 2px solid #38bdf8;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            position: relative;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #38bdf8;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-card ul li::before {
+            content: "✓ ";
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .btn-free {
+            background-color: #475569;
+            color: #ffffff;
+        }
+        .btn-free:hover {
+            background-color: #334155;
         }
 
         /* Kontakt Forma */
@@ -218,11 +307,7 @@
             border-top: 1px solid #1e293b;
         }
 
-        /* Responzivnost */
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
             nav ul li:not(:last-child) {
                 display: none;
             }
@@ -234,28 +319,27 @@
 </head>
 <body>
 
-    <!-- Navigacija -->
     <header>
         <a href="#" class="logo">Ai Bussines</a>
         <nav>
             <ul>
                 <li><a href="#pocetna">Početna</a></li>
-                <li><a href="#usluge">Naše Usluge</a></li>
+                <li><a href="#usluge">Usluge</a></li>
+                <li><a href="#cijene">Cjenovnik</a></li>
                 <li><a href="#kontakt" class="btn-nav">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Glavna Hero Sekcija -->
     <main class="hero" id="pocetna">
         <h1>Budućnost poslovanja je <span>Automatizovana</span></h1>
         <p>Prepustite teški rad umjetnoj inteligenciji. Kreiramo moderne web stranice i automatizujemo vaše poslovne procese brže, pametnije i efikasnije.</p>
-        <a href="#usluge" class="btn">Pogledaj Usluge</a>
+        <a href="#cijene" class="btn">Pogledaj Pakete</a>
     </main>
 
-    <!-- Sekcija sa Uslugama -->
     <section class="services" id="usluge">
         <h2 class="section-title">Šta radimo?</h2>
+        <p class="section-subtitle">Naša AI rješenja prilagođena vašem biznisu</p>
         <div class="services-grid">
             
             <div class="service-card">
@@ -276,7 +360,71 @@
         </div>
     </section>
 
-    <!-- Kontakt Forma sa JavaScriptom za pozadinsko slanje -->
+    <section class="pricing" id="cijene">
+        <h2 class="section-title">Izaberite Vaš Paket</h2>
+        <p class="section-subtitle">Transparentne cijene bez skrivenih troškova. Odaberite model koji vam najviše odgovara.</p>
+        
+        <div class="pricing-grid">
+            
+            <div class="pricing-card">
+                <div>
+                    <h3>Free Template</h3>
+                    <div class="price">0€<span> / zauvijek</span></div>
+                    <ul>
+                        <li>Osnovni HTML/CSS kod</li>
+                        <li>Potpuno responzivan dizajn</li>
+                        <li>Jednostavna struktura</li>
+                        <li>Sami postavljate na internet</li>
+                    </ul>
+                </div>
+                <a href="data:text/html;charset=utf-8,<!DOCTYPE html><html lang='bs'><head><meta charset='UTF-8'><title>Free Template - Ai Bussines</title><style>body{background-color:%230f172a;color:white;font-family:sans-serif;text-align:center;padding:50px;}h1{color:%2338bdf8;}</style></head><body><h1>Hvala vam što koristite Ai Bussines Free Template!</h1><p>Ovo je vaš besplatni šablon. Počnite sa uređivanjem.</p></body></html>" download="free-template-aibussines.html" class="btn btn-free">Preuzmi Šablon</a>
+            </div>
+
+            <div class="pricing-card">
+                <div>
+                    <h3>Starter Web</h3>
+                    <div class="price">150€<span> / fiksno</span></div>
+                    <ul>
+                        <li>Moderna Landing stranica</li>
+                        <li>Prilagođeno mobilnim uređajima</li>
+                        <li>Osnovna kontakt forma</li>
+                        <li>Lansiranje na internet (Hosting)</li>
+                    </ul>
+                </div>
+                <button onclick="izaberiPaket('Starter Web')" class="btn">Izaberi Paket</button>
+            </div>
+
+            <div class="pricing-card featured">
+                <div>
+                    <h3>Smart Automation</h3>
+                    <div class="price">400€<span> / fiksno</span></div>
+                    <ul>
+                        <li>Sve iz Starter paketa</li>
+                        <li><strong>Python AI Auto-odgovori</strong></li>
+                        <li>Integracija sa bazom upita</li>
+                        <li>Osnovni SEO i optimizacija</li>
+                    </ul>
+                </div>
+                <button onclick="izaberiPaket('Smart Automation')" class="btn">Izaberi Paket</button>
+            </div>
+
+            <div class="pricing-card">
+                <div>
+                    <h3>AI Enterprise</h3>
+                    <div class="price">1000€+<span> / po projektu</span></div>
+                    <ul>
+                        <li>Kompletna višestranačna stranica</li>
+                        <li>Napredni AI Chatbot 24/7</li>
+                        <li>Kompletna automatizacija taskova</li>
+                        <li>Premium podrška i održavanje</li>
+                    </ul>
+                </div>
+                <button onclick="izaberiPaket('AI Enterprise')" class="btn">Kontaktiraj Nas</button>
+            </div>
+
+        </div>
+    </section>
+
     <section class="contact" id="kontakt">
         <h2 class="section-title">Započnimo Projekat</h2>
         <div class="contact-container">
@@ -298,48 +446,47 @@
                     <textarea id="poruka" name="Poruka" rows="5" required placeholder="Kako vam možemo pomoći?"></textarea>
                 </div>
 
-                <!-- Dodali smo ID na dugme da ga možemo mijenjati iz JavaScripta -->
                 <button type="submit" id="dugme-posalji" class="btn" style="width: 100%;">Pošalji Upit</button>
             </form>
         </div>
     </section>
 
-    <!-- Podnožje -->
     <footer>
         <p>&copy; 2026 Ai Bussines. Sva prava zadržana.</p>
         <p>Vaš partner za digitalnu revoluciju.</p>
     </footer>
 
-    <!-- JavaScript za slanje forme u pozadini (AJAX) -->
     <script>
+        // Funkcija koja na klik paketa automatski skroluje i popunjava tekst u formu
+        function izaberiPaket(imePaketa) {
+            document.getElementById('poruka').value = "Zainteresovan/a sam za paket: " + imePaketa + ". Molim vas da me kontaktirate sa detaljima.";
+            document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+        }
+
         var form = document.getElementById("moja-forma");
         var button = document.getElementById("dugme-posalji");
 
         form.addEventListener("submit", function(ev) {
-            ev.preventDefault(); // Zaustavlja otvaranje nove stranice
+            ev.preventDefault();
             var data = new FormData(form);
             
-            // Mijenja tekst dok se šalje
             button.innerHTML = "Slanje u toku...";
-            button.style.backgroundColor = "#94a3b8"; // Siva boja
+            button.style.backgroundColor = "#94a3b8";
             button.disabled = true;
 
             ajax(form.method, form.action, data, function() {
-                // Šta se dešava kada je uspješno poslano
-                form.reset(); // Briše uneseni tekst
+                form.reset();
                 button.innerHTML = "✅ Uspješno poslano!";
-                button.style.backgroundColor = "#22c55e"; // Zelena boja
+                button.style.backgroundColor = "#22c55e";
                 
-                // Vraća staro dugme nakon 3 sekunde
                 setTimeout(function() {
                     button.innerHTML = "Pošalji Upit";
                     button.style.backgroundColor = "#38bdf8";
                     button.disabled = false;
                 }, 3000);
             }, function() {
-                // Šta se dešava ako dođe do greške
                 button.innerHTML = "❌ Došlo je do greške!";
-                button.style.backgroundColor = "#ef4444"; // Crvena boja
+                button.style.backgroundColor = "#ef4444";
                 setTimeout(function() {
                     button.innerHTML = "Pokušajte ponovo";
                     button.style.backgroundColor = "#38bdf8";
@@ -348,7 +495,6 @@
             });
         });
 
-        // Pomoćna funkcija za pozadinsko slanje
         function ajax(method, url, data, success, error) {
             var xhr = new XMLHttpRequest();
             xhr.open(method, url);
