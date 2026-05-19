@@ -458,6 +458,7 @@
         
         <div class="pricing-grid">
             
+            <!-- FREE TEMPLATE - OSTATAK NETAKNUT -->
             <div class="pricing-card">
                 <div>
                     <h3 id="p1-title">Free Template</h3>
@@ -496,6 +497,7 @@
                 <button onclick="openLiveSite()" class="btn" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; width: 100%;" id="btn-generate">Generate Live Website 🚀</button>
             </div>
 
+            <!-- STARTER WEB -->
             <div class="pricing-card">
                 <div>
                     <h3 id="p2-title">Starter Web</h3>
@@ -507,9 +509,10 @@
                         <li>Launch on the Internet (Hosting)</li>
                     </ul>
                 </div>
-                <button onclick="choosePackage('Starter Web')" class="btn" id="btn-p2">Choose Package</button>
+                <button onclick="openDetailedForm('Starter Web', '150€')" class="btn" id="btn-p2">Choose Package</button>
             </div>
 
+            <!-- SMART AUTOMATION -->
             <div class="pricing-card featured">
                 <div>
                     <h3 id="p3-title">Smart Automation</h3>
@@ -521,9 +524,10 @@
                         <li>Basic SEO and Optimization</li>
                     </ul>
                 </div>
-                <button onclick="choosePackage('Smart Automation')" class="btn" id="btn-p3">Choose Package</button>
+                <button onclick="openDetailedForm('Smart Automation', '400€')" class="btn" id="btn-p3">Choose Package</button>
             </div>
 
+            <!-- AI ENTERPRISE -->
             <div class="pricing-card">
                 <div>
                     <h3 id="p4-title">AI Enterprise</h3>
@@ -535,7 +539,7 @@
                         <li>Premium Support and Maintenance</li>
                     </ul>
                 </div>
-                <button onclick="choosePackage('AI Enterprise')" class="btn" id="btn-p4">Contact Us</button>
+                <button onclick="openDetailedForm('AI Enterprise', '1000€+')" class="btn" id="btn-p4">Contact Us</button>
             </div>
 
         </div>
@@ -600,7 +604,6 @@
                 t_q2: "Koji su rokovi isporuke?", t_a2: "Sve narudžbe i usluge izvršavamo u najkraćem mogućem roku.",
                 t_reviewName: "Zadovoljni Klijent", t_reviewText: "Izuzetna usluga, visoko profesionalni!",
                 t_itemDesc: "Vrhunski kvalitet zagarantovan.",
-                // DODOANO: Otključane default/fallback opcije za sve jezike
                 t_def_subtitle: "Vrhunski Kvalitet", t_def_desc: "Profesionalne usluge prilagođene isključivo vama.", 
                 t_def_item1: "Premium Usluga A", t_def_item2: "Premium Usluga B", t_def_item3: "Premium Usluga C",
                 t_b_fish: "Najsvježiji plodovi mora direktno iz plavih jadranskih dubina!",
@@ -613,14 +616,65 @@
                 t_d_bakery: "Nudimo vam topla, ručno rađena peciva, hljeb od kiselog tijesta i ukusne kolače po tradicionalnoj recepturi.",
                 t_download: "Preuzmi HTML", t_premium: "Go Premium",
                 t_downloadAlert: "Vratite se na naš sajt i pošaljite upit preko kontakt forme!",
-                // Menu items
                 t_item1_fish: "Domaća Orada (Kg)", t_item2_fish: "Svježi Brancin (Kg)", t_item3_fish: "Plava Jadranska Tuna",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Gourmet Burger",
                 t_item1_gym: "Premium Članarina", t_item2_gym: "Personalni Trening", t_item3_gym: "Plan Ishrane",
                 t_item1_bakery: "Domaći Hljeb", t_item2_bakery: "Kroasani (Mix)", t_item3_bakery: "Torta po narudžbi",
                 t_itemDesc_food: "Pečeno sa svježim sastojcima i strašću.",
                 t_itemDesc_gym: "Potpuni pristup visokoj tehnologiji.",
-                t_itemDesc_bakery: "Pečeno sa ljubavlju svakog jutra."
+                t_itemDesc_bakery: "Pečeno sa ljubavlju svakog jutra.",
+                // Form translations
+                f_title: "Detalji za Vaš Websajt",
+                f_subtitle: "Ispunite formular kako bismo kreirali savršenu stranicu za Vas",
+                f_businessName: "Naziv Firme/Brenda",
+                f_businessType: "Tip Biznisa",
+                f_industry: "Industrija/Djelatnost",
+                f_websiteGoal: "Cilj Websajta",
+                f_targetAudience: "Ciljna Publika",
+                f_preferredColors: "Preferirane Boje",
+                f_hasLogo: "Imate Logo?",
+                f_yes: "Da", f_no: "Ne",
+                f_logoUpload: "Logo Upload Link (ili pošaljite emailom)",
+                f_desiredPages: "Željene Stranice",
+                f_homepage: "Početna", f_aboutUs: "O Nama", f_services: "Usluge", f_pricing: "Cjenovnik", f_contactForm: "Kontakt Forma", f_blog: "Blog",
+                f_additionalFeatures: "Dodatne Funkcionalnosti",
+                f_multilingual: "Višejezičnost", f_chatbot: "AI Chatbot", f_booking: "Online Booking", f_shop: "Web Shop", f_seo: "SEO Optimizacija",
+                f_referenceSites: "Referentni Sajtovi (koji vam se sviđaju)",
+                f_additionalInfo: "Dodatne Informacije",
+                f_clientName: "Vaše Ime i Prezime",
+                f_clientEmail: "Vaš Email",
+                f_clientPhone: "Vaš Telefon",
+                f_submit: "Pošalji Zahtjev 🚀",
+                f_packageLabel: "Odabrani Paket",
+                f_successMsg: "Hvala! Vaš zahtjev je uspješno poslan. Javit ćemo Vam se u roku od 24h.",
+                f_businessTypes: {
+                    restaurant: "Restoran / Ugostiteljstvo",
+                    retail: "Maloprodaja / Trgovina",
+                    services: "Usluge / Zanat",
+                    fitness: "Fitness / Sport",
+                    realestate: "Nekretnine",
+                    tech: "IT / Tehnologija",
+                    healthcare: "Zdravstvo",
+                    other: "Drugo"
+                },
+                f_industries: {
+                    food: "Hrana i Piće",
+                    fashion: "Moda i Odjeća",
+                    beauty: "Ljepota i Kozmetika",
+                    construction: "Građevinarstvo",
+                    education: "Edukacija",
+                    finance: "Finansije",
+                    tourism: "Turizam",
+                    automotive: "Automobili",
+                    other: "Drugo"
+                },
+                f_goals: {
+                    leads: "Generisanje Upita/Klijentel",
+                    sales: "Online Prodaja",
+                    branding: "Brendiranje i Prezentacija",
+                    bookings: "Online Rezervacije",
+                    info: "Informativni Sajt"
+                }
             },
             de: {
                 navHome: "Startseite", navServices: "Leistungen", navPricing: "Preise", navContact: "Kontakt",
@@ -646,7 +700,6 @@
                 optL1: "Seite auf: Balkan (HR/BS/SR)", optL2: "Seite auf: Deutsch", optL3: "Seite auf: Englisch", optL4: "Seite auf: Spanisch", optL5: "Seite auf: Italienisch",
                 optS1: "Stil: Modern (Minimalismus)", optS2: "Stil: Professionell (Lux)", optS3: "Stil: Funky (Neon Cyberpunk)",
                 fTag: "Ihr Partner für die digitale Revolution.",
-                // Template translations
                 t_home: "Startseite", t_offer: "Angebote", t_gallery: "Galerie", t_reviews: "Bewertungen", t_contact: "Kontakt",
                 t_phoneLabel: "Telefon:", t_location: "Hauptsitz:", t_footerText: "Unterstützt durch den Ai Bussines Generator",
                 t_faqTitle: "Häufig gestellte Fragen", t_q1: "Wie kann ich Sie kontaktieren?", t_a1: "Sie können uns direkt an unserem Standort besuchen oder uns anrufen.",
@@ -665,14 +718,64 @@
                 t_d_bakery: "Wir bieten Ihnen warmes, handgemachtes Gebäck, Sauerteigbrot und leckere Kuchen nach traditionellem Rezept.",
                 t_download: "HTML Herunterladen", t_premium: "Premium Buchen",
                 t_downloadAlert: "Kehren Sie zu unserer Website zurück und senden Sie eine Anfrage über das Kontaktformular!",
-                // Menu items
                 t_item1_fish: "Dorade / Goldbrasse (Kg)", t_item2_fish: "Wolfsbarsch (Kg)", t_item3_fish: "Blauflossen-Thunfisch (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Gourmet Burger",
                 t_item1_gym: "Premium Mitgliedschaft", t_item2_gym: "Personal Training", t_item3_gym: "Ernährungsplan",
                 t_item1_bakery: "Hausgemachtes Brot", t_item2_bakery: "Croissants (Mix)", t_item3_bakery: "Torte auf Bestellung",
                 t_itemDesc_food: "Mit frischen Zutaten und Leidenschaft zubereitet.",
                 t_itemDesc_gym: "Voller Hightech-Zugang.",
-                t_itemDesc_bakery: "Jeden Morgen mit Liebe gebacken."
+                t_itemDesc_bakery: "Jeden Morgen mit Liebe gebacken.",
+                f_title: "Details für Ihre Website",
+                f_subtitle: "Füllen Sie das Formular aus, damit wir die perfekte Seite für Sie erstellen können",
+                f_businessName: "Firmen-/Markenname",
+                f_businessType: "Geschäftsart",
+                f_industry: "Branche",
+                f_websiteGoal: "Ziel der Website",
+                f_targetAudience: "Zielgruppe",
+                f_preferredColors: "Bevorzugte Farben",
+                f_hasLogo: "Haben Sie ein Logo?",
+                f_yes: "Ja", f_no: "Nein",
+                f_logoUpload: "Logo Upload Link (oder per E-Mail senden)",
+                f_desiredPages: "Gewünschte Seiten",
+                f_homepage: "Startseite", f_aboutUs: "Über Uns", f_services: "Leistungen", f_pricing: "Preise", f_contactForm: "Kontaktformular", f_blog: "Blog",
+                f_additionalFeatures: "Zusätzliche Funktionen",
+                f_multilingual: "Mehrsprachigkeit", f_chatbot: "KI Chatbot", f_booking: "Online Buchung", f_shop: "Webshop", f_seo: "SEO Optimierung",
+                f_referenceSites: "Referenzwebsites (die Ihnen gefallen)",
+                f_additionalInfo: "Zusätzliche Informationen",
+                f_clientName: "Ihr Vor- und Nachname",
+                f_clientEmail: "Ihre E-Mail",
+                f_clientPhone: "Ihre Telefonnummer",
+                f_submit: "Anfrage Senden 🚀",
+                f_packageLabel: "Gewähltes Paket",
+                f_successMsg: "Danke! Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden.",
+                f_businessTypes: {
+                    restaurant: "Restaurant / Gastronomie",
+                    retail: "Einzelhandel",
+                    services: "Dienstleistungen / Handwerk",
+                    fitness: "Fitness / Sport",
+                    realestate: "Immobilien",
+                    tech: "IT / Technologie",
+                    healthcare: "Gesundheitswesen",
+                    other: "Andere"
+                },
+                f_industries: {
+                    food: "Essen & Trinken",
+                    fashion: "Mode & Kleidung",
+                    beauty: "Schönheit & Kosmetik",
+                    construction: "Bauwesen",
+                    education: "Bildung",
+                    finance: "Finanzen",
+                    tourism: "Tourismus",
+                    automotive: "Automobil",
+                    other: "Andere"
+                },
+                f_goals: {
+                    leads: "Lead-Generierung",
+                    sales: "Online-Verkauf",
+                    branding: "Branding & Präsentation",
+                    bookings: "Online-Buchungen",
+                    info: "Informations-Website"
+                }
             },
             en: {
                 navHome: "Home", navServices: "Services", navPricing: "Pricing", navContact: "Contact",
@@ -698,7 +801,6 @@
                 optL1: "Site in: Balkan (HR/BS/SR)", optL2: "Site in: German", optL3: "Site in: English", optL4: "Site in: Spanish", optL5: "Site in: Italian",
                 optS1: "Style: Modern (Minimalism)", optS2: "Style: Professional (Lux)", optS3: "Style: Funky (Neon Cyberpunk)",
                 fTag: "Your partner for the digital revolution.",
-                // Template translations
                 t_home: "Home", t_offer: "Offers", t_gallery: "Gallery", t_reviews: "Reviews", t_contact: "Contact",
                 t_phoneLabel: "Phone:", t_location: "Headquarters:", t_footerText: "Powered by Ai Bussines generator",
                 t_faqTitle: "Frequently Asked Questions", t_q1: "How can I contact you?", t_a1: "You can visit us directly at our location or call us during business hours.",
@@ -717,14 +819,65 @@
                 t_d_bakery: "We offer warm, handmade pastries, sourdough bread, and delicious cakes made from traditional recipes.",
                 t_download: "Download HTML", t_premium: "Go Premium",
                 t_downloadAlert: "Go back to our site and send an inquiry through the contact form!",
-                // Menu items
                 t_item1_fish: "Sea Bream (Kg)", t_item2_fish: "Sea Bass (Kg)", t_item3_fish: "Adriatic Bluefin Tuna (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Gourmet Burger",
                 t_item1_gym: "Premium Membership", t_item2_gym: "Personal Training", t_item3_gym: "Nutrition Plan",
                 t_item1_bakery: "Artisan Bread", t_item2_bakery: "Croissants (Mix)", t_item3_bakery: "Custom Cake",
                 t_itemDesc_food: "Baked with fresh ingredients and passion.",
                 t_itemDesc_gym: "Full high tech access.",
-                t_itemDesc_bakery: "Baked with love every morning."
+                t_itemDesc_bakery: "Baked with love every morning.",
+                // Form translations
+                f_title: "Your Website Details",
+                f_subtitle: "Fill out this form so we can create the perfect website for you",
+                f_businessName: "Business/Brand Name",
+                f_businessType: "Business Type",
+                f_industry: "Industry",
+                f_websiteGoal: "Website Goal",
+                f_targetAudience: "Target Audience",
+                f_preferredColors: "Preferred Colors",
+                f_hasLogo: "Do you have a Logo?",
+                f_yes: "Yes", f_no: "No",
+                f_logoUpload: "Logo Upload Link (or send via email)",
+                f_desiredPages: "Desired Pages",
+                f_homepage: "Homepage", f_aboutUs: "About Us", f_services: "Services", f_pricing: "Pricing", f_contactForm: "Contact Form", f_blog: "Blog",
+                f_additionalFeatures: "Additional Features",
+                f_multilingual: "Multilingual", f_chatbot: "AI Chatbot", f_booking: "Online Booking", f_shop: "Web Shop", f_seo: "SEO Optimization",
+                f_referenceSites: "Reference Sites (that you like)",
+                f_additionalInfo: "Additional Information",
+                f_clientName: "Your Full Name",
+                f_clientEmail: "Your Email",
+                f_clientPhone: "Your Phone",
+                f_submit: "Submit Request 🚀",
+                f_packageLabel: "Selected Package",
+                f_successMsg: "Thank you! Your request has been sent successfully. We'll get back to you within 24 hours.",
+                f_businessTypes: {
+                    restaurant: "Restaurant / Hospitality",
+                    retail: "Retail / Shop",
+                    services: "Services / Craft",
+                    fitness: "Fitness / Sport",
+                    realestate: "Real Estate",
+                    tech: "IT / Technology",
+                    healthcare: "Healthcare",
+                    other: "Other"
+                },
+                f_industries: {
+                    food: "Food & Beverage",
+                    fashion: "Fashion & Clothing",
+                    beauty: "Beauty & Cosmetics",
+                    construction: "Construction",
+                    education: "Education",
+                    finance: "Finance",
+                    tourism: "Tourism",
+                    automotive: "Automotive",
+                    other: "Other"
+                },
+                f_goals: {
+                    leads: "Lead Generation",
+                    sales: "Online Sales",
+                    branding: "Branding & Presentation",
+                    bookings: "Online Bookings",
+                    info: "Information Website"
+                }
             },
             es: {
                 navHome: "Inicio", navServices: "Servicios", navPricing: "Precios", navContact: "Contacto",
@@ -750,7 +903,6 @@
                 optL1: "Sitio en: Balcánico (HR/BS/SR)", optL2: "Sitio en: Alemán", optL3: "Sitio en: Inglés", optL4: "Sitio en: Español", optL5: "Sitio en: Italiano",
                 optS1: "Estilo: Moderno (Minimalismo)", optS2: "Estilo: Profesional (Lux)", optS3: "Estilo: Funky (Neon Cyberpunk)",
                 fTag: "Tu socio para la revolución digital.",
-                // Template translations
                 t_home: "Inicio", t_offer: "Ofertas", t_gallery: "Galería", t_reviews: "Opiniones", t_contact: "Contacto",
                 t_phoneLabel: "Teléfono:", t_location: "Sede central:", t_footerText: "Desarrollado por Ai Bussines",
                 t_faqTitle: "Preguntas frecuentes", t_q1: "¿Cómo puedo contactar?", t_a1: "Puede visitarnos directamente en nuestra ubicación o llamarnos por teléfono.",
@@ -769,14 +921,64 @@
                 t_d_bakery: "Ofrecemos pasteles calientes y hechos a mano, pan de masa madre y deliciosos pasteles con recetas tradicionales.",
                 t_download: "Descargar HTML", t_premium: "Ir a Premium",
                 t_downloadAlert: "¡Vuelva a nuestro sitio y envíe una consulta a través del formulario de contacto!",
-                // Menu items
                 t_item1_fish: "Dorada (Kg)", t_item2_fish: "Lubina (Kg)", t_item3_fish: "Atún Rojo (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Hamburguesa Gourmet",
                 t_item1_gym: "Membresía Premium", t_item2_gym: "Entrenamiento Personal", t_item3_gym: "Plan Nutricional",
                 t_item1_bakery: "Pan Artesanal", t_item2_bakery: "Croissants (Mix)", t_item3_bakery: "Pastel Personalizado",
                 t_itemDesc_food: "Preparado con ingredientes frescos y pasión.",
                 t_itemDesc_gym: "Acceso total a alta tecnología.",
-                t_itemDesc_bakery: "Horneado con amor cada mañana."
+                t_itemDesc_bakery: "Horneado con amor cada mañana.",
+                f_title: "Detalles para tu Sitio Web",
+                f_subtitle: "Completa este formulario para que podamos crear el sitio perfecto para ti",
+                f_businessName: "Nombre de la Empresa/Marca",
+                f_businessType: "Tipo de Negocio",
+                f_industry: "Industria",
+                f_websiteGoal: "Objetivo del Sitio Web",
+                f_targetAudience: "Público Objetivo",
+                f_preferredColors: "Colores Preferidos",
+                f_hasLogo: "¿Tienes un Logo?",
+                f_yes: "Sí", f_no: "No",
+                f_logoUpload: "Link de subida del Logo (o enviar por email)",
+                f_desiredPages: "Páginas Deseadas",
+                f_homepage: "Inicio", f_aboutUs: "Sobre Nosotros", f_services: "Servicios", f_pricing: "Precios", f_contactForm: "Formulario de Contacto", f_blog: "Blog",
+                f_additionalFeatures: "Funcionalidades Adicionales",
+                f_multilingual: "Multilingüe", f_chatbot: "Chatbot IA", f_booking: "Reservas Online", f_shop: "Tienda Online", f_seo: "Optimización SEO",
+                f_referenceSites: "Sitios de Referencia (que te gusten)",
+                f_additionalInfo: "Información Adicional",
+                f_clientName: "Tu Nombre Completo",
+                f_clientEmail: "Tu Email",
+                f_clientPhone: "Tu Teléfono",
+                f_submit: "Enviar Solicitud 🚀",
+                f_packageLabel: "Paquete Seleccionado",
+                f_successMsg: "¡Gracias! Tu solicitud ha sido enviada con éxito. Te contactaremos en menos de 24 horas.",
+                f_businessTypes: {
+                    restaurant: "Restaurante / Hostelería",
+                    retail: "Tienda / Comercio",
+                    services: "Servicios / Oficio",
+                    fitness: "Fitness / Deporte",
+                    realestate: "Inmobiliaria",
+                    tech: "IT / Tecnología",
+                    healthcare: "Salud",
+                    other: "Otro"
+                },
+                f_industries: {
+                    food: "Comida y Bebida",
+                    fashion: "Moda y Ropa",
+                    beauty: "Belleza y Cosmética",
+                    construction: "Construcción",
+                    education: "Educación",
+                    finance: "Finanzas",
+                    tourism: "Turismo",
+                    automotive: "Automoción",
+                    other: "Otro"
+                },
+                f_goals: {
+                    leads: "Generación de Leads",
+                    sales: "Ventas Online",
+                    branding: "Branding y Presentación",
+                    bookings: "Reservas Online",
+                    info: "Sitio Web Informativo"
+                }
             },
             it: {
                 navHome: "Home", navServices: "Servizi", navPricing: "Prezzi", navContact: "Contatto",
@@ -802,7 +1004,6 @@
                 optL1: "Sito in: Balcanico (HR/BS/SR)", optL2: "Sito in: Tedesco", optL3: "Sito in: Inglese", optL4: "Sito in: Spagnolo", optL5: "Sito in: Italiano",
                 optS1: "Stile: Moderno (Minimalismo)", optS2: "Stile: Professionale (Lux)", optS3: "Stile: Funky (Neon Cyberpunk)",
                 fTag: "Il tuo partner per la rivoluzione digitale.",
-                // Template translations
                 t_home: "Home", t_offer: "Offerte", t_gallery: "Galleria", t_reviews: "Recensioni", t_contact: "Contatti",
                 t_phoneLabel: "Telefono:", t_location: "Sede principale:", t_footerText: "Alimentato da Ai Bussines",
                 t_faqTitle: "Domande frequenti", t_q1: "Come posso contattarvi?", t_a1: "Puoi visitarci direttamente nella nostra sede o chiamarci al telefono durante l'orario di lavoro.",
@@ -821,18 +1022,67 @@
                 t_d_bakery: "Offriamo pasticceria calda e fatta a mano, pane a lievitazione naturale e deliziose torte secondo le ricette tradizionali.",
                 t_download: "Scarica HTML", t_premium: "Vai Premium",
                 t_downloadAlert: "Torna al nostro sito e invia una richiesta tramite il modulo di contatto!",
-                // Menu items
                 t_item1_fish: "Orata (Kg)", t_item2_fish: "Branzino (Kg)", t_item3_fish: "Tonno Rosso (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Hamburger Gourmet",
                 t_item1_gym: "Abbonamento Premium", t_item2_gym: "Allenamento Personale", t_item3_gym: "Piano Nutrizionale",
                 t_item1_bakery: "Pane Artigianale", t_item2_bakery: "Croissant (Mix)", t_item3_bakery: "Torta su Ordinazione",
                 t_itemDesc_food: "Preparato con ingredienti freschi e passione.",
                 t_itemDesc_gym: "Accesso completo all'alta tecnologia.",
-                t_itemDesc_bakery: "Sfornato con amore ogni mattina."
+                t_itemDesc_bakery: "Sfornato con amore ogni mattina.",
+                f_title: "Dettagli per il Tuo Sito Web",
+                f_subtitle: "Compila questo modulo per poter creare il sito perfetto per te",
+                f_businessName: "Nome Azienda/Marchio",
+                f_businessType: "Tipo di Business",
+                f_industry: "Settore",
+                f_websiteGoal: "Obiettivo del Sito Web",
+                f_targetAudience: "Pubblico Target",
+                f_preferredColors: "Colori Preferiti",
+                f_hasLogo: "Hai un Logo?",
+                f_yes: "Sì", f_no: "No",
+                f_logoUpload: "Link per caricare il Logo (o invia via email)",
+                f_desiredPages: "Pagine Desiderate",
+                f_homepage: "Home", f_aboutUs: "Chi Siamo", f_services: "Servizi", f_pricing: "Prezzi", f_contactForm: "Modulo di Contatto", f_blog: "Blog",
+                f_additionalFeatures: "Funzionalità Aggiuntive",
+                f_multilingual: "Multilingue", f_chatbot: "Chatbot IA", f_booking: "Prenotazioni Online", f_shop: "Negozio Online", f_seo: "Ottimizzazione SEO",
+                f_referenceSites: "Siti di Riferimento (che ti piacciono)",
+                f_additionalInfo: "Informazioni Aggiuntive",
+                f_clientName: "Il Tuo Nome Completo",
+                f_clientEmail: "La Tua Email",
+                f_clientPhone: "Il Tuo Telefono",
+                f_submit: "Invia Richiesta 🚀",
+                f_packageLabel: "Pacchetto Selezionato",
+                f_successMsg: "Grazie! La tua richiesta è stata inviata con successo. Ti contatteremo entro 24 ore.",
+                f_businessTypes: {
+                    restaurant: "Ristorante / Ospitalità",
+                    retail: "Vendita al dettaglio / Negozio",
+                    services: "Servizi / Artigianato",
+                    fitness: "Fitness / Sport",
+                    realestate: "Immobiliare",
+                    tech: "IT / Tecnologia",
+                    healthcare: "Sanità",
+                    other: "Altro"
+                },
+                f_industries: {
+                    food: "Cibo e Bevande",
+                    fashion: "Moda e Abbigliamento",
+                    beauty: "Bellezza e Cosmetici",
+                    construction: "Edilizia",
+                    education: "Istruzione",
+                    finance: "Finanza",
+                    tourism: "Turismo",
+                    automotive: "Automobilistico",
+                    other: "Altro"
+                },
+                f_goals: {
+                    leads: "Generazione di Lead",
+                    sales: "Vendite Online",
+                    branding: "Branding e Presentazione",
+                    bookings: "Prenotazioni Online",
+                    info: "Sito Informativo"
+                }
             }
         };
 
-        // Function that translates our site when language selector changes
         function changeSiteLanguage() {
             var selectedLanguage = document.getElementById("main-lang-select").value;
             var ML = siteDictionary[selectedLanguage];
@@ -841,11 +1091,9 @@
             document.getElementById("nav-services").innerText = ML.navServices;
             document.getElementById("nav-pricing").innerText = ML.navPricing;
             document.getElementById("nav-contact").innerText = ML.navContact;
-
             document.getElementById("hero-title").innerHTML = ML.heroTitle;
             document.getElementById("hero-desc").innerText = ML.heroDesc;
             document.getElementById("hero-btn").innerHTML = ML.heroBtn;
-
             document.getElementById("services-title").innerText = ML.sTitle;
             document.getElementById("services-subtitle").innerText = ML.sSubtitle;
             document.getElementById("card1-title").innerText = ML.c1T;
@@ -854,7 +1102,6 @@
             document.getElementById("card2-desc").innerText = ML.c2D;
             document.getElementById("card3-title").innerText = ML.c3T;
             document.getElementById("card3-desc").innerText = ML.c3D;
-
             document.getElementById("pricing-title").innerText = ML.pTitle;
             document.getElementById("pricing-subtitle").innerText = ML.pSubtitle;
             document.getElementById("p1-title").innerText = ML.p1T;
@@ -866,58 +1113,47 @@
             document.getElementById("lbl-m4").innerText = ML.lblM4;
             document.getElementById("lbl-m5").innerText = ML.lblM5;
             document.getElementById("btn-generate").innerText = ML.btnGen;
-
             document.getElementById("temp-name").placeholder = ML.phTitle;
             document.getElementById("temp-phone").placeholder = ML.phPhone;
             document.getElementById("temp-insta").placeholder = ML.phInsta;
-            
             document.getElementById("opt-l1").innerText = ML.optL1;
             document.getElementById("opt-l2").innerText = ML.optL2;
             document.getElementById("opt-l3").innerText = ML.optL3;
             document.getElementById("opt-l4").innerText = ML.optL4;
             document.getElementById("opt-l5").innerText = ML.optL5;
-            
             document.getElementById("opt-s1").innerText = ML.optS1;
             document.getElementById("opt-s2").innerText = ML.optS2;
             document.getElementById("opt-s3").innerText = ML.optS3;
-
             document.getElementById("p2-title").innerText = ML.p2T;
             document.getElementById("p2-price").innerHTML = ML.p2P;
             document.getElementById("p2-list").innerHTML = ML.p2L;
             document.getElementById("btn-p2").innerText = ML.btnP2;
-
             document.getElementById("p3-title").innerText = ML.p3T;
             document.getElementById("p3-price").innerHTML = ML.p3P;
             document.getElementById("p3-list").innerHTML = ML.p3L;
             document.getElementById("btn-p3").innerText = ML.btnP3;
-
             document.getElementById("p4-title").innerText = ML.p4T;
             document.getElementById("p4-price").innerHTML = ML.p4P;
             document.getElementById("p4-list").innerHTML = ML.p4L;
             document.getElementById("btn-p4").innerText = ML.btnP4;
-
             document.getElementById("contact-title").innerText = ML.conTitle;
             document.getElementById("lbl-name").innerText = ML.lName;
             document.getElementById("lbl-email").innerText = ML.lEmail;
             document.getElementById("lbl-msg").innerText = ML.lMsg;
-
             document.getElementById("name").placeholder = ML.phName;
             document.getElementById("email").placeholder = ML.phEmail;
             document.getElementById("message").placeholder = ML.phMsg;
-
             document.getElementById("footer-tag").innerText = ML.fTag;
             document.getElementById("temp-language").value = selectedLanguage;
         }
 
-        // --- GENERATE CLIENT'S LIVE SITE ---
+        // ============ FREE TEMPLATE - OSTATAK ISTI KAO RANIJE ============
         function openLiveSite() {
             var name = document.getElementById('temp-name').value || "Premium Business";
             var phone = document.getElementById('temp-phone').value || "+49 123 456789";
             var instaUser = document.getElementById('temp-insta').value || "@brandname";
-            
             var style = document.getElementById('temp-style').value;
             var language = document.getElementById('temp-language').value;
-
             var includeMenu = document.getElementById('chk-menu').checked;
             var includeGallery = document.getElementById('chk-gallery').checked;
             var includeReviews = document.getElementById('chk-reviews').checked;
@@ -925,90 +1161,37 @@
             var includeFaq = document.getElementById('chk-faq').checked;
 
             var T = siteDictionary[language];
-
             var words = name.split(' ');
             var firstWord = words[0];
             var restOfName = words.slice(1).join(' ');
-            
             var location = "Europe";
             for (var i = 0; i < words.length; i++) {
                 var w = words[i].toLowerCase();
-                if ((w === "u" || w === "iz" || w === "na" || w === "in") && i + 1 < words.length) {
-                    location = words[i + 1];
-                    break;
-                }
+                if ((w === "u" || w === "iz" || w === "na" || w === "in") && i + 1 < words.length) { location = words[i + 1]; break; }
             }
-            if (location === "Europe" && words.length > 1) {
-                var lastWord = words[words.length - 1];
-                if (lastWord[0] === lastWord[0].toUpperCase()) {
-                    location = lastWord;
-                }
-            }
+            if (location === "Europe" && words.length > 1) { var lastWord = words[words.length - 1]; if (lastWord[0] === lastWord[0].toUpperCase()) { location = lastWord; } }
 
             var loweredName = name.toLowerCase();
-            
-            // Default General setup using translations
-            var subtitle = T.t_def_subtitle;
-            var industryDesc = T.t_def_desc;
-            var bgImage = "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"; 
-            var industryIcon = "fa-briefcase";
-            var item1 = T.t_def_item1, item2 = T.t_def_item2, item3 = T.t_def_item3, 
-                price1 = "20€", price2 = "40€", price3 = "60€", itemDesc = T.t_itemDesc;
+            var subtitle = T.t_def_subtitle, industryDesc = T.t_def_desc, bgImage = "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200", industryIcon = "fa-briefcase";
+            var item1 = T.t_def_item1, item2 = T.t_def_item2, item3 = T.t_def_item3, price1 = "20€", price2 = "40€", price3 = "60€", itemDesc = T.t_itemDesc;
             var galleryImages = ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500", "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=500", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=500"];
             var reviewName = T.t_reviewName, reviewText = T.t_reviewText;
 
-            // Industry Specific Overrides
-            if (loweredName.includes("fish") || loweredName.includes("seafood") || loweredName.includes("tuna") || 
-                loweredName.includes("riba") || loweredName.includes("ribarnica") || loweredName.includes("pescadería") || 
-                loweredName.includes("pescheria") || loweredName.includes("fisch")) {
-                subtitle = T.t_b_fish;
-                industryDesc = T.t_d_fish;
-                bgImage = "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?q=80&w=1200";
-                industryIcon = "fa-fish";
-                item1 = T.t_item1_fish; price1 = "15.00€";
-                item2 = T.t_item2_fish; price2 = "16.00€";
-                item3 = T.t_item3_fish; price3 = "22.00€";
-                itemDesc = T.t_itemDesc;
+            if (loweredName.includes("fish") || loweredName.includes("seafood") || loweredName.includes("tuna") || loweredName.includes("riba") || loweredName.includes("ribarnica") || loweredName.includes("pescadería") || loweredName.includes("pescheria") || loweredName.includes("fisch")) {
+                subtitle = T.t_b_fish; industryDesc = T.t_d_fish; bgImage = "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?q=80&w=1200"; industryIcon = "fa-fish";
+                item1 = T.t_item1_fish; price1 = "15.00€"; item2 = T.t_item2_fish; price2 = "16.00€"; item3 = T.t_item3_fish; price3 = "22.00€"; itemDesc = T.t_itemDesc;
                 galleryImages = ["https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=500", "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=500", "https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500"];
-            } 
-            else if (loweredName.includes("pizza") || loweredName.includes("restaurant") || loweredName.includes("burger") || 
-                       loweredName.includes("food") || loweredName.includes("pizzerija") || loweredName.includes("picerija") || 
-                       loweredName.includes("hrana") || loweredName.includes("ristorante")) {
-                subtitle = T.t_b_food;
-                industryDesc = T.t_d_food;
-                bgImage = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200";
-                industryIcon = "fa-utensils";
-                item1 = T.t_item1_food; price1 = "8.50€";
-                item2 = T.t_item2_food; price2 = "7.50€";
-                item3 = T.t_item3_food; price3 = "9.50€";
-                itemDesc = T.t_itemDesc_food;
+            } else if (loweredName.includes("pizza") || loweredName.includes("restaurant") || loweredName.includes("burger") || loweredName.includes("food") || loweredName.includes("pizzerija") || loweredName.includes("picerija") || loweredName.includes("hrana") || loweredName.includes("ristorante")) {
+                subtitle = T.t_b_food; industryDesc = T.t_d_food; bgImage = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200"; industryIcon = "fa-utensils";
+                item1 = T.t_item1_food; price1 = "8.50€"; item2 = T.t_item2_food; price2 = "7.50€"; item3 = T.t_item3_food; price3 = "9.50€"; itemDesc = T.t_itemDesc_food;
                 galleryImages = ["https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500", "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500"];
-            } 
-            else if (loweredName.includes("gym") || loweredName.includes("fitness") || loweredName.includes("training") || 
-                       loweredName.includes("teretana") || loweredName.includes("fitnes") || loweredName.includes("trening") ||
-                       loweredName.includes("palestra")) {
-                subtitle = T.t_b_gym;
-                industryDesc = T.t_d_gym;
-                bgImage = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200";
-                industryIcon = "fa-dumbbell";
-                item1 = T.t_item1_gym; price1 = "40.00€";
-                item2 = T.t_item2_gym; price2 = "20.00€";
-                item3 = T.t_item3_gym; price3 = "30.00€";
-                itemDesc = T.t_itemDesc_gym;
+            } else if (loweredName.includes("gym") || loweredName.includes("fitness") || loweredName.includes("training") || loweredName.includes("teretana") || loweredName.includes("fitnes") || loweredName.includes("trening") || loweredName.includes("palestra")) {
+                subtitle = T.t_b_gym; industryDesc = T.t_d_gym; bgImage = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200"; industryIcon = "fa-dumbbell";
+                item1 = T.t_item1_gym; price1 = "40.00€"; item2 = T.t_item2_gym; price2 = "20.00€"; item3 = T.t_item3_gym; price3 = "30.00€"; itemDesc = T.t_itemDesc_gym;
                 galleryImages = ["https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=500", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=500", "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500"];
-            }
-            // NEW BAKERY LOGIC ADDED HERE (Includes typos like "backery", "baker")
-            else if (loweredName.includes("bäckerei") || loweredName.includes("bakery") || loweredName.includes("backery") || 
-                       loweredName.includes("pekara") || loweredName.includes("pekar") || loweredName.includes("panaderia") || 
-                       loweredName.includes("panetteria") || loweredName.includes("pastry") || loweredName.includes("baker")) {
-                subtitle = T.t_b_bakery;
-                industryDesc = T.t_d_bakery;
-                bgImage = "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200";
-                industryIcon = "fa-bread-slice";
-                item1 = T.t_item1_bakery; price1 = "3.50€";
-                item2 = T.t_item2_bakery; price2 = "4.00€";
-                item3 = T.t_item3_bakery; price3 = "25.00€";
-                itemDesc = T.t_itemDesc_bakery;
+            } else if (loweredName.includes("bäckerei") || loweredName.includes("bakery") || loweredName.includes("backery") || loweredName.includes("pekara") || loweredName.includes("pekar") || loweredName.includes("panaderia") || loweredName.includes("panetteria") || loweredName.includes("pastry") || loweredName.includes("baker")) {
+                subtitle = T.t_b_bakery; industryDesc = T.t_d_bakery; bgImage = "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200"; industryIcon = "fa-bread-slice";
+                item1 = T.t_item1_bakery; price1 = "3.50€"; item2 = T.t_item2_bakery; price2 = "4.00€"; item3 = T.t_item3_bakery; price3 = "25.00€"; itemDesc = T.t_itemDesc_bakery;
                 galleryImages = ["https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500", "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500", "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=500"];
             }
 
@@ -1021,110 +1204,16 @@
             var offerSection = includeMenu ? `<section class="section" id="offer"><h2 class="section-title"><i class="fa-solid ${industryIcon}"></i> ${T.t_offer}</h2><div class="menu-grid"><div class="menu-item"><h3>${item1} <span>${price1}</span></h3><p>${itemDesc}</p></div><div class="menu-item"><h3>${item2} <span>${price2}</span></h3><p>${itemDesc}</p></div><div class="menu-item"><h3>${item3} <span>${price3}</span></h3><p>${itemDesc}</p></div></div></section>` : "";
             var gallerySection = includeGallery ? `<section class="section" id="gallery"><h2 class="section-title"><i class="fa-solid fa-camera-retro"></i> ${T.t_gallery}</h2><div class="gallery-grid"><div class="gallery-card"><img src="${galleryImages[0]}" alt="Gallery image 1"></div><div class="gallery-card"><img src="${galleryImages[1]}" alt="Gallery image 2"></div><div class="gallery-card"><img src="${galleryImages[2]}" alt="Gallery image 3"></div></div></section>` : "";
             var reviewsSection = includeReviews ? `<section class="section" id="reviews"><h2 class="section-title"><i class="fa-solid fa-quote-left"></i> ${T.t_reviews}</h2><div class="review-card"><p style="font-style: italic; font-size: 1.25rem;">"${reviewText}"</p><h4 style="margin-top:1.5rem;">- ${reviewName}</h4></div></section>` : "";
-            
             var cleanInsta = instaUser.replace('@', '');
             var socialSection = includeSocial ? `<div style="margin: 2rem 0; display:flex; gap:1.5rem; justify-content:center; font-size:1.8rem;"><a href="https://instagram.com/${cleanInsta}" target="_blank" rel="noopener" style="color:var(--p-color);"><i class="fa-brands fa-instagram"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-facebook"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-tiktok"></i></a></div>` : "";
-            
-            var faqSection = includeFaq ? `
-            <section class="section">
-                <h2 class="section-title"><i class="fa-solid fa-circle-question"></i> ${T.t_faqTitle}</h2>
-                <div style="max-width:600px; margin:0 auto; text-align:left; background:var(--bg-card); padding:1.5rem; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.02);">
-                    <details style="margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid #334155;"><summary style="font-weight:bold; cursor:pointer; margin-bottom:0.5rem;">${T.t_q1}</summary><p style="color:#64748b; font-size:0.95rem;">${T.t_a1}</p></details>
-                    <details><summary style="font-weight:bold; cursor:pointer; margin-bottom:0.5rem;">${T.t_q2}</summary><p style="color:#64748b; font-size:0.95rem;">${T.t_a2}</p></details>
-                </div>
-            </section>` : "";
+            var faqSection = includeFaq ? `<section class="section"><h2 class="section-title"><i class="fa-solid fa-circle-question"></i> ${T.t_faqTitle}</h2><div style="max-width:600px; margin:0 auto; text-align:left; background:var(--bg-card); padding:1.5rem; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.02);"><details style="margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid #334155;"><summary style="font-weight:bold; cursor:pointer; margin-bottom:0.5rem;">${T.t_q1}</summary><p style="color:#64748b; font-size:0.95rem;">${T.t_a1}</p></details><details><summary style="font-weight:bold; cursor:pointer; margin-bottom:0.5rem;">${T.t_q2}</summary><p style="color:#64748b; font-size:0.95rem;">${T.t_a2}</p></details></div></section>` : "";
 
             var CSS_STYLE = "";
-            if (style === "modern") {
-                CSS_STYLE = `:root { --p-color: #3b82f6; --bg-card: #ffffff; --text-main: #0f172a; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: 800; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 600; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 850px; height: 380px; margin: 2rem auto; border-radius: 20px; object-fit: cover; display: block; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .container { max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 850px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; font-weight: 700; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 5px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #64748b; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; } .gallery-card { overflow: hidden; border-radius: 16px; height: 220px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; } .gallery-card:hover img { transform: scale(1.05); } .review-card { background: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; display: block; } .info-card { background-color: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-top: 5px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; border-top: 1px solid #f1f5f9; }`;
-            } else if (style === "professional") {
-                CSS_STYLE = `:root { --p-color: #06b6d4; --bg-card: #1e293b; } body { background-color: #0f172a; color: #f8fafc; font-family: Georgia, serif; scroll-behavior: smooth; } header { background-color: #1e293b; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.7rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 2rem; } header a { color: #cbd5e1; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 900px; height: 400px; margin: 0 auto; object-fit: cover; border-bottom: 5px solid var(--p-color); display: block; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); } .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; } .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; clear: both; text-align: center; } .section-title { font-size: 2.2rem; margin-bottom: 3rem; border-bottom: 1px solid #1e293b; padding-bottom: 1rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2.5rem; border-left: 6px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.4rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #94a3b8; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; } .gallery-card { border: 2px solid #334155; height: 230px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; } .review-card { background: var(--bg-card); padding: 3.5rem; border-right: 6px solid var(--p-color); text-align: left; width: 100%; display: inline-block; } .info-card { background-color: var(--bg-card); padding: 3rem; text-align:left; border: 1px solid #334155; } footer { text-align: center; padding: 3rem; color: #64748b; background: #0f172a; border-top: 1px solid #1e293b; margin-top: 5rem; }`;
-            } else if (style === "funky") {
-                CSS_STYLE = `:root { --p-color: #00ffcc; --s-color: #ff007f; } body { background-color: #050505; color: var(--p-color); font-family: 'Impact', sans-serif; letter-spacing: 1.5px; scroll-behavior: smooth; } header { background: linear-gradient(90deg, var(--s-color), #7f00ff); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 999; } .logo-site { font-size: 2.2rem; color: #ffffff; text-shadow: 3px 3px #000000; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #ffffff; text-decoration: none; } header a:hover { color: var(--p-color); transform: scale(1.1) rotate(-2deg); } .hero-img { width: 100%; max-width: 850px; height: 340px; margin: 2rem auto; border-radius: 30px; border: 4px solid var(--p-color); object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 1rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2.8rem; margin-bottom: 4rem; color: #ffffff; text-shadow: 3px 3px var(--s-color); } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; text-align: left; } .menu-item { background: #111111; padding: 2.5rem; border-radius: 24px; border: 3px solid #7f00ff; } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.6rem; color: #ffffff; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #00ffcc; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; } .gallery-card { border-radius: 24px; border: 3px solid var(--s-color); overflow: hidden; height: 200px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; } .review-card { background: #111111; padding: 3rem; border-radius: 30px; border: 4px dashed var(--s-color); color: #ffffff; width: 100%; display: inline-block; } .info-card { background-color: #111111; padding: 3rem; border-radius: 30px; border: 3px solid var(--p-color); text-align:left; box-shadow: 0px 0px 25px rgba(0,255,204,0.2); } footer { text-align: center; padding: 2.5rem; color: #7f00ff; background: #000000; margin-top: 5rem; }`;
-            }
+            if (style === "modern") { CSS_STYLE = `:root { --p-color: #3b82f6; --bg-card: #ffffff; --text-main: #0f172a; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: 800; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 600; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 850px; height: 380px; margin: 2rem auto; border-radius: 20px; object-fit: cover; display: block; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .container { max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 850px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; font-weight: 700; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 5px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #64748b; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; } .gallery-card { overflow: hidden; border-radius: 16px; height: 220px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; } .gallery-card:hover img { transform: scale(1.05); } .review-card { background: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; display: block; } .info-card { background-color: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-top: 5px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; border-top: 1px solid #f1f5f9; }`; }
+            else if (style === "professional") { CSS_STYLE = `:root { --p-color: #06b6d4; --bg-card: #1e293b; } body { background-color: #0f172a; color: #f8fafc; font-family: Georgia, serif; scroll-behavior: smooth; } header { background-color: #1e293b; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.7rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 2rem; } header a { color: #cbd5e1; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 900px; height: 400px; margin: 0 auto; object-fit: cover; border-bottom: 5px solid var(--p-color); display: block; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); } .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; } .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; clear: both; text-align: center; } .section-title { font-size: 2.2rem; margin-bottom: 3rem; border-bottom: 1px solid #1e293b; padding-bottom: 1rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2.5rem; border-left: 6px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.4rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #94a3b8; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; } .gallery-card { border: 2px solid #334155; height: 230px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; } .review-card { background: var(--bg-card); padding: 3.5rem; border-right: 6px solid var(--p-color); text-align: left; width: 100%; display: inline-block; } .info-card { background-color: var(--bg-card); padding: 3rem; text-align:left; border: 1px solid #334155; } footer { text-align: center; padding: 3rem; color: #64748b; background: #0f172a; border-top: 1px solid #1e293b; margin-top: 5rem; }`; }
+            else if (style === "funky") { CSS_STYLE = `:root { --p-color: #00ffcc; --s-color: #ff007f; } body { background-color: #050505; color: var(--p-color); font-family: 'Impact', sans-serif; letter-spacing: 1.5px; scroll-behavior: smooth; } header { background: linear-gradient(90deg, var(--s-color), #7f00ff); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 999; } .logo-site { font-size: 2.2rem; color: #ffffff; text-shadow: 3px 3px #000000; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #ffffff; text-decoration: none; } header a:hover { color: var(--p-color); transform: scale(1.1) rotate(-2deg); } .hero-img { width: 100%; max-width: 850px; height: 340px; margin: 2rem auto; border-radius: 30px; border: 4px solid var(--p-color); object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 1rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2.8rem; margin-bottom: 4rem; color: #ffffff; text-shadow: 3px 3px var(--s-color); } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; text-align: left; } .menu-item { background: #111111; padding: 2.5rem; border-radius: 24px; border: 3px solid #7f00ff; } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.6rem; color: #ffffff; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #00ffcc; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; } .gallery-card { border-radius: 24px; border: 3px solid var(--s-color); overflow: hidden; height: 200px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; } .review-card { background: #111111; padding: 3rem; border-radius: 30px; border: 4px dashed var(--s-color); color: #ffffff; width: 100%; display: inline-block; } .info-card { background-color: #111111; padding: 3rem; border-radius: 30px; border: 3px solid var(--p-color); text-align:left; box-shadow: 0px 0px 25px rgba(0,255,204,0.2); } footer { text-align: center; padding: 2.5rem; color: #7f00ff; background: #000000; margin-top: 5rem; }`; }
 
-            var generatedCode = `<!DOCTYPE html>
-<html lang='${language}'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>${name} | ${location}</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        ${CSS_STYLE}
-        .ai-top-bar { background-color: #1e293b; padding: 0.9rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #22c55e; font-family: 'Segoe UI', sans-serif; color: white; }
-        .ai-bar-btns { display: flex; gap: 1rem; }
-        .ai-btn-dl { background-color: #22c55e; color: white; border: none; padding: 0.6rem 1.2rem; font-weight: bold; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 0.85rem; }
-        .ai-btn-up { background-color: #38bdf8; color: #0f172a; border: none; padding: 0.6rem 1.2rem; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
-    </style>
-</head>
-<body>
-    <div class="ai-top-bar">
-        <span><i class="fa-solid fa-robot"></i> Ai Bussines ${language.toUpperCase()} Template: <b>${name}</b></span>
-        <div class="ai-bar-btns">
-            <button onclick="downloadSite()" class="ai-btn-dl"><i class="fa-solid fa-download"></i> ${T.t_download}</button>
-            <button onclick="buyPackage()" class="ai-btn-up"><i class="fa-solid fa-rocket"></i> ${T.t_premium}</button>
-        </div>
-    </div>
-
-    <header>
-        <div class="logo-site"><i class="fa-solid ${industryIcon}"></i> ${firstWord}&nbsp;<span>${restOfName}</span></div>
-        <ul>${navLinks}</ul>
-    </header>
-    
-    <main id="home" style="padding-top: 1rem;">
-        <img src="${bgImage}" alt="${name}" class="hero-img">
-        <div class="container" style="margin-top: 1.5rem;">
-            <h2 style="font-size:2.2rem; margin-bottom:1rem; color:var(--p-color);">${subtitle}</h2>
-            <p style="font-size: 1.35rem; max-width: 750px; margin: 0 auto; font-weight: 300;">${industryDesc}</p>
-            ${socialSection}
-        </div>
-    </main>
-
-    ${offerSection}
-    ${gallerySection}
-    ${reviewsSection}
-    ${faqSection}
-
-    <section class="section" id="location">
-        <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> ${T.t_contact}</h2>
-        <div class="info-card">
-            <p style="margin-bottom: 1.2rem; font-size: 1.15rem;"><i class="fa-solid fa-location-crosshairs" style="color: var(--p-color); margin-right: 0.5rem;"></i> <strong>${T.t_location}</strong> ${location}</p>
-            <p style="font-size: 1.15rem;"><i class="fa-solid fa-phone" style="color: #22c55e; margin-right: 0.5rem;"></i> <strong>${T.t_phoneLabel}</strong> <a href="tel:${phone}" style="color:inherit; text-decoration:none; font-weight:bold;">${phone}</a></p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 ${name}. All rights reserved. | ${T.t_footerText}</p>
-    </footer>
-
-    <script>
-        function downloadSite() {
-            var htmlContent = document.documentElement.outerHTML;
-            htmlContent = htmlContent.replace(/<div class="ai-top-bar">[\\s\\S]*?<\\/div>/, "");
-            var blob = new Blob([htmlContent], {type: "text/html;charset=utf-8"});
-            var link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = "${name.replace(/\s+/g, '_')}_website.html";
-            link.click();
-        }
-
-        function buyPackage() {
-            if (window.opener) {
-                window.opener.postMessage({
-                    type: "purchase",
-                    name: "${name}",
-                    style: "${style}"
-                }, "*");
-                window.close();
-            } else {
-                alert("${T.t_downloadAlert}");
-            }
-        }
-    <\/script>
-</body>
-</html>`;
+            var generatedCode = `<!DOCTYPE html><html lang='${language}'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>${name} | ${location}</title><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'><style>*{margin:0;padding:0;box-sizing:border-box;}${CSS_STYLE}.ai-top-bar{background-color:#1e293b;padding:0.9rem 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #22c55e;font-family:'Segoe UI',sans-serif;color:white;}.ai-bar-btns{display:flex;gap:1rem;}.ai-btn-dl{background-color:#22c55e;color:white;border:none;padding:0.6rem 1.2rem;font-weight:bold;border-radius:6px;cursor:pointer;text-decoration:none;font-size:0.85rem;}.ai-btn-up{background-color:#38bdf8;color:#0f172a;border:none;padding:0.6rem 1.2rem;font-weight:bold;border-radius:6px;cursor:pointer;font-size:0.85rem;}</style></head><body><div class="ai-top-bar"><span><i class="fa-solid fa-robot"></i> Ai Bussines ${language.toUpperCase()} Template: <b>${name}</b></span><div class="ai-bar-btns"><button onclick="downloadSite()" class="ai-btn-dl"><i class="fa-solid fa-download"></i> ${T.t_download}</button><button onclick="buyPackage()" class="ai-btn-up"><i class="fa-solid fa-rocket"></i> ${T.t_premium}</button></div></div><header><div class="logo-site"><i class="fa-solid ${industryIcon}"></i> ${firstWord}&nbsp;<span>${restOfName}</span></div><ul>${navLinks}</ul></header><main id="home" style="padding-top:1rem;"><img src="${bgImage}" alt="${name}" class="hero-img"><div class="container" style="margin-top:1.5rem;"><h2 style="font-size:2.2rem;margin-bottom:1rem;color:var(--p-color);">${subtitle}</h2><p style="font-size:1.35rem;max-width:750px;margin:0 auto;font-weight:300;">${industryDesc}</p>${socialSection}</div></main>${offerSection}${gallerySection}${reviewsSection}${faqSection}<section class="section" id="location"><h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> ${T.t_contact}</h2><div class="info-card"><p style="margin-bottom:1.2rem;font-size:1.15rem;"><i class="fa-solid fa-location-crosshairs" style="color:var(--p-color);margin-right:0.5rem;"></i><strong>${T.t_location}</strong> ${location}</p><p style="font-size:1.15rem;"><i class="fa-solid fa-phone" style="color:#22c55e;margin-right:0.5rem;"></i><strong>${T.t_phoneLabel}</strong> <a href="tel:${phone}" style="color:inherit;text-decoration:none;font-weight:bold;">${phone}</a></p></div></section><footer><p>&copy; 2026 ${name}. All rights reserved. | ${T.t_footerText}</p></footer><script>function downloadSite(){var c=document.documentElement.outerHTML;c=c.replace(/<div class="ai-top-bar">[\\s\\S]*?<\\/div>/,"");var b=new Blob([c],{type:"text/html;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="${name.replace(/\s+/g,'_')}_website.html";a.click();}function buyPackage(){if(window.opener){window.opener.postMessage({type:"purchase",name:"${name}",style:"${style}"},"*");window.close();}else{alert("${T.t_downloadAlert}");}}<\/script></body></html>`;
 
             var newWindow = window.open();
             newWindow.document.open();
@@ -1132,10 +1221,228 @@
             newWindow.document.close();
         }
 
+        // ============ NOVA FUNKCIJA ZA 3 PLAĆENA PAKETA ============
+        function openDetailedForm(packageName, packagePrice) {
+            var selectedLanguage = document.getElementById("main-lang-select").value;
+            var F = siteDictionary[selectedLanguage];
+            
+            // Build the business type options
+            var businessTypeOptions = "";
+            for (var key in F.f_businessTypes) {
+                businessTypeOptions += `<option value="${key}">${F.f_businessTypes[key]}</option>`;
+            }
+            
+            // Build the industry options
+            var industryOptions = "";
+            for (var key in F.f_industries) {
+                industryOptions += `<option value="${key}">${F.f_industries[key]}</option>`;
+            }
+            
+            // Build the goals options
+            var goalsOptions = "";
+            for (var key in F.f_goals) {
+                goalsOptions += `<option value="${key}">${F.f_goals[key]}</option>`;
+            }
+
+            var formHTML = `<!DOCTYPE html>
+<html lang='${selectedLanguage}'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>${F.f_title} - Ai Bussines</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; min-height: 100vh; padding: 2rem; }
+        .form-container { max-width: 800px; margin: 0 auto; background-color: #1e293b; border: 2px solid #38bdf8; border-radius: 16px; padding: 3rem 2.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
+        h1 { text-align: center; color: #38bdf8; margin-bottom: 0.5rem; font-size: 2rem; }
+        .subtitle { text-align: center; color: #94a3b8; margin-bottom: 2rem; font-size: 1rem; }
+        .package-badge { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #0f172a; display: inline-block; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: bold; margin-bottom: 2rem; font-size: 1.1rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; color: #94a3b8; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.85rem; border-radius: 8px; border: 1px solid #334155; background-color: #0f172a; color: #f8fafc; font-size: 0.95rem; font-family: inherit; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #38bdf8; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .checkbox-group label { display: flex; align-items: center; gap: 0.5rem; color: #cbd5e1; font-weight: normal; cursor: pointer; background: #0f172a; padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid #334155; font-size: 0.85rem; }
+        .checkbox-group input[type="checkbox"] { width: auto; accent-color: #38bdf8; }
+        .radio-group { display: flex; gap: 2rem; }
+        .radio-group label { display: flex; align-items: center; gap: 0.5rem; color: #cbd5e1; font-weight: normal; cursor: pointer; }
+        .radio-group input[type="radio"] { width: auto; accent-color: #38bdf8; }
+        .btn-submit { width: 100%; padding: 1rem; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(34,197,94,0.3); }
+        .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+        .success-msg { display: none; text-align: center; color: #22c55e; padding: 2rem; font-size: 1.2rem; }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="form-container">
+        <h1><i class="fa-solid fa-file-signature"></i> ${F.f_title}</h1>
+        <p class="subtitle">${F.f_subtitle}</p>
+        <div style="text-align:center;"><span class="package-badge"><i class="fa-solid fa-box"></i> ${F.f_packageLabel}: ${packageName} (${packagePrice})</span></div>
+        
+        <form id="detailed-form" action="https://formspree.io/f/xojbvzwr" method="POST">
+            <input type="hidden" name="Package" value="${packageName} (${packagePrice})">
+            <input type="hidden" name="Language" value="${selectedLanguage}">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>${F.f_businessName} *</label>
+                    <input type="text" name="BusinessName" required placeholder="Nike / Figma / OpenAI">
+                </div>
+                <div class="form-group">
+                    <label>${F.f_businessType} *</label>
+                    <select name="BusinessType" required>
+                        <option value="">-- ${F.f_businessType} --</option>
+                        ${businessTypeOptions}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>${F.f_industry}</label>
+                    <select name="Industry">
+                        <option value="">-- ${F.f_industry} --</option>
+                        ${industryOptions}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>${F.f_websiteGoal} *</label>
+                    <select name="WebsiteGoal" required>
+                        <option value="">-- ${F.f_websiteGoal} --</option>
+                        ${goalsOptions}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_targetAudience}</label>
+                <input type="text" name="TargetAudience" placeholder="npr. mladi 18-35, poduzetnici, majke...">
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_preferredColors}</label>
+                <input type="text" name="PreferredColors" placeholder="npr. tamno plava #1e293b, zlatna #f59e0b, bijela">
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_hasLogo}</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="HasLogo" value="Yes" checked> ${F.f_yes}</label>
+                    <label><input type="radio" name="HasLogo" value="No"> ${F.f_no}</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_logoUpload}</label>
+                <input type="text" name="LogoLink" placeholder="https://drive.google.com/... ili pošaljite emailom">
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_desiredPages}</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="Page_Home" checked> ${F.f_homepage}</label>
+                    <label><input type="checkbox" name="Page_About" checked> ${F.f_aboutUs}</label>
+                    <label><input type="checkbox" name="Page_Services" checked> ${F.f_services}</label>
+                    <label><input type="checkbox" name="Page_Pricing"> ${F.f_pricing}</label>
+                    <label><input type="checkbox" name="Page_Contact" checked> ${F.f_contactForm}</label>
+                    <label><input type="checkbox" name="Page_Blog"> ${F.f_blog}</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_additionalFeatures}</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="Feature_Multilingual"> ${F.f_multilingual}</label>
+                    <label><input type="checkbox" name="Feature_Chatbot"> ${F.f_chatbot}</label>
+                    <label><input type="checkbox" name="Feature_Booking"> ${F.f_booking}</label>
+                    <label><input type="checkbox" name="Feature_Shop"> ${F.f_shop}</label>
+                    <label><input type="checkbox" name="Feature_SEO"> ${F.f_seo}</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_referenceSites}</label>
+                <textarea name="ReferenceSites" rows="3" placeholder="www.apple.com, www.nike.com, www.airbnb.com..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_additionalInfo}</label>
+                <textarea name="AdditionalInfo" rows="3" placeholder="Sve dodatne informacije koje bi nam pomogle..."></textarea>
+            </div>
+            
+            <hr style="border-color:#334155; margin: 2rem 0;">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>${F.f_clientName} *</label>
+                    <input type="text" name="ClientName" required placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label>${F.f_clientEmail} *</label>
+                    <input type="email" name="ClientEmail" required placeholder="john@example.com">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>${F.f_clientPhone}</label>
+                <input type="tel" name="ClientPhone" placeholder="+49 123 456789">
+            </div>
+            
+            <button type="submit" class="btn-submit" id="submit-btn"><i class="fa-solid fa-paper-plane"></i> ${F.f_submit}</button>
+        </form>
+    </div>
+    
+    <div class="success-msg" id="success-msg">
+        <i class="fa-solid fa-circle-check" style="font-size: 4rem; color: #22c55e; margin-bottom: 1.5rem; display: block;"></i>
+        <h2 style="color: #22c55e; margin-bottom: 1rem;">${F.f_successMsg}</h2>
+    </div>
+
+    <script>
+        var form = document.getElementById('detailed-form');
+        var submitBtn = document.getElementById('submit-btn');
+        var formContainer = document.getElementById('form-container');
+        var successMsg = document.getElementById('success-msg');
+
+        form.addEventListener('submit', function(ev) {
+            ev.preventDefault();
+            var data = new FormData(form);
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action);
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                if (xhr.status === 200) {
+                    formContainer.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    if (window.opener) {
+                        setTimeout(function() { window.close(); }, 3000);
+                    }
+                } else {
+                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> ${F.f_submit}';
+                    submitBtn.disabled = false;
+                    alert('Error! Please try again or contact us directly.');
+                }
+            };
+            xhr.send(data);
+        });
+    <\/script>
+</body>
+</html>`;
+
+            var newWindow = window.open();
+            newWindow.document.open();
+            newWindow.document.write(formHTML);
+            newWindow.document.close();
+        }
+
         function choosePackage(packageName) {
             var selectedLanguage = document.getElementById("main-lang-select").value;
-            var ML = siteDictionary[selectedLanguage];
-            
             if(selectedLanguage === 'de') {
                 document.getElementById('message').value = "Hallo Ajdin! Ich interessiere mich für das Paket: " + packageName + ". Bitte kontaktieren Sie mich mit Details.";
             } else if(selectedLanguage === 'en') {
