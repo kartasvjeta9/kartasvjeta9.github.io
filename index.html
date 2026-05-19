@@ -249,12 +249,17 @@
         }
 
         .template-inputs input, .template-inputs select {
-            padding: 0.5rem;
-            border-radius: 4px;
+            padding: 0.6rem;
+            border-radius: 5px;
             border: 1px solid #334155;
             background-color: #0f172a;
             color: #f8fafc;
             font-size: 0.85rem;
+        }
+
+        .template-inputs input:focus, .template-inputs select:focus {
+            outline: none;
+            border-color: #38bdf8;
         }
 
         /* Kontakt Forma */
@@ -334,7 +339,7 @@
                 <li><a href="#pocetna">Početna</a></li>
                 <li><a href="#usluge">Usluge</a></li>
                 <li><a href="#cijene">Cjenovnik</a></li>
-                <li><a href="#kontakt" class="btn-nav">Contact</a></li>
+                <li><a href="#kontakt" class="btn-nav">Kontakt</a></li>
             </ul>
         </nav>
     </header>
@@ -374,7 +379,7 @@
         
         <div class="pricing-grid">
             
-            <div class="pricing-card" style="grid-column: span 1;">
+            <div class="pricing-card">
                 <div>
                     <h3>Free Template</h3>
                     <div class="price">0€<span> / uživo</span></div>
@@ -383,15 +388,16 @@
                         <input type="text" id="temp-naziv" placeholder="Naziv (npr. Ribarnica Tribunj)">
                         <input type="text" id="temp-lokacija" placeholder="Lokacija (npr. Tribunj, Hrvatska)">
                         <input type="text" id="temp-vrijeme" placeholder="Radno vrijeme (npr. Pon-Pet 09-15H)">
-                        <select id="temp-boja">
-                            <option value="plavo-siva">Tema: Plavo - Siva</option>
-                            <option value="tamna-neon">Tema: Tamna - Neon Plava</option>
-                            <option value="klasicna-svijetla">Tema: Svijetla - Minimalistička</option>
+                        
+                        <select id="temp-stil">
+                            <option value="moderan">Stil: Moderan (Minimalizam)</option>
+                            <option value="profesionalan">Stil: Profesionalan (Ozbiljan)</option>
+                            <option value="funky">Stil: Funky (Neon & Živahan)</option>
                         </select>
                     </div>
                 </div>
                 
-                <button onclick="otvoriSajtUzivo()" class="btn" style="background-color: #22c55e; color: white;">Pogledaj Sajt Uživo 🚀</button>
+                <button onclick="otvoriSajtUzivo()" class="btn" style="background-color: #22c55e; color: white; width: 100%;">Pogledaj Sajt Uživo 🚀</button>
             </div>
 
             <div class="pricing-card">
@@ -466,29 +472,49 @@
     </footer>
 
     <script>
-        // NOVA FUNKCIJA: AUTOMATSKI OTVARA STRANICU U NOVOM PROZORU
         function otvoriSajtUzivo() {
             var naziv = document.getElementById('temp-naziv').value || "Svježa riba Tribunj";
             var lokacija = document.getElementById('temp-lokacija').value || "Tribunj, Hrvatska";
             var vrijeme = document.getElementById('temp-vrijeme').value || "Pon-Pet 09-15H";
-            var boja = document.getElementById('temp-boja').value;
+            var stil = document.getElementById('temp-stil').value;
 
-            var primarnaBoja = "#38bdf8"; 
-            var pozadina = "#0f172a";
-            var sekundarna = "#1e293b";
-
-            if (boja === "plavo-siva") {
-                primarnaBoja = "#60a5fa"; 
-                pozadina = "#1e293b";      
-                sekundarna = "#334155";    
-            } else if (boja === "klasicna-svijetla") {
-                primarnaBoja = "#2563eb"; 
-                pozadina = "#f8fafc";      
-                sekundarna = "#ffffff";
+            // STRUKTURA ZA TRI POTPUNO RAZLIČITA STILA (Boje, fontovi, ivice, sjene)
+            var CSS_STIL = "";
+            
+            if (stil === "moderan") {
+                CSS_STIL = `
+                    body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; }
+                    header { background-color: #ffffff; padding: 3rem 5%; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+                    h1 { color: #0f172a; font-size: 2.5rem; font-weight: 300; letter-spacing: -1px; }
+                    h1 span { color: #3b82f6; font-weight: 700; }
+                    .container { max-width: 700px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
+                    .info-card { background-color: #ffffff; padding: 3rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-top: 2.5rem; }
+                    p { margin-bottom: 1.5rem; font-size: 1.2rem; color: #475569; }
+                    footer { margin-top: 10rem; text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.85rem; }
+                `;
+            } else if (stil === "profesionalan") {
+                CSS_STIL = `
+                    body { background-color: #0b132b; color: #ffffff; font-family: 'Georgia', serif; }
+                    header { background-color: #1c2541; padding: 2.5rem 5%; text-align: left; border-bottom: 3px solid #6fffe9; }
+                    h1 { color: #ffffff; font-size: 2.3rem; font-weight: bold; }
+                    h1 span { color: #6fffe9; }
+                    .container { max-width: 850px; margin: 4rem auto; padding: 0 2rem; text-align: left; }
+                    .info-card { background-color: #1c2541; padding: 2.5rem; border-radius: 0px; border-left: 5px solid #6fffe9; margin-top: 3rem; }
+                    p { margin-bottom: 1.5rem; font-size: 1.2rem; font-style: italic; color: #cbd5e1; }
+                    footer { margin-top: 8rem; background-color: #0b132b; text-align: center; padding: 2rem; color: #5c677d; font-size: 0.9rem; border-top: 1px solid #1c2541; }
+                `;
+            } else if (stil === "funky") {
+                CSS_STIL = `
+                    body { background-color: #000000; color: #00ffcc; font-family: 'Impact', 'Arial Black', sans-serif; letter-spacing: 1px; }
+                    header { background: linear-gradient(90deg, #ff007f, #7f00ff); padding: 3rem 5%; text-align: center; transform: skewY(-1deg); }
+                    h1 { color: #ffffff; font-size: 3.5rem; text-shadow: 3px 3px #000000; }
+                    h1 span { color: #00ffcc; }
+                    .container { max-width: 750px; margin: 6rem auto; padding: 0 1.5rem; text-align: center; }
+                    .info-card { background-color: #111111; padding: 3rem; border-radius: 25px; border: 4px dashed #ff007f; box-shadow: 0px 0px 20px #ff007f; margin-top: 2rem; }
+                    p { margin-bottom: 1.5rem; font-size: 1.4rem; color: #ffffff; }
+                    footer { margin-top: 6rem; background-color: #111111; text-align: center; padding: 1.5rem; color: #7f00ff; font-size: 1rem; }
+                `;
             }
-
-            var tekstBoja = boja === "klasicna-svijetla" ? "#0f172a" : "#f8fafc";
-            var karticaBoja = boja === "klasicna-svijetla" ? "#e2e8f0" : sekundarna;
 
             var generisaniKod = `<!DOCTYPE html>
 <html lang='bs'>
@@ -497,15 +523,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>${naziv}</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: ${pozadina}; color: ${tekstBoja}; line-height: 1.6; }
-        header { background-color: ${sekundarna}; padding: 2rem 5%; text-align: center; border-bottom: 4px solid ${primarnaBoja}; }
-        h1 { color: ${tekstBoja}; font-size: 2.5rem; }
-        h1 span { color: ${primarnaBoja}; }
-        .container { max-width: 800px; margin: 4rem auto; padding: 0 1.5rem; text-align: center; }
-        .info-card { background-color: ${karticaBoja}; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); margin-top: 2rem; border-top: 4px solid ${primarnaBoja}; }
-        p { margin-bottom: 1.5rem; font-size: 1.3rem; }
-        footer { margin-top: 8rem; background-color: ${sekundarna}; text-align: center; padding: 1.5rem; color: #64748b; font-size: 0.9rem; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        ${CSS_STIL}
     </style>
 </head>
 <body>
@@ -513,22 +532,19 @@
         <h1><span>${naziv}</span></h1>
     </header>
     <div class="container">
-        <p>Dobrodošli na našu zvaničnu prezentaciju. Nudimo vam najbolje i najsvježije proizvode direktno iz proizvodnje!</p>
+        <p>Dobrodošli na našu zvaničnu prezentaciju. Nudimo vam vrhunske proizvode i usluge kreirane sa strašću!</p>
         <div class="info-card">
             <p><strong>📍 Lokacija:</strong> ${lokacija}</p>
             <p><strong>⏰ Radno Vrijeme:</strong> ${vrijeme}</p>
         </div>
     </div>
     <footer>
-        <p>&copy; 2026 ${naziv}. Sva prava zadržana. | Ponosni partner Ai Bussines</p>
+        <p>&copy; 2026 ${naziv}. Sva prava zadržana. | Pokreće Ai Bussines</p>
     </footer>
 </body>
 </html>`;
 
-            // Otvaranje novog praznog prozora (taba)
             var noviProzor = window.open();
-            
-            # Otvaranje dokumenta novog prozora i upisivanje kompletnog koda unutra
             noviProzor.document.open();
             noviProzor.document.write(generisaniKod);
             noviProzor.document.close();
@@ -576,4 +592,13 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState !== XMLHttpRequest.DONE) return;
                 if (xhr.status === 200) {
-                    success(xhr.response,
+                    success(xhr.response, xhr.responseType);
+                } else {
+                    error(xhr.status, xhr.response, xhr.responseType);
+                }
+            };
+            xhr.send(data);
+        }
+    </script>
+</body>
+</html>
