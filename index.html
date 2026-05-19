@@ -673,4 +673,109 @@
                     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
                     .gallery-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; border: 3px solid #ff007f; }
                     .review-card { background: #111111; padding: 2.5rem; border-radius: 25px; border: 3px dashed #ff007f; color: #ffffff; }
-                    .info-card { background-color: #111111; padding: 2.5rem; border-radius: 25px; border: 3px solid var(--p-color
+                    .info-card { background-color: #111111; padding: 2.5rem; border-radius: 25px; border: 3px solid var(--p-color); }
+                    footer { text-align: center; padding: 2rem; color: #7f00ff; font-size: 1.1rem; background: #111111; margin-top: 5rem; }
+                `;
+            }
+
+            // --- KONAČNO SKLAPANJE WEB STRANICE ---
+            var generisaniKod = `<!DOCTYPE html>
+<html lang='bs'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>${naziv}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        ${CSS_STIL}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-site">${naziv.split(' ')[0]}<span>${naziv.split(' ').slice(1).join(' ')}</span></div>
+        <ul>${navLinkovi}</ul>
+    </header>
+    
+    <main id="pocetna" style="padding-top: 2rem;">
+        <img src="${slikaPozadina}" alt="${naziv}" class="hero-img">
+        <div class="container" style="margin-top: 3rem; text-align: center;">
+            <p style="font-size: 1.4rem; max-width: 700px; margin: 0 auto; font-weight: 300;">${opisBranse}</p>
+        </div>
+    </main>
+
+    ${sekcijaPonuda}
+    ${sekcijaGalerija}
+    ${sekcijaIskustva}
+
+    <section class="section" id="lokacija">
+        <h2 class="section-title">Gdje se nalazimo & Radno Vrijeme</h2>
+        <div class="info-card">
+            <p style="margin-bottom: 1rem;"><strong>📍 Lokacija:</strong> ${lokacija}</p>
+            <p style="margin-bottom: 0rem;"><strong>⏰ Radno Vrijeme:</strong> ${vrijeme}</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ${naziv}. Sva prava zadržana. | Pokreće Ai Bussines Sajt Bilder</p>
+    </footer>
+</body>
+</html>`;
+
+            var noviProzor = window.open();
+            noviProzor.document.open();
+            noviProzor.document.write(generisaniKod);
+            noviProzor.document.close();
+        }
+
+        function izaberiPaket(imePaketa) {
+            document.getElementById('poruka').value = "Zainteresovan/a sam za paket: " + imePaketa + ". Molim vas da me kontaktirate sa detaljima.";
+            document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        var form = document.getElementById("moja-forma");
+        var button = document.getElementById("dugme-posalji");
+
+        form.addEventListener("submit", function(ev) {
+            ev.preventDefault();
+            var data = new FormData(form);
+            button.innerHTML = "Slanje u toku...";
+            button.style.backgroundColor = "#94a3b8";
+            button.disabled = true;
+
+            ajax(form.method, form.action, data, function() {
+                form.reset();
+                button.innerHTML = "✅ Uspješno poslano!";
+                button.style.backgroundColor = "#22c55e";
+                setTimeout(function() {
+                    button.innerHTML = "Pošalji Upit";
+                    button.style.backgroundColor = "#38bdf8";
+                    button.disabled = false;
+                }, 3000);
+            }, function() {
+                button.innerHTML = "❌ Došlo je do greške!";
+                button.style.backgroundColor = "#ef4444";
+                setTimeout(function() {
+                    button.innerHTML = "Pokušajte ponovo";
+                    button.style.backgroundColor = "#38bdf8";
+                    button.disabled = false;
+                }, 3000);
+            });
+        });
+
+        function ajax(method, url, data, success, error) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                if (xhr.status === 200) {
+                    success(xhr.response, xhr.responseType);
+                } else {
+                    error(xhr.status, xhr.response, xhr.responseType);
+                }
+            };
+            xhr.send(data);
+        }
+    </script>
+</body>
+</html>
