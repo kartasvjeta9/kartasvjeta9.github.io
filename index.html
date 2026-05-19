@@ -160,7 +160,7 @@
             color: #94a3b8;
         }
 
-        /* Nova Forma za Kontakt */
+        /* Kontakt Forma */
         .contact {
             padding: 5rem 5%;
             background-color: #1e293b;
@@ -276,12 +276,12 @@
         </div>
     </section>
 
-    <!-- Kontakt Forma -->
+    <!-- Kontakt Forma sa JavaScriptom za pozadinsko slanje -->
     <section class="contact" id="kontakt">
         <h2 class="section-title">Započnimo Projekat</h2>
         <div class="contact-container">
-            <!-- Povezivanje sa Formspree servisom -->
-            <form action="https://formspree.io/f/xojbvzwr" method="POST" class="contact-form">
+            
+            <form id="moja-forma" action="https://formspree.io/f/xojbvzwr" method="POST" class="contact-form">
                 
                 <div class="form-group">
                     <label for="ime">Vaše Ime:</label>
@@ -298,7 +298,8 @@
                     <textarea id="poruka" name="Poruka" rows="5" required placeholder="Kako vam možemo pomoći?"></textarea>
                 </div>
 
-                <button type="submit" class="btn">Pošalji Upit</button>
+                <!-- Dodali smo ID na dugme da ga možemo mijenjati iz JavaScripta -->
+                <button type="submit" id="dugme-posalji" class="btn" style="width: 100%;">Pošalji Upit</button>
             </form>
         </div>
     </section>
@@ -309,5 +310,59 @@
         <p>Vaš partner za digitalnu revoluciju.</p>
     </footer>
 
+    <!-- JavaScript za slanje forme u pozadini (AJAX) -->
+    <script>
+        var form = document.getElementById("moja-forma");
+        var button = document.getElementById("dugme-posalji");
+
+        form.addEventListener("submit", function(ev) {
+            ev.preventDefault(); // Zaustavlja otvaranje nove stranice
+            var data = new FormData(form);
+            
+            // Mijenja tekst dok se šalje
+            button.innerHTML = "Slanje u toku...";
+            button.style.backgroundColor = "#94a3b8"; // Siva boja
+            button.disabled = true;
+
+            ajax(form.method, form.action, data, function() {
+                // Šta se dešava kada je uspješno poslano
+                form.reset(); // Briše uneseni tekst
+                button.innerHTML = "✅ Uspješno poslano!";
+                button.style.backgroundColor = "#22c55e"; // Zelena boja
+                
+                // Vraća staro dugme nakon 3 sekunde
+                setTimeout(function() {
+                    button.innerHTML = "Pošalji Upit";
+                    button.style.backgroundColor = "#38bdf8";
+                    button.disabled = false;
+                }, 3000);
+            }, function() {
+                // Šta se dešava ako dođe do greške
+                button.innerHTML = "❌ Došlo je do greške!";
+                button.style.backgroundColor = "#ef4444"; // Crvena boja
+                setTimeout(function() {
+                    button.innerHTML = "Pokušajte ponovo";
+                    button.style.backgroundColor = "#38bdf8";
+                    button.disabled = false;
+                }, 3000);
+            });
+        });
+
+        // Pomoćna funkcija za pozadinsko slanje
+        function ajax(method, url, data, success, error) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                if (xhr.status === 200) {
+                    success(xhr.response, xhr.responseType);
+                } else {
+                    error(xhr.status, xhr.response, xhr.responseType);
+                }
+            };
+            xhr.send(data);
+        }
+    </script>
 </body>
 </html>
