@@ -50,7 +50,7 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
@@ -63,6 +63,19 @@
 
         nav a:hover {
             color: #38bdf8;
+        }
+
+        /* Selektor jezika na našem sajtu */
+        .lang-selector {
+            padding: 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #334155;
+            background-color: #0f172a;
+            color: #38bdf8;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
         }
 
         .btn-nav {
@@ -79,7 +92,7 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Sekcija - Potpuno redizajnirana i luksuzna */
+        /* Hero Sekcija - Luksuzni dizajn */
         .hero {
             padding: 10rem 5%;
             text-align: center;
@@ -129,7 +142,7 @@
             box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
         }
 
-        /* Usluge Sekcija - Dodate moderne kartice */
+        /* Usluge Sekcija */
         .services {
             padding: 6rem 5%;
             background-color: #0f172a;
@@ -263,11 +276,11 @@
             font-weight: bold;
         }
 
-        /* Interaktivni dio za Besplatan Šablon - Unaprijeđen */
+        /* Interaktivni dio za Besplatan Šablon */
         .template-inputs {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 0.6rem;
             margin-bottom: 1rem;
             text-align: left;
         }
@@ -282,10 +295,15 @@
             width: 100%;
         }
 
+        .template-inputs input:focus, .template-inputs select:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+
         .checkbox-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.4rem;
             text-align: left;
             margin-bottom: 1.5rem;
             background-color: #0f172a;
@@ -385,146 +403,157 @@
         <a href="#" class="logo"><i class="fa-solid fa-bolt"></i> Ai Bussines</a>
         <nav>
             <ul>
-                <li><a href="#pocetna">Početna</a></li>
-                <li><a href="#usluge">Usluge</a></li>
-                <li><a href="#cijene">Cjenovnik</a></li>
-                <li><a href="#kontakt" class="btn-nav">Kontakt</a></li>
+                <li><a href="#pocetna" id="nav-home">Početna</a></li>
+                <li><a href="#usluge" id="nav-services">Usluge</a></li>
+                <li><a href="#cijene" id="nav-pricing">Cjenovnik</a></li>
+                <li>
+                    <select id="main-lang-select" class="lang-selector" onchange="promijeniJezikSajta()">
+                        <option value="hr">Balkan (HR/BS/SR)</option>
+                        <option value="de">Deutsch (DE)</option>
+                        <option value="en">English (EN)</option>
+                        <option value="es">Español (ES)</option>
+                        <option value="it">Italiano (IT)</option>
+                    </select>
+                </li>
+                <li><a href="#kontakt" id="nav-contact" class="btn-nav">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="hero" id="pocetna">
-        <h1>Budućnost vašeg poslovanja je <span>Automatizovana</span></h1>
-        <p>Pretvorite posjetioce u kupce. Kreiramo luksuzne, ultra-brze web stranice i ugrađujemo inteligentne AI sisteme koji rade za vas 24 sata dnevno.</p>
-        <a href="#cijene" class="btn"><i class="fa-solid fa-rocket"></i> Pokreni Svoj Paket</a>
+        <h1 id="hero-title">Budućnost vašeg poslovanja je <span>Automatska</span></h1>
+        <p id="hero-desc">Pretvorite posjetioce u kupce. Kreiramo luksuzne, ultra-brze web stranice i ugrađujemo inteligentne AI sisteme koji rade za vas 24 sata dnevno.</p>
+        <a href="#cijene" id="hero-btn" class="btn"><i class="fa-solid fa-rocket"></i> Pokreni Svoj Paket</a>
     </main>
 
     <section class="services" id="usluge">
-        <h2 class="section-title">Revolucionarna AI Rješenja</h2>
-        <p class="section-subtitle">Sistemi koji štede vrijeme i donose profit</p>
+        <h2 class="section-title" id="services-title">Revolucionarna AI Rješenja</h2>
+        <p class="section-subtitle" id="services-subtitle">Sistemi koji štede vrijeme i donose profit</p>
         <div class="services-grid">
             
             <div class="service-card">
                 <i class="fa-solid fa-laptop-code"></i>
-                <h3>Premium Web Dizajn</h3>
-                <p>Razvijamo moderne, responzivne i unikatne stranice opremljene najnaprednijim kodom i brzim učitavanjem.</p>
+                <h3 id="card1-title">Premium Web Dizajn</h3>
+                <p id="card1-desc">Razvijamo moderne, responzivne i unikatne stranice opremljene najnaprednijim kodom i brzim učitavanjem.</p>
             </div>
 
             <div class="service-card">
                 <i class="fa-solid fa-gears"></i>
-                <h3>Python Automatizacija</h3>
-                <p>Kreiramo pozadinske botove koji presreću upite, automatski komuniciraju i rješavaju zadatke umjesto vas.</p>
+                <h3 id="card2-title">Python Automatizacija</h3>
+                <p id="card2-desc">Kreiramo pozadinske botove koji presreću upite, automatski komuniciraju i rješavaju zadatke umjesto vas.</p>
             </div>
 
             <div class="service-card">
                 <i class="fa-solid fa-brain"></i>
-                <h3>AI Integracije 24/7</h3>
-                <p>Ugrađujemo napredne sisteme prepoznavanja potreba klijenata i pametne asistente na vaše online platforme.</p>
+                <h3 id="card3-title">AI Integracije 24/7</h3>
+                <p id="card3-desc">Ugrađujemo napredne sisteme prepoznavanja potreba klijenata i pametne asistente na vaše online platforme.</p>
             </div>
 
         </div>
     </section>
 
     <section class="pricing" id="cijene">
-        <h2 class="section-title">Izaberite Vaš Paket</h2>
-        <p class="section-subtitle">Isprobajte naš inteligentni generator besplatno ili pređite na profesionalni nivo.</p>
+        <h2 class="section-title" id="pricing-title">Izaberite Vaš Paket</h2>
+        <p class="section-subtitle" id="pricing-subtitle">Isprobajte naš inteligentni generator besplatno ili pređite na profesionalni nivo.</p>
         
         <div class="pricing-grid">
             
             <div class="pricing-card">
                 <div>
-                    <h3>Free Template</h3>
-                    <div class="price">0€<span> / instant</span></div>
+                    <h3 id="p1-title">Free Template</h3>
+                    <div class="price" id="p1-price">0€<span> / instant</span></div>
                     
                     <div class="template-inputs">
                         <input type="text" id="temp-naziv" placeholder="Naziv (npr. Ribarnica Tribunj ili Gym Singen)">
                         <input type="text" id="temp-vrijeme" placeholder="Radno vrijeme (npr. Pon-Pet 09-15H)">
                         
                         <select id="temp-jezik">
-                            <option value="hr">Jezik: Hrvatski / Bosanski</option>
-                            <option value="de">Jezik: Njemački (Deutsch)</option>
-                            <option value="en">Jezik: Engleski (English)</option>
+                            <option value="hr">Sajt na: Hrvatski / Bosanski</option>
+                            <option value="de">Sajt na: Njemački (Deutsch)</option>
+                            <option value="en">Sajt na: Engleski (English)</option>
+                            <option value="es">Sajt na: Španski (Español)</option>
+                            <option value="it">Sajt na: Italijanski (Italiano)</option>
                         </select>
 
                         <select id="temp-stil">
-                            <option value="moderan">Stil: Moderan (Premium Minimalizam)</option>
-                            <option value="profesionalan">Stil: Profesionalan (Korporativni Lux)</option>
+                            <option value="moderan">Stil: Moderan (Minimalizam)</option>
+                            <option value="profesionalan">Stil: Profesionalan (Lux)</option>
                             <option value="funky">Stil: Funky (Neon Cyberpunk)</option>
                         </select>
                     </div>
 
                     <div class="checkbox-group">
-                        <p style="font-size: 0.8rem; color: #38bdf8; margin-bottom: 0.3rem; font-weight: bold;">Struktura i elementi:</p>
-                        <label><input type="checkbox" id="chk-meni" checked> Meni / Cjenovnik usluga</label>
-                        <label><input type="checkbox" id="chk-galerija" checked> Galerija HD slika</label>
-                        <label><input type="checkbox" id="chk-iskustva" checked> Recenzije klijenata</label>
-                        <label><input type="checkbox" id="chk-social" checked> Dugmad za Društvene Mreže</label>
-                        <label><input type="checkbox" id="chk-faq" checked> FAQ (Česta pitanja) harmonika</label>
+                        <p style="font-size: 0.8rem; color: #38bdf8; margin-bottom: 0.3rem; font-weight: bold;" id="lbl-elements">Struktura i elementi:</p>
+                        <label><input type="checkbox" id="chk-meni" checked> <span id="lbl-m1">Meni / Ekskluzivni Cjenovnik</span></label>
+                        <label><input type="checkbox" id="chk-galerija" checked> <span id="lbl-m2">Galerija HD Fotografija</span></label>
+                        <label><input type="checkbox" id="chk-iskustva" checked> <span id="lbl-m3">Recenzije Klijenata</span></label>
+                        <label><input type="checkbox" id="chk-social" checked> <span id="lbl-m4">Dugmad za Društvene Mreže</span></label>
+                        <label><input type="checkbox" id="chk-faq" checked> <span id="lbl-m5">FAQ (Česta pitanja) harmonika</span></label>
                     </div>
                 </div>
                 
-                <button onclick="otvoriSajtUzivo()" class="btn" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; width: 100%; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);">Generiši Sajt Uživo 🚀</button>
+                <button onclick="otvoriSajtUzivo()" class="btn" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; width: 100%;" id="btn-generate">Generiši Sajt Uživo 🚀</button>
             </div>
 
             <div class="pricing-card">
                 <div>
-                    <h3>Starter Web</h3>
-                    <div class="price">150€<span> / fiksno</span></div>
-                    <ul>
+                    <h3 id="p2-title">Starter Web</h3>
+                    <div class="price" id="p2-price">150€<span> / fiksno</span></div>
+                    <ul id="p2-list">
                         <li>Moderna Landing stranica</li>
                         <li>Prilagođeno mobilnim uređajima</li>
                         <li>Osnovna kontakt forma</li>
                         <li>Lansiranje na internet (Hosting)</li>
                     </ul>
                 </div>
-                <button onclick="izaberiPaket('Starter Web')" class="btn">Izaberi Paket</button>
+                <button onclick="izaberiPaket('Starter Web')" class="btn" id="btn-p2">Izaberi Paket</button>
             </div>
 
             <div class="pricing-card featured">
                 <div>
-                    <h3>Smart Automation</h3>
-                    <div class="price">400€<span> / fiksno</span></div>
-                    <ul>
+                    <h3 id="p3-title">Smart Automation</h3>
+                    <div class="price" id="p3-price">400€<span> / fiksno</span></div>
+                    <ul id="p3-list">
                         <li>Sve iz Starter paketa</li>
                         <li><strong>Python AI Auto-odgovori</strong></li>
                         <li>Integracija sa bazom upita</li>
                         <li>Osnovni SEO i optimizacija</li>
                     </ul>
                 </div>
-                <button onclick="izaberiPaket('Smart Automation')" class="btn">Izaberi Paket</button>
+                <button onclick="izaberiPaket('Smart Automation')" class="btn" id="btn-p3">Izaberi Paket</button>
             </div>
 
             <div class="pricing-card">
                 <div>
-                    <h3>AI Enterprise</h3>
-                    <div class="price">1000€+<span> / po projektu</span></div>
-                    <ul>
+                    <h3 id="p4-title">AI Enterprise</h3>
+                    <div class="price" id="p4-price">1000€+<span> / projekat</span></div>
+                    <ul id="p4-list">
                         <li>Kompletna višestranačna stranica</li>
                         <li>Napredni AI Chatbot 24/7</li>
                         <li>Kompletna automatizacija taskova</li>
                         <li>Premium podrška i održavanje</li>
                     </ul>
                 </div>
-                <button onclick="izaberiPaket('AI Enterprise')" class="btn">Kontaktiraj Nas</button>
+                <button onclick="izaberiPaket('AI Enterprise')" class="btn" id="btn-p4">Kontaktiraj Nas</button>
             </div>
 
         </div>
     </section>
 
     <section class="contact" id="kontakt">
-        <h2 class="section-title">Započnimo Projekat</h2>
+        <h2 class="section-title" id="contact-title">Započnimo Projekat</h2>
         <div class="contact-container">
             <form id="moja-forma" action="https://formspree.io/f/xojbvzwr" method="POST" class="contact-form">
                 <div class="form-group">
-                    <label for="ime">Vaše Ime:</label>
+                    <label for="ime" id="lbl-name">Vaše Ime:</label>
                     <input type="text" id="ime" name="Ime" required placeholder="Unesite vaše ime">
                 </div>
                 <div class="form-group">
-                    <label for="email">Vaš Email:</label>
+                    <label for="email" id="lbl-email">Vaš Email:</label>
                     <input type="email" id="email" name="Email" required placeholder="Unesite vaš email">
                 </div>
                 <div class="form-group">
-                    <label for="poruka">Vaša Poruka:</label>
+                    <label for="poruka" id="lbl-msg">Vaša Poruka:</label>
                     <textarea id="poruka" name="Poruka" rows="5" required placeholder="Kako vam možemo pomoći?"></textarea>
                 </div>
                 <button type="submit" id="dugme-posalji" class="btn" style="width: 100%;">Pošalji Upit</button>
@@ -534,17 +563,197 @@
 
     <footer>
         <p>&copy; 2026 Ai Bussines. Sva prava zadržana.</p>
-        <p>Vaš partner za digitalnu revoluciju.</p>
+        <p id="footer-tag">Vaš partner za digitalnu revoluciju.</p>
     </footer>
 
     <script>
-        window.addEventListener("message", function(event) {
-            if (event.data && event.data.tip === "kupovina") {
-                document.getElementById('poruka').value = "Zdravo Ajdine! Generisao/la sam besplatan sajt za '" + event.data.naziv + "' u " + event.data.stil + " stilu. Želim da pređem na profesionalni plaćeni paket, ubacim bota i povežem svoju domenu. Molim vas javite mi se.";
-                document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+        // --- 1. RJEČNIK ZA PREVOD NAŠE POČETNE STRANICE (5 JEZIKA) ---
+        var rjecnikSajta = {
+            hr: {
+                navHome: "Početna", navServices: "Usluge", navPricing: "Cjenovnik", navContact: "Kontakt",
+                heroTitle: "Budućnost vašeg poslovanja je <span>Automatska</span>",
+                heroDesc: "Pretvorite posjetioce u kupce. Kreiramo luksuzne, ultra-brze web stranice i ugrađujemo inteligentne AI sisteme koji rade za vas 24 sata dnevno.",
+                heroBtn: "<i class='fa-solid fa-rocket'></i> Pokreni Svoj Paket",
+                sTitle: "Revolucionarna AI Rješenja", sSubtitle: "Sistemi koji štede vrijeme i donose profit",
+                c1T: "Premium Web Dizajn", c1D: "Razvijamo moderne, responzivne i unikatne stranice opremljene najnaprednijim kodom i brzim učitavanjem.",
+                c2T: "Python Automatizacija", c2D: "Kreiramo pozadinske botove koji presreću upite, automatski komuniciraju i rješavaju zadatke umjesto vas.",
+                c3T: "AI Integracije 24/7", c3D: "Ugrađujemo napredne sisteme prepoznavanja potreba klijenata i pametne asistente na vaše online platforme.",
+                pTitle: "Izaberite Vaš Paket", pSubtitle: "Isprobajte naš inteligentni generator besplatno ili pređite na profesionalni nivo.",
+                p1T: "Free Template", p1P: "0€<span> / instant</span>", lblElements: "Struktura i elementi:",
+                lblM1: "Meni / Cjenovnik", lblM2: "Galerija HD fotografija", lblM3: "Recenzije klijenata", lblM4: "Društvene mreže", lblM5: "FAQ Harmonika",
+                btnGen: "Generiši Sajt Uživo 🚀", p2T: "Starter Web", p2P: "150€<span> / fiksno</span>",
+                p2L: "<li>Moderna Landing stranica</li><li>Prilagođeno mobilnim uređajima</li><li>Osnovna kontakt forma</li><li>Lansiranje na internet (Hosting)</li>",
+                btnP2: "Izaberi Paket", p3T: "Smart Automation", p3P: "400€<span> / fiksno</span>",
+                p3L: "<li>Sve iz Starter paketa</li><li><strong>Python AI Auto-odgovori</strong></li><li>Integracija sa bazom upita</li><li>Osnovni SEO i optimizacija</li>",
+                btnP3: "Izaberi Paket", p4T: "AI Enterprise", p4P: "1000€+<span> / projekat</span>",
+                p4L: "<li>Kompletna višestranačna stranica</li><li>Napredni AI Chatbot 24/7</li><li>Kompletna automatizacija taskova</li><li>Premium podrška i održavanje</li>",
+                btnP4: "Kontaktiraj Nas", conTitle: "Započnimo Projekat", lName: "Vaše Ime:", lEmail: "Vaš Email:", lMsg: "Vaša Poruka:",
+                btnSend: "Pošalji Upit", fTag: "Vaš partner za digitalnu revoluciju.",
+                phName: "Unesite vaše ime", phEmail: "Unesite vaš email", phMsg: "Kako vam možemo pomoći?"
+            },
+            de: {
+                navHome: "Startseite", navServices: "Leistungen", navPricing: "Preise", navContact: "Kontakt",
+                heroTitle: "Die Zukunft Ihres Unternehmens ist <span>Automatisch</span>",
+                heroDesc: "Verwandeln Sie Besucher in Kunden. Wir erstellen luxuriöse, ultraschnelle Websites und integrieren intelligente KI-Systeme, die rund um die Uhr für Sie arbeiten.",
+                heroBtn: "<i class='fa-solid fa-rocket'></i> Starten Sie Ihr Paket",
+                sTitle: "Revolutionäre KI-Lösungen", sSubtitle: "Systeme, die Zeit sparen und Gewinn bringen",
+                c1T: "Premium Webdesign", c1D: "Wir entwickeln moderne, responsive und einzigartige Seiten mit fortschrittlichstem Code und schnellen Ladezeiten.",
+                c2T: "Python-Automatisierung", c2D: "Wir erstellen Backend-Bots, die Anfragen abfangen, automatisch kommunizieren und Aufgaben für Sie erledigen.",
+                c3T: "KI-Integrationen 24/7", c3D: "Wir integrieren fortschrittliche Systeme zur Erkennung von Kundenbedürfnissen und intelligente Assistenten.",
+                pTitle: "Wählen Sie Ihr Paket", pSubtitle: "Testen Sie unseren intelligenten Generator kostenlos oder wechseln Sie auf Profi-Niveau.",
+                p1T: "Kostenlose Vorlage", p1P: "0€<span> / instant</span>", lblElements: "Struktur und Elemente:",
+                lblM1: "Menü / Preisliste", lblM2: "HD Fotogalerie", lblM3: "Kundenbewertungen", lblM4: "Social Media", lblM5: "FAQ Harmonika",
+                btnGen: "Website Live Generieren 🚀", p2T: "Starter Web", p2P: "150€<span> / fest</span>",
+                p2L: "<li>Moderne Landingpage</li><li>Optimiert für Mobilgeräte</li><li>Basis-Kontaktformular</li><li>Internet-Launch (Hosting)</li>",
+                btnP2: "Paket Wählen", p3T: "Smart Automation", p3P: "400€<span> / fest</span>",
+                p3L: "<li>Alles aus dem Starter-Paket</li><li><strong>Python KI Auto-Antworten</strong></li><li>Integration der Anfragen-Datenbank</li><li>Basis-SEO und Optimierung</li>",
+                btnP3: "Paket Wählen", p4T: "KI Enterprise", p4P: "1000€+<span> / Projekt</span>",
+                p4L: "<li>Komplette mehrseitige Website</li><li>Fortschrittlicher KI-Chatbot 24/7</li><li>Komplette Aufgaben-Automatisierung</li><li>Premium-Support und Wartung</li>",
+                btnP4: "Kontaktieren Sie uns", conTitle: "Projekt Starten", lName: "Ihr Name:", lEmail: "Ihre E-Mail:", lMsg: "Ihre Nachricht:",
+                btnSend: "Anfrage Senden", fTag: "Ihr Partner für die digitale Revolution.",
+                phName: "Geben Sie Ihren Namen ein", phEmail: "Geben Sie Ihre E-Mail ein", phMsg: "Wie können wir Ihnen helfen?"
+            },
+            en: {
+                navHome: "Home", navServices: "Services", navPricing: "Pricing", navContact: "Contact",
+                heroTitle: "The Future of Your Business is <span>Automated</span>",
+                heroDesc: "Turn visitors into customers. We create luxurious, ultra-fast websites and embed intelligent AI systems that work for you 24/7.",
+                heroBtn: "<i class='fa-solid fa-rocket'></i> Launch Your Package",
+                sTitle: "Revolutionary AI Solutions", sSubtitle: "Systems that save time and generate profit",
+                c1T: "Premium Web Design", c1D: "We develop modern, responsive, and unique pages equipped with advanced code and rapid loading speeds.",
+                c2T: "Python Automation", c2D: "We create backend bots that intercept inquiries, automatically communicate, and handle tasks for you.",
+                c3T: "AI Integrations 24/7", c3D: "We imbed advanced systems for recognizing customer needs and smart assistants on your platforms.",
+                pTitle: "Choose Your Package", pSubtitle: "Try our intelligent generator for free or upgrade to a professional level.",
+                p1T: "Free Template", p1P: "0€<span> / instant</span>", lblElements: "Structure and elements:",
+                lblM1: "Menu / Price List", lblM2: "HD Photo Gallery", lblM3: "Customer Reviews", lblM4: "Social Buttons", lblM5: "FAQ Accordion",
+                btnGen: "Generate Live Website 🚀", p2T: "Starter Web", p2P: "150€<span> / fixed</span>",
+                p2L: "<li>Modern Landing Page</li><li>Fully Responsive Design</li><li>Basic Contact Form</li><li>Launch on the Internet (Hosting)</li>",
+                btnP2: "Choose Package", p3T: "Smart Automation", p3P: "400€<span> / fixed</span>",
+                p3L: "<li>Everything from Starter Pack</li><li><strong>Python AI Auto-Replies</strong></li><li>Inquiry Database Integration</li><li>Basic SEO and Optimization</li>",
+                btnP3: "Choose Package", p4T: "AI Enterprise", p4P: "1000€+<span> / project</span>",
+                p4L: "<li>Complete multi-page website</li><li>Advanced AI Chatbot 24/7</li><li>Complete task automation</li><li>Premium support and maintenance</li>",
+                btnP4: "Contact Us", conTitle: "Start a Project", lName: "Your Name:", lEmail: "Your Email:", lMsg: "Your Message:",
+                btnSend: "Send Inquiry", fTag: "Your partner for the digital revolution.",
+                phName: "Enter your name", phEmail: "Enter your email", phMsg: "How can we help you?"
+            },
+            es: {
+                navHome: "Inicio", navServices: "Servicios", navPricing: "Precios", navContact: "Contacto",
+                heroTitle: "El Futuro de tu Negocio está <span>Automatizado</span>",
+                heroDesc: "Convierte visitantes en clientes. Creamos sitios web lujosos y ultra rápidos con sistemas de IA inteligentes que trabajan para ti las 24 ore.",
+                heroBtn: "<i class='fa-solid fa-rocket'></i> Iniciar Tu Paquete",
+                sTitle: "Soluciones de IA Revolucionarias", sSubtitle: "Sistemas que ahorran tiempo y generan ganancias",
+                c1T: "Diseño Web Premium", c1D: "Desarrollamos páginas modernas, responsivas y únicas equipadas con el código más avanzado y carga rápida.",
+                c2T: "Automatización Python", c2D: "Creamos bots de backend que interceptan consultas, se comunican automáticamente y realizan tareas por ti.",
+                c3T: "Integraciones de IA 24/7", c3D: "Implantamos sistemas avanzados para reconocer las necesidades de los clientes y asistentes inteligentes.",
+                pTitle: "Elige Tu Paquete", pSubtitle: "Prueba nuestro generador inteligente gratis o actualízate al nivel profesional.",
+                p1T: "Plantilla Gratuita", p1P: "0€<span> / instantáneo</span>", lblElements: "Estructura y elementos:",
+                lblM1: "Menú / Lista de precios", lblM2: "Galería de fotos HD", lblM3: "Opiniones de clientes", lblM4: "Redes Sociales", lblM5: "FAQ Acordeón",
+                btnGen: "Generar Sitio en Vivo 🚀", p2T: "Starter Web", p2P: "150€<span> / fijo</span>",
+                p2L: "<li>Página de aterrizaje moderna</li><li>Diseño adaptable a móviles</li><li>Formulario de contacto básico</li><li>Lanzamiento en internet (Hosting)</li>",
+                btnP2: "Elegir Paquete", p3T: "Smart Automation", p3P: "400€<span> / fijo</span>",
+                p3L: "<li>Todo lo del paquete Starter</li><li><strong>Auto-respuestas de IA en Python</strong></li><li>Integración de base de datos</li><li>SEO básico y optimización</li>",
+                btnP3: "Elegir Paquete", p4T: "AI Enterprise", p4P: "1000€+<span> / proyecto</span>",
+                p4L: "<li>Sitio web completo de varias páginas</li><li>Chatbot de IA avanzado 24/7</li><li>Automatización completa de tareas</li><li>Soporte y mantenimiento premium</li>",
+                btnP4: "Contáctanos", conTitle: "Iniciar un Proyecto", lName: "Tu Nombre:", lEmail: "Tu Email:", lMsg: "Tu Mensaje:",
+                btnSend: "Enviar Consulta", fTag: "Tu socio para la revolución digital.",
+                phName: "Introduce tu nombre", phEmail: "Introduce tu email", phMsg: "¿Cómo podemos ayudarte?"
+            },
+            it: {
+                navHome: "Home", navServices: "Servizi", navPricing: "Prezzi", navContact: "Contatto",
+                heroTitle: "Il Futuro del tuo Business è <span>Automatizzato</span>",
+                heroDesc: "Trasforma i visitatori in clienti. Creiamo siti web di lusso, ultra-veloci e integriamo sistemi di IA intelligenti koji lavorano per te 24 ore su 24.",
+                heroBtn: "<i class='fa-solid fa-rocket'></i> Avvia Il Tuo Pacchetto",
+                sTitle: "Soluzioni IA Rivoluzionarie", sSubtitle: "Sistemi che fanno risparmiare tempo e generano profitto",
+                c1T: "Web Design Premium", c1D: "Sviluppiamo pagine moderne, responsive e uniche dotate del codice più avanzato e velocità di caricamento elevate.",
+                c2T: "Automazione Python", c2D: "Creiamo bot di backend che intercettano le richieste, comunicano automaticamente e gestiscono i compiti per te.",
+                c3T: "Integrazioni IA 24/7", c3D: "Inseriamo sistemi avanzati per il riconoscimento delle esigenze dei clienti e assistenti intelligenti.",
+                pTitle: "Scegli Il Tuo Pacchetto", pSubtitle: "Prova il nostro generatore intelligente gratuitamente o passa al livello professionale.",
+                p1T: "Modello Gratuito", p1P: "0€<span> / istantaneo</span>", lblElements: "Struttura ed elementi:",
+                lblM1: "Menu / Listino Prezzi", lblM2: "Galleria Fotografica HD", lblM3: "Recensioni Clienti", lblM4: "Social Network", lblM5: "FAQ Accordion",
+                btnGen: "Genera Sito Live 🚀", p2T: "Starter Web", p2P: "150€<span> / fisso</span>",
+                p2L: "<li>Landing page moderna</li><li>Design ottimizzato per dispositivi mobili</li><li>Modulo di contatto di base</li><li>Lancio su Internet (Hosting)</li>",
+                btnP2: "Scegli Pacchetto", p3T: "Smart Automation", p3P: "400€<span> / fisso</span>",
+                p3L: "<li>Tutto incluso nel pacchetto Starter</li><li><strong>Auto-risposte IA in Python</strong></li><li>Integrazione database richieste</li><li>SEO di base e ottimizzazione</li>",
+                btnP3: "Scegli Pacchetto", p4T: "AI Enterprise", p4P: "1000€+<span> / progetto</span>",
+                p4L: "<li>Sito web completo multi-pagina</li><li>Chatbot IA avanzato 24/7</li><li>Automazione completa delle attività</li><li>Supporto e manutenzione premium</li>",
+                btnP4: "Contattaci", conTitle: "Avvia un Progetto", lName: "Il Tuo Nome:", lEmail: "La Tua Email:", lMsg: "Il Tuo Messaggio:",
+                btnSend: "Invia Richiesta", fTag: "Il tuo partner per la rivoluzione digitale.",
+                phName: "Inserisci il tuo nome", phEmail: "Inserisci la tua email", phMsg: "Come possiamo aiutarti?"
             }
-        });
+        };
 
+        // FUNKCIJA KOJA INSTANT PREVODI NAŠ SAJT NA KLIK SELEKTORA
+        function promijeniJezikSajta() {
+            var odabraniJezik = document.getElementById("main-lang-select").value;
+            var ML = rjecnikSajta[odabraniJezik];
+
+            // Prijevod navigacije
+            document.getElementById("nav-home").innerText = ML.navHome;
+            document.getElementById("nav-services").innerText = ML.navServices;
+            document.getElementById("nav-pricing").innerText = ML.navPricing;
+            document.getElementById("nav-contact").innerHTML = ML.navContact;
+
+            // Prijevod hero sekcije
+            document.getElementById("hero-title").innerHTML = ML.heroTitle;
+            document.getElementById("hero-desc").innerText = ML.heroDesc;
+            document.getElementById("hero-btn").innerHTML = ML.heroBtn;
+
+            // Prijevod usluga
+            document.getElementById("services-title").innerText = ML.sTitle;
+            document.getElementById("services-subtitle").innerText = ML.sSubtitle;
+            document.getElementById("card1-title").innerText = ML.c1T;
+            document.getElementById("card1-desc").innerText = ML.c1D;
+            document.getElementById("card2-title").innerText = ML.c2T;
+            document.getElementById("card2-desc").innerText = ML.c2D;
+            document.getElementById("card3-title").innerText = ML.c3T;
+            document.getElementById("card3-desc").innerText = ML.c3D;
+
+            // Prijevod cjenovnika i bildera
+            document.getElementById("pricing-title").innerText = ML.pTitle;
+            document.getElementById("pricing-subtitle").innerText = ML.pSubtitle;
+            document.getElementById("p1-title").innerText = ML.p1T;
+            document.getElementById("p1-price").innerHTML = ML.p1P;
+            document.getElementById("lbl-elements").innerText = ML.lblElements;
+            document.getElementById("lbl-m1").innerText = ML.lblM1;
+            document.getElementById("lbl-m2").innerText = ML.lblM2;
+            document.getElementById("lbl-m3").innerText = ML.lblM3;
+            document.getElementById("lbl-m4").innerText = ML.lblM4;
+            document.getElementById("lbl-m5").innerText = ML.lblM5;
+            document.getElementById("btn-generate").innerText = ML.btnGen;
+
+            // Prijevod paketa
+            document.getElementById("p2-title").innerText = ML.p2T;
+            document.getElementById("p2-price").innerHTML = ML.p2P;
+            document.getElementById("p2-list").innerHTML = ML.p2L;
+            document.getElementById("btn-p2").innerText = ML.btnP2;
+
+            document.getElementById("p3-title").innerText = ML.p3T;
+            document.getElementById("p3-price").innerHTML = ML.p3P;
+            document.getElementById("p3-list").innerHTML = ML.p3L;
+            document.getElementById("btn-p3").innerText = ML.btnP3;
+
+            document.getElementById("p4-title").innerText = ML.p4T;
+            document.getElementById("p4-price").innerHTML = ML.p4P;
+            document.getElementById("p4-list").innerHTML = ML.p4L;
+            document.getElementById("btn-p4").innerText = ML.btnP4;
+
+            // Prijevod forme
+            document.getElementById("contact-title").innerText = ML.conTitle;
+            document.getElementById("lbl-name").innerText = ML.lName;
+            document.getElementById("lbl-email").innerText = ML.lEmail;
+            document.getElementById("lbl-msg").innerText = ML.lMsg;
+            document.getElementById("dugme-posalji").innerText = ML.btnSend;
+
+            document.getElementById("ime").placeholder = ML.phName;
+            document.getElementById("email").placeholder = ML.phEmail;
+            document.getElementById("poruka").placeholder = ML.phMsg;
+
+            document.getElementById("footer-tag").innerText = ML.fTag;
+
+            // Automatski sinhronizuj i postavi jezik i unutar samog Sajt Bildera!
+            document.getElementById("temp-jezik").value = odabraniJezik;
+        }
+
+        // --- 2. BILDER ZA GENERISANJE KLIJENTOVOG SAJTA ---
         function otvoriSajtUzivo() {
             var naziv = document.getElementById('temp-naziv').value || "Naš Novi Biznis";
             var vrijeme = document.getElementById('temp-vrijeme').value || "Pon-Pet 09-17H";
@@ -557,7 +766,6 @@
             var ukljuciSocial = document.getElementById('chk-social').checked;
             var ukljuciFaq = document.getElementById('chk-faq').checked;
 
-            // --- REZANJE NAZIVA ---
             var rijeci = naziv.split(' ');
             var prvaRijec = rijeci[0];
             var ostatakNaziva = rijeci.slice(1).join(' ');
@@ -577,72 +785,69 @@
                 }
             }
 
-            // --- DIKCIJONARI ZA PREVODE (HR, DE, EN) ---
-            var prevodi = {
-                hr: { home: "Početna", offer: "Ponuda", gallery: "Galerija", reviews: "Utisci", contact: "Kontakt", welcome: "Dobrodošli na našu zvaničnu prezentaciju. Nudimo vam vrhunske proizvode i usluge kreirane sa strašću.", hours: "Otvoreni smo:", location: "Glavno sjedište:", footerText: "Pokreće profesionalni Ai Bussines generator", faqTitle: "Često postavljana pitanja", q1: "Kako vas mogu kontaktirati?", a1: "Možete nas posjetiti direktno na našoj lokaciji ili nas pozvati telefonom tokom radnog vremena.", q2: "Koji su rokovi isporuke?", a2: "Sve narudžbe i usluge izvršavamo u najkraćem mogućem roku, u zavisnosti od obima posla." },
-                de: { home: "Startseite", offer: "Angebote", gallery: "Galerie", reviews: "Bewertungen", contact: "Kontakt", welcome: "Willkommen auf unserer offiziellen Präsentation. Wir bieten Ihnen erstklassige Produkte und Dienstleistungen, die mit Leidenschaft erstellt wurden.", hours: "Öffnungszeiten:", location: "Hauptsitz:", footerText: "Unterstützt durch den professionellen Ai Bussines Generator", faqTitle: "Häufig gestellte Fragen", q1: "Wie kann ich Sie kontaktieren?", a1: "Sie können uns direkt an našem Standort besuchen oder uns während der Arbeitszeit anrufen.", q2: "Wie sind die Lieferzeiten?", a2: "Wir führen alle Aufträge und Dienstleistungen so schnell wie möglich aus, je nach Arbeitsaufwand." },
-                en: { home: "Home", offer: "Offers", gallery: "Gallery", reviews: "Reviews", contact: "Contact", welcome: "Welcome to our official presentation. We offer you top-quality products and services created with pure passion.", hours: "Opening Hours:", location: "Headquarters:", footerText: "Powered by professional Ai Bussines generator", faqTitle: "Frequently Asked Questions", q1: "How can I contact you?", a1: "You can visit us directly at our location or call us during business hours.", q2: "What are the delivery times?", a2: "We execute all orders and services as quickly as possible, depending on the volume of work." }
+            // Rječnik prevoda unutar generisanog klijentovog šablona (Dodati i ES i IT)
+            var prevodiKlijent = {
+                hr: { home: "Početna", offer: "Ponuda", gallery: "Galerija", reviews: "Utisci", contact: "Kontakt", welcome: "Dobrodošli na našu zvaničnu prezentaciju. Nudimo vam vrhunske proizvode i usluge.", hours: "Otvoreni smo:", location: "Glavno sjedište:", footerText: "Pokreće profesionalni Ai Bussines generator", faqTitle: "Često postavljana pitanja", q1: "Kako vas mogu kontaktirati?", a1: "Možete nas posjetiti direktno na našoj lokaciji ili nas pozvati telefonom tokom radnog vremena.", q2: "Koji su rokovi isporuke?", a2: "Sve narudžbe i usluge izvršavamo u najkraćem mogućem roku." },
+                de: { home: "Startseite", offer: "Angebote", gallery: "Galerie", reviews: "Bewertungen", contact: "Kontakt", welcome: "Willkommen auf unserer offiziellen Präsentation. Wir bieten Ihnen erstklassige Dienstleistungen.", hours: "Öffnungszeiten:", location: "Hauptsitz:", footerText: "Unterstützt durch den Ai Bussines Generator", faqTitle: "Häufig gestellte Fragen", q1: "Wie kann ich Sie kontaktieren?", a1: "Sie können uns direkt an unserem Standort besuchen oder uns anrufen.", q2: "Wie sind die Lieferzeiten?", a2: "Wir führen alle Aufträge so schnell wie möglich aus." },
+                en: { home: "Home", offer: "Offers", gallery: "Gallery", reviews: "Reviews", contact: "Contact", welcome: "Welcome to our official presentation. We offer you top-quality products and services.", hours: "Opening Hours:", location: "Headquarters:", footerText: "Powered by Ai Bussines generator", faqTitle: "Frequently Asked Questions", q1: "How can I contact you?", a1: "You can visit us directly at our location or call us during business hours.", q2: "What are the delivery times?", a2: "We execute all orders as quickly as possible." },
+                es: { home: "Inicio", offer: "Ofertas", gallery: "Galería", reviews: "Opiniones", contact: "Contacto", welcome: "Bienvenido a nuestra presentación oficial. Ofrecemos productos y servicios de alta calidad.", hours: "Horario de apertura:", location: "Sede central:", footerText: "Desarrollato por Ai Bussines", faqTitle: "Preguntas frecuentes", q1: "¿Cómo puedo contactar?", a1: "Puede visitarnos directamente en nuestra ubicación o llamarnos por teléfono.", q2: "¿Plazos de entrega?", a2: "Ejecutamos todos los pedidos a la mayor brevedad posible." },
+                it: { home: "Home", offer: "Offerte", gallery: "Galleria", reviews: "Recensioni", contact: "Contatti", welcome: "Benvenuto nella nostra presentazione ufficiale. Offriamo prodotti e servizi di alta qualità.", hours: "Orario di apertura:", location: "Sede principale:", footerText: "Alimentato da Ai Bussines", faqTitle: "Domande frequenti", q1: "Come posso contattarvi?", a1: "Puoi visitarci direttamente nella nostra sede o chiamarci al telefono.", q2: "Tempi di consegna?", a2: "Eseguiamo tutti gli ordini nel minor tempo possibile." }
             };
 
-            var L = prevodi[jezik];
+            var L = prevodiKlijent[jezik];
 
-            // --- BAZA BRANŠI ---
             var uvecaniNaziv = naziv.toLowerCase();
             var opisBranse = L.welcome;
             var slikaPozadina = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"; 
             var ikonicaBranse = "fa-briefcase";
-            var stavka1 = "Service / Product A", stavka2 = "Service / Product B", stavka3 = "Service / Product C", cijena1 = "20€", cijena2 = "40€", cijena3 = "60€", opisStavke = "High quality guaranteed.";
+            var stavka1 = "Service A", stavka2 = "Service B", stavka3 = "Service C", cijena1 = "20€", cijena2 = "40€", cijena3 = "60€", opisStavke = "High quality guaranteed.";
             var galerijaSlike = ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500", "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=500", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=500"];
             var recenzijaIme = "Customer", recenzijaTekst = "Excellent service, highly professional!";
 
+            // Filteri branši
             if (uvecaniNaziv.includes("riba") || uvecaniNaziv.includes("ribarnica") || uvecaniNaziv.includes("fish") || uvecaniNaziv.includes("tuna")) {
-                opisBranse = jezik==='de' ? "Frische Meeresfrüchte direkt aus der Adria!" : (jezik==='en' ? "Fresh seafood directly from the blue Adriatic depths!" : "Najsvježiji plodovi mora direktno iz plavih jadranskih dubina!");
+                opisBranse = jezik==='de' ? "Frische Meeresfrüchte direkt aus der Adria!" : (jezik==='en' ? "Fresh seafood directly from the blue Adriatic!" : "Najsvježiji plodovi mora direktno iz plavih jadranskih dubina!");
                 slikaPozadina = "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?q=80&w=1200";
                 ikonicaBranse = "fa-fish";
                 stavka1 = jezik==='hr' ? "Domaća Orada (Kg)" : "Orada / Sea Bream (Kg)"; cijena1 = "15.00€";
                 stavka2 = jezik==='hr' ? "Svježi Brancin (Kg)" : "Brancin / Sea Bass (Kg)"; cijena2 = "16.00€";
                 stavka3 = jezik==='hr' ? "Plava Jadranska Tuna" : "Adriatic Bluefin Tuna (Kg)"; cijena3 = "22.00€";
-                opisStavke = jezik==='hr' ? "Ulovljeno rano jutros, vrhunska svježina." : "Caught early this morning, absolute fresh quality.";
+                opisStavke = "Fresh quality, caught early this morning.";
                 galerijaSlike = ["https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=500", "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=500", "https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500"];
-                recenzijaIme = "Ante K."; recenzijaTekst = jezik==='hr' ? "Riba je vanserijskog kvaliteta, isporuka brza. Saradnja čista desetka!" : "The fish is always of top world-class quality, highly recommended!";
+                recenzijaIme = "Ante K."; recenzijaTekst = "Top quality fish and ultra fast delivery. Highly recommended!";
             } else if (uvecaniNaziv.includes("pizza") || uvecaniNaziv.includes("pizzerija") || uvecaniNaziv.includes("picerija") || uvecaniNaziv.includes("restoran") || uvecaniNaziv.includes("burger") || uvecaniNaziv.includes("hrana")) {
-                opisBranse = jezik==='de' ? "Traditionelle italienische Rezepturen und kulinarischer Genuss!" : (jezik==='en' ? "Traditional Italian recipes and ultimate gourmet experience!" : "Tradicionalni recepti i vrhunski gastronomski užitak za pamćenje!");
+                opisBranse = "Traditional gourmet kitchen recipes and premium taste experience!";
                 slikaPozadina = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200";
                 ikonicaBranse = "fa-utensils";
                 stavka1 = "Pizza Capricciosa"; cijena1 = "8.50€";
                 stavka2 = "Pizza Margherita"; cijena2 = "7.50€";
                 stavka3 = "Gourmet Burger"; cijena3 = "9.50€";
-                opisStavke = "Fresh ingredients, baked over fire with love.";
+                opisStavke = "Baked with fresh ingredients and passion.";
                 galerijaSlike = ["https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500", "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500"];
-                recenzijaIme = "Emina S."; recenzijaTekst = "Najbolja hrana i usluga u gradu! Pizza iz krušne peći je prosto savršena.";
+                recenzijaIme = "Emina S."; recenzijaTekst = "The wood-fired pizza here is absolutely fantastic!";
             } else if (uvecaniNaziv.includes("teretana") || uvecaniNaziv.includes("gym") || uvecaniNaziv.includes("fitnes") || uvecaniNaziv.includes("trening")) {
-                opisBranse = jezik==='de' ? "Aktivieren Sie Ihr Potenzial und transformieren Sie Ihren Körper!" : (jezik==='en' ? "Activate your full potential and transform your body with us!" : "Aktivirajte puni potencijal i transformišite svoje tijelo uz naše sprave!");
+                opisBranse = "Activate your maximum potential and transform your body with us!";
                 slikaPozadina = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200";
                 ikonicaBranse = "fa-dumbbell";
-                stavka1 = jezik==='hr' ? "Mjesečna Članarina" : "Monthly Membership"; cijena1 = "40.00€";
-                stavka2 = jezik==='hr' ? "Personalni Trening (1x)" : "Personal Training Session"; cijena2 = "20.00€";
-                stavka3 = jezik==='hr' ? "Plan Ishrane" : "Custom Nutrition Plan"; cijena3 = "30.00€";
-                opisStavke = "Access to cardio zone, professional coaches and premium equipment.";
+                stavka1 = "Premium Membership"; cijena1 = "40.00€";
+                stavka2 = "Personal Training Session"; cijena2 = "20.00€";
+                stavka3 = "Custom Nutrition Plan"; cijena3 = "30.00€";
+                opisStavke = "Access to professional equipment and elite coaching.";
                 galerijaSlike = ["https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=500", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=500", "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500"];
-                recenzijaIme = "Nemanja B."; recenzijaTekst = "Teretana je vrhunski čista, sprave nove. Treneri su puni znanja i motivacije.";
+                recenzijaIme = "Nemanja B."; recenzijaTekst = "Super clean gym, high-end environment and great atmosphere.";
             }
 
-            // --- GENERISANJE STRUKTURE LINKOVA ---
             var navLinkovi = `<li><a href="#pocetna"><i class="fa-solid fa-house"></i> ${L.home}</a></li>`;
             if (ukljuciMeni) navLinkovi += `<li><a href="#ponuda"><i class="fa-solid fa-list-check"></i> ${L.offer}</a></li>`;
-            if (ukljuciGaleriju) navLinkovi += `<li><a href="#galerija"><i class="fa-solid fa-images"></i> ${L.gallery}</a></li>`;
+            if (ukljuciActive = ukljuciGaleriju) navLinkovi += `<li><a href="#galerija"><i class="fa-solid fa-images"></i> ${L.gallery}</a></li>`;
             if (ukljuciIskustva) navLinkovi += `<li><a href="#iskustva"><i class="fa-solid fa-comments"></i> ${L.reviews}</a></li>`;
             navLinkovi += `<li><a href="#lokacija"><i class="fa-solid fa-location-dot"></i> ${L.contact}</a></li>`;
 
-            // --- GENERISANJE SEKCIJA ---
             var sekcijaPonuda = ukljuciMeni ? `<section class="section" id="ponuda"><h2 class="section-title"><i class="fa-solid ${ikonicaBranse}"></i> ${L.offer}</h2><div class="menu-grid"><div class="menu-item"><h3>${stavka1} <span>${cijena1}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka2} <span>${cijena2}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka3} <span>${cijena3}</span></h3><p>${opisStavke}</p></div></div></section>` : "";
             var sekcijaGalerija = ukljuciGaleriju ? `<section class="section" id="galerija"><h2 class="section-title"><i class="fa-solid fa-camera-retro"></i> ${L.gallery}</h2><div class="gallery-grid"><div class="gallery-card"><img src="${galerijaSlike[0]}"></div><div class="gallery-card"><img src="${galerijaSlike[1]}"></div><div class="gallery-card"><img src="${galerijaSlike[2]}"></div></div></section>` : "";
             var sekcijaIskustva = ukljuciIskustva ? `<section class="section" id="iskustva"><h2 class="section-title"><i class="fa-solid fa-quote-left"></i> ${L.reviews}</h2><div class="review-card"><p style="font-style: italic; font-size: 1.25rem;">"${recenzijaTekst}"</p><h4 style="margin-top:1.5rem;">- ${recenzijaIme}</h4></div></section>` : "";
-            
-            // NOVO: Društvene mreže komponenta
             var sekcijaSocial = ukljuciSocial ? `<div style="margin: 2rem 0; display:flex; gap:1rem; justify-content:center; font-size:1.5rem;"><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-facebook"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-instagram"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-tiktok"></i></a></div>` : "";
             
-            // NOVO: FAQ Harmonika komponenta
             var sekcijaFaq = ukljuciFaq ? `
             <section class="section">
                 <h2 class="section-title"><i class="fa-solid fa-circle-question"></i> ${L.faqTitle}</h2>
@@ -652,17 +857,15 @@
                 </div>
             </section>` : "";
 
-            // --- STILOVI DIZAJNA ---
             var CSS_STIL = "";
             if (stil === "moderan") {
-                CSS_STIL = `:root { --p-color: #3b82f6; --bg-card: #ffffff; --text-main: #0f172a; } body { background-color: #f8fafc; color: var(--text-main); font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: 800; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 600; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 850px; height: 380px; margin: 2rem auto; border-radius: 20px; object-fit: cover; display: block; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .container { max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 850px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; font-weight: 700; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 5px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #64748b; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; } .gallery-card { overflow: hidden; border-radius: 16px; height: 220px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; } .gallery-card:hover img { transform: scale(1.05); } .review-card { background: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; display: block; } .info-card { background-color: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-top: 5px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; border-top: 1px solid #f1f5f9; }`;
+                CSS_STIL = `:root { --p-color: #3b82f6; --bg-card: #ffffff; --text-main: #0f172a; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: 800; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 600; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 850px; height: 380px; margin: 2rem auto; border-radius: 20px; object-fit: cover; display: block; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .container { max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 850px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 5px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #64748b; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; } .gallery-card { overflow: hidden; border-radius: 16px; height: 220px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; } .gallery-card:hover img { transform: scale(1.05); } .review-card { background: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; display: block; } .info-card { background-color: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-top: 5px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; border-top: 1px solid #f1f5f9; }`;
             } else if (stil === "profesionalan") {
                 CSS_STIL = `:root { --p-color: #06b6d4; --bg-card: #1e293b; } body { background-color: #0f172a; color: #f8fafc; font-family: Georgia, serif; scroll-behavior: smooth; } header { background-color: #1e293b; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.7rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 2rem; } header a { color: #cbd5e1; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 900px; height: 400px; margin: 0 auto; object-fit: cover; border-bottom: 5px solid var(--p-color); display: block; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); } .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; } .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; clear: both; text-align: center; } .section-title { font-size: 2.2rem; margin-bottom: 3rem; border-bottom: 1px solid #1e293b; padding-bottom: 1rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2.5rem; border-left: 6px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.4rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #94a3b8; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; } .gallery-card { border: 2px solid #334155; height: 230px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; } .review-card { background: var(--bg-card); padding: 3.5rem; border-right: 6px solid var(--p-color); text-align: left; width: 100%; display: inline-block; } .info-card { background-color: var(--bg-card); padding: 3rem; text-align:left; border: 1px solid #334155; } footer { text-align: center; padding: 3rem; color: #64748b; background: #0f172a; border-top: 1px solid #1e293b; margin-top: 5rem; }`;
             } else if (stil === "funky") {
                 CSS_STIL = `:root { --p-color: #00ffcc; --s-color: #ff007f; } body { background-color: #050505; color: var(--p-color); font-family: 'Impact', sans-serif; letter-spacing: 1.5px; scroll-behavior: smooth; } header { background: linear-gradient(90deg, var(--s-color), #7f00ff); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 999; } .logo-site { font-size: 2.2rem; color: #ffffff; text-shadow: 3px 3px #000000; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #ffffff; text-decoration: none; } header a:hover { color: var(--p-color); transform: scale(1.1) rotate(-2deg); } .hero-img { width: 100%; max-width: 850px; height: 340px; margin: 2rem auto; border-radius: 30px; border: 4px solid var(--p-color); object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 1rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2.8rem; margin-bottom: 4rem; color: #ffffff; text-shadow: 3px 3px var(--s-color); } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; text-align: left; } .menu-item { background: #111111; padding: 2.5rem; border-radius: 24px; border: 3px solid #7f00ff; } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.6rem; color: #ffffff; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #00ffcc; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; } .gallery-card { border-radius: 24px; border: 3px solid var(--s-color); overflow: hidden; height: 200px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; } .review-card { background: #111111; padding: 3rem; border-radius: 30px; border: 4px dashed var(--s-color); color: #ffffff; width: 100%; display: inline-block; } .info-card { background-color: #111111; padding: 3rem; border-radius: 30px; border: 3px solid var(--p-color); text-align:left; box-shadow: 0px 0px 25px rgba(0,255,204,0.2); } footer { text-align: center; padding: 2.5rem; color: #7f00ff; background: #000000; margin-top: 5rem; }`;
             }
 
-            // --- 7. SKLAPANJE INTERNACIONALNOG KODA ---
             var generisaniKod = `<!DOCTYPE html>
 <html lang='${jezik}'>
 <head>
@@ -696,7 +899,7 @@
     <main id="pocetna" style="padding-top: 1rem;">
         <img src="${slikaPozadina}" alt="${naziv}" class="hero-img">
         <div class="container" style="margin-top: 1.5rem;">
-            <p style="font-size: 1.35rem; max-width: 750px; margin: 0 auto; font-weight: 300; text-align: center;">${opisBranse}</p>
+            <p style="font-size: 1.35rem; max-width: 750px; margin: 0 auto; font-weight: 300;">${opisBranse}</p>
             ${sekcijaSocial}
         </div>
     </main>
@@ -752,7 +955,18 @@
         }
 
         function izaberiPaket(imePaketa) {
-            document.getElementById('poruka').value = "Zainteresovan/a sam za paket: " + imePaketa + ". Molim vas da me kontaktirate sa detaljima.";
+            var odabraniJezik = document.getElementById("main-lang-select").value;
+            if(odabraniJezik === 'de') {
+                document.getElementById('poruka').value = "Hallo Ajdin! Ich interessiere mich für das Paket: " + imePaketa + ". Bitte kontaktieren Sie mich mit Details.";
+            } else if(odabraniJezik === 'en') {
+                document.getElementById('poruka').value = "Hello Ajdin! I am interested in the package: " + imePaketa + ". Please contact me with details.";
+            } else if(odabraniJezik === 'es') {
+                document.getElementById('poruka').value = "Hola Ajdin! Estoy interesado en el paquete: " + imePaketa + ". Por favor contáctame con detalles.";
+            } else if(odabraniJezik === 'it') {
+                document.getElementById('poruka').value = "Ciao Ajdin! Sono interessato al pacchetto: " + imePaketa + ". Per favore contattami con i dettagli.";
+            } else {
+                document.getElementById('poruka').value = "Zainteresovan/a sam za paket: " + imePaketa + ". Molim vas da me kontaktirate sa detaljima.";
+            }
             document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -762,24 +976,23 @@
         form.addEventListener("submit", function(ev) {
             ev.preventDefault();
             var data = new FormData(form);
-            button.innerHTML = "Slanje u toku...";
-            button.style.backgroundColor = "#94a3b8";
+            button.innerHTML = "Processing...";
             button.disabled = true;
 
             ajax(form.method, form.action, data, function() {
                 form.reset();
-                button.innerHTML = "✅ Uspješno poslano!";
+                button.innerHTML = "✅ Success!";
                 button.style.backgroundColor = "#22c55e";
                 setTimeout(function() {
-                    button.innerHTML = "Pošalji Upit";
+                    button.innerHTML = "Send Inquiry";
                     button.style.backgroundColor = "#38bdf8";
                     button.disabled = false;
                 }, 3000);
             }, function() {
-                button.innerHTML = "❌ Došlo je do greške!";
+                button.innerHTML = "❌ Error!";
                 button.style.backgroundColor = "#ef4444";
                 setTimeout(function() {
-                    button.innerHTML = "Pokušajte ponovo";
+                    button.innerHTML = "Try Again";
                     button.style.backgroundColor = "#38bdf8";
                     button.disabled = false;
                 }, 3000);
