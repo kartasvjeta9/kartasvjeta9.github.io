@@ -257,6 +257,11 @@
             font-size: 0.85rem;
         }
 
+        .template-inputs input:focus, .template-inputs select:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+
         .checkbox-group {
             display: flex;
             flex-direction: column;
@@ -499,6 +504,14 @@
     </footer>
 
     <script>
+        // Funkcija koja prihvata povratni signal sa generisanog sajta i popunjava formu za kupovinu paketa
+        window.addEventListener("message", function(event) {
+            if (event.data && event.data.tip === "kupovina") {
+                document.getElementById('poruka').value = "Zdravo Ajdine! Generisao/la sam besplatan sajt za '" + event.data.naziv + "' u " + event.data.stil + " stilu. Želim da pređem na profesionalni plaćeni paket, ubacim bota i povežem svoju domenu. Molim vas javite mi se.";
+                document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
         function otvoriSajtUzivo() {
             var naziv = document.getElementById('temp-naziv').value || "Naš Novi Biznis";
             var vrijeme = document.getElementById('temp-vrijeme').value || "Pon-Pet 09-17H";
@@ -508,11 +521,9 @@
             var ukljuciGaleriju = document.getElementById('chk-galerija').checked;
             var ukljuciIskustva = document.getElementById('chk-iskustva').checked;
 
-            // --- 1. PAMETNO I INSTANT IZVLAČENJE LOKACIJE IZ NAZIVA ---
+            // --- 1. PAMETNO IZVLAČENJE LOKACIJE IZ NAZIVA ---
             var lokacija = "Naša Lokacija";
             var rijeci = naziv.split(' ');
-            
-            // Tražimo riječ koja ide iza "u", "iz", "na" ili uzimamo zadnju riječ ako ima veliko slovo
             for (var i = 0; i < rijeci.length; i++) {
                 var r = rijeci[i].toLowerCase();
                 if ((r === "u" || r === "iz" || r === "na") && i + 1 < rijeci.length) {
@@ -520,7 +531,6 @@
                     break;
                 }
             }
-            // Ako nije našao predlog, a naziv ima više riječi, uzmi zadnju riječ kao pretpostavku lokacije (npr. Gym Singen -> Singen)
             if (lokacija === "Naša Lokacija" && rijeci.length > 1) {
                 var zadnjaRijec = rijeci[rijeci.length - 1];
                 if (zadnjaRijec[0] === zadnjaRijec[0].toUpperCase()) {
@@ -528,12 +538,10 @@
                 }
             }
 
-            // --- 2. BAZA ZNANJA ZA 6 BRANŠI U JAVASCRIPTU ---
+            // --- 2. BAZA ZNANJA ZA BRANŠE ---
             var uvecaniNaziv = naziv.toLowerCase();
-            
-            // Default (Univerzalni biznis)
             var podnaslov = "Vrhunski kvalitet i profesionalna usluga kojoj vjerujete.";
-            var opisBranse = "Nudimo vam vrhunske proizvode i usluge kreirane sa strašću i posvećenošću prema klijentima. Naš tim stručnjaka garantuje uspjeh!";
+            var opisBranse = "Nudimo vam vrhunske proizvode i usluge kreirane sa strašću i posvećenošću prema klijentima.";
             var slikaPozadina = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"; 
             var stavka1 = "Premium Usluga A", stavka2 = "Premium Usluga B", stavka3 = "Premium Usluga C";
             var cijena1 = "20€", cijena2 = "40€", cijena3 = "60€";
@@ -545,7 +553,6 @@
             ];
             var recenzijaIme = "Marko M.", recenzijaTekst = "Sve preporuke za profesionalnost i brzinu realizacije!";
 
-            // 1. Ribarstvo
             if (uvecaniNaziv.includes("riba") || uvecaniNaziv.includes("ribarnica") || uvecaniNaziv.includes("fish") || uvecaniNaziv.includes("tuna")) {
                 podnaslov = "Najsvježiji plodovi mora direktno iz plavih dubina!";
                 opisBranse = "Svakodnevno nudimo divlju, svježe ulovljenu jadransku ribu, škampe i školjke. Naša mreža garantuje vrhunsku svježinu na vašoj trpezi.";
@@ -560,9 +567,7 @@
                     "https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=400"
                 ];
                 recenzijaIme = "Ante K."; recenzijaTekst = "Riba je uvijek prva klasa, nevjerovatno čisto i svježe. Kupujemo ovdje porodično godinama!";
-            }
-            // 2. Ugostiteljstvo / Hrana
-            else if (uvecaniNaziv.includes("pizza") || uvecaniNaziv.includes("pizzerija") || uvecaniNaziv.includes("picerija") || uvecaniNaziv.includes("restoran") || uvecaniNaziv.includes("burger") || uvecaniNaziv.includes("hrana") || uvecaniNaziv.includes("konoba")) {
+            } else if (uvecaniNaziv.includes("pizza") || uvecaniNaziv.includes("pizzerija") || uvecaniNaziv.includes("picerija") || uvecaniNaziv.includes("restoran") || uvecaniNaziv.includes("burger") || uvecaniNaziv.includes("hrana") || uvecaniNaziv.includes("konoba")) {
                 podnaslov = "Tradicionalni recepti i vrhunski gastronomski užitak!";
                 opisBranse = "Bilo da želite autentičnu pizzu iz krušne peći, sočne domaće burgere ili vrhunska tradicionalna jela – naša kuhinja koristi samo svježe i provjerene sastojke.";
                 slikaPozadina = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200";
@@ -576,9 +581,7 @@
                     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=400"
                 ];
                 recenzijaIme = "Emina S."; recenzijaTekst = "Ambijent je prelijep, osoblje preljubazno, a hrana čista desetka. Pizza je prosto savršena!";
-            }
-            // 3. Auto-Moto
-            else if (uvecaniNaziv.includes("auto") || uvecaniNaziv.includes("servis") || uvecaniNaziv.includes("mehanicar") || uvecaniNaziv.includes("gume") || uvecaniNaziv.includes("vulkanizer")) {
+            } else if (uvecaniNaziv.includes("auto") || uvecaniNaziv.includes("servis") || uvecaniNaziv.includes("mehanicar") || uvecaniNaziv.includes("gume")) {
                 podnaslov = "Brz, pouzdan i profesionalan servis za Vaše vozilo!";
                 opisBranse = "Kompletna kompjuterska dijagnostika kvarova, mali i veliki servis, vulkanizerske usluge i auto mehanika. Vaša sigurnost na putevima je naš prioritet.";
                 slikaPozadina = "https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=1200";
@@ -592,15 +595,13 @@
                     "https://images.unsplash.com/photo-1617886322168-72b886573c3c?q=80&w=400"
                 ];
                 recenzijaIme = "Ivan J."; recenzijaTekst = "Izuzetno pošteni momci, brzi i tačni u radu. Sve popravke završe tačno u dogovorenom roku.";
-            }
-            // 4. Ljepota i Zdravlje
-            else if (uvecaniNaziv.includes("frizerski") || uvecaniNaziv.includes("salon") || uvecaniNaziv.includes("frizura") || uvecaniNaziv.includes("nokti") || uvecaniNaziv.includes("masaza") || uvecaniNaziv.includes("kozmeticki")) {
+            } else if (uvecaniNaziv.includes("frizerski") || uvecaniNaziv.includes("salon") || uvecaniNaziv.includes("frizura") || uvecaniNaziv.includes("nokti") || uvecaniNaziv.includes("masaza")) {
                 podnaslov = "Oaza opuštanja, vrhunske njege i modernog stila!";
-                opisBranse = "Prepustite se rukama naših profesionalnih stilista i kozmetičara. Nudimo moderne i unikatne frizure, vrhunski manikir, pedikir, opuštajuće masaže i tretmane.";
+                opisBranse = "Prepustite se rukama naših profesionalnih stilista i kozmetičara. Nudimo moderne i unikatne frizure, vrhunski manikir, pedikir, opuštajuće masaže i tretmane lica.";
                 slikaPozadina = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200";
                 stavka1 = "Moderno Šišanje & Feniranje"; cijena1 = "25.00€";
                 stavka2 = "Gel Nokti (Manikir)"; cijena2 = "30.00€";
-                stavka3 = "Opuštajuća Masaža Tijela (60 min)"; cijena3 = "40.00€";
+                stavka3 = "Opuštajuća Masaža (60 min)"; cijena3 = "40.00€";
                 opisStavke = "Korištenje isključivo najkvalitetnijih i premium kozmetičkih preparata.";
                 galerijaSlike = [
                     "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=400",
@@ -608,163 +609,83 @@
                     "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=400"
                 ];
                 recenzijaIme = "Sanja J."; recenzijaTekst = "Prelijep ambijent u kojem se zaista možete opustiti, a usluga je prosto savršena. Frizura drži danima!";
-            }
-            // 5. Fitnes / Gym
-            else if (uvecaniNaziv.includes("teretana") || uvecaniNaziv.includes("gym") || uvecaniNaziv.includes("fitnes") || uvecaniNaziv.includes("fitness") || uvecaniNaziv.includes("trening")) {
+            } else if (uvecaniNaziv.includes("teretana") || uvecaniNaziv.includes("gym") || uvecaniNaziv.includes("fitnes") || uvecaniNaziv.includes("trening")) {
                 podnaslov = "Postignite formu života i transformišite svoje tijelo!";
-                opisBranse = "Moderan i prostran ambijent opremljen vrhunskim profesionalnim spravama, vođeni treninzi i individualni planovi ishrane. Postanite najbolja i najzdravija verzija sebe.";
+                opisBranse = "Moderan prostor opremljen vrhunskim spravama, vođeni treninzi i individualni planovi ishrane. Postanite najbolja verzija sebe.";
                 slikaPozadina = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200";
-                stavka1 = "Mjesečna Članarina (Neograničeno)"; cijena1 = "35.00€";
-                stavka2 = "Individualni Trening sa Trenerom"; cijena2 = "15.00€";
-                stavka3 = "Izrada Plana Ishrane i Vježbi"; cijena3 = "25.00€";
-                opisStavke = "Stručna podrška profesionalnih i sertifikovanih trenera u svakom momentu.";
+                stavka1 = "Mjesečna Članarina"; cijena1 = "35.00€";
+                stavka2 = "Individualni Trening (1x)"; cijena2 = "15.00€";
+                stavka3 = "Izrada Plana Ishrane"; cijena3 = "25.00€";
+                opisStavke = "Stručna podrška sertifikovanih trenera u svakom momentu.";
                 galerijaSlike = [
                     "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400",
                     "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400",
                     "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=400"
                 ];
-                recenzijaIme = "Anel B."; recenzijaTekst = "Najbolje opremljena teretana u gradu. Higijena je na vrhunskom nivou, a treneri su izuzetno motivisani i stručni.";
-            }
-            // 6. Građevina / Zanatlije
-            else if (uvecaniNaziv.includes("gradnja") || uvecaniNaziv.includes("krov") || uvecaniNaziv.includes("moler") || uvecaniNaziv.includes("krecenje") || uvecaniNaziv.includes("vodoinstalater") || uvecaniNaziv.includes("keramika") || uvecaniNaziv.includes("stolar")) {
-                podnaslov = "Kvalitetni građevinski i zanatski radovi sa punom garancijom!";
-                opisBranse = "Vršimo kompletno renoviranje kuća i stanova, molerske radove, postavljanje keramike, vodoinstalacije i elektroinstalacije. Radove izvodimo pedantno, brzo i po dogovoru.";
+                recenzijaIme = "Anel B."; recenzijaTekst = "Najbolje opremljena teretana u gradu. Higijena je na vrhunskom nivou, a treneri su izuzetno stručni.";
+            } else if (uvecaniNaziv.includes("gradnja") || uvecaniNaziv.includes("krov") || uvecaniNaziv.includes("moler") || uvecaniNaziv.includes("vodoinstalater") || uvecaniNaziv.includes("keramika")) {
+                podnaslov = "Kvalitetni građevinski i zanatski radovi sa garancijom!";
+                opisBranse = "Vršimo renoviranje stanova, molerske radove, postavljanje keramike, vodoinstalacije i elektroinstalacije. Radove izvodimo pedantno i brzo.";
                 slikaPozadina = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200";
-                stavka1 = "Krečenje i Gletovanje (po m2)"; cijena1 = "4.50€";
-                stavka2 = "Postavljanje Keramike (po m2)"; cijena2 = "18.00€";
-                stavka3 = "Hitne Vodoinstalaterske Intervencije"; cijena3 = "30.00€";
+                stavka1 = "Krečenje i Gletovanje (m2)"; cijena1 = "4.50€";
+                stavka2 = "Postavljanje Keramike (m2)"; cijena2 = "18.00€";
+                stavka3 = "Hitne Vodovodne Intervencije"; cijena3 = "30.00€";
                 opisStavke = "Čisto i uredno izvođenje radova uz korištenje vrhunskih materijala.";
                 galerijaSlike = [
                     "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400",
                     "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=400",
                     "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400"
                 ];
-                recenzijaIme = "Nikola P."; recenzijaTekst = "Momci su mi renovirali kupatilo i hodnik. Uradili su sve fantastično pedantno i završili čak dva dana prije roka. Svaka čast!";
+                recenzijaIme = "Nikola P."; recenzijaTekst = "Momci su mi renovirali kupatilo. Uradili su sve fantastično pedantno i završili dva dana prije roka!";
             }
 
-            // --- 3. SKLAPANJE MENIJA NA VRHU ---
+            // --- 3. NAVIGACIJA ---
             var navLinkovi = `<li><a href="#pocetna">Početna</a></li>`;
             if (ukljuciMeni) navLinkovi += `<li><a href="#ponuda">Ponuda</a></li>`;
             if (ukljuciGaleriju) navLinkovi += `<li><a href="#galerija">Galerija</a></li>`;
             if (ukljuciIskustva) navLinkovi += `<li><a href="#iskustva">Utisci</a></li>`;
             navLinkovi += `<li><a href="#lokacija">Kontakt</a></li>`;
 
-            // --- 4. GENERISANJE DINAMIČKIH BLOKOVA ---
-            var sekcijaPonuda = "";
-            if (ukljuciMeni) {
-                sekcijaPonuda = `
-                <section class="section" id="ponuda">
-                    <h2 class="section-title">Naš Cjenovnik & Ponuda</h2>
-                    <div class="menu-grid">
-                        <div class="menu-item"><h3>${stavka1} <span>${cijena1}</span></h3><p>${opisStavke}</p></div>
-                        <div class="menu-item"><h3>${stavka2} <span>${cijena2}</span></h3><p>${opisStavke}</p></div>
-                        <div class="menu-item"><h3>${stavka3} <span>${cijena3}</span></h3><p>${opisStavke}</p></div>
-                    </div>
-                </section>`;
-            }
-
-            var sekcijaGalerija = "";
-            if (ukljuciGaleriju) {
-                sekcijaGalerija = `
-                <section class="section" id="galerija">
-                    <h2 class="section-title">Pogledajte Naš Rad</h2>
-                    <div class="gallery-grid">
-                        <img src="${galerijaSlike[0]}" alt="Slika 1">
-                        <img src="${galerijaSlike[1]}" alt="Slika 2">
-                        <img src="${galerijaSlike[2]}" alt="Slika 3">
-                    </div>
-                </section>`;
-            }
-
-            var sekcijaIskustva = "";
-            if (ukljuciIskustva) {
-                sekcijaIskustva = `
-                <section class="section" id="iskustva" style="background-color: rgba(0,0,0,0.02);">
-                    <h2 class="section-title">Zadovoljni Klijenti</h2>
-                    <div class="review-card">
-                        <p style="font-style: italic; font-size: 1.2rem;">"${recenzijaTekst}"</p>
-                        <h4 style="margin-top: 1rem; color: var(--p-color);">- ${recenzijaIme}</h4>
-                    </div>
-                </section>`;
-            }
+            // --- 4. BLOKOVI SEKCIJA ---
+            var sekcijaPonuda = ukljuciMeni ? `<section class="section" id="ponuda"><h2 class="section-title">Naš Cjenovnik</h2><div class="menu-grid"><div class="menu-item"><h3>${stavka1} <span>${cijena1}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka2} <span>${cijena2}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka3} <span>${cijena3}</span></h3><p>${opisStavke}</p></div></div></section>` : "";
+            var sekcijaGalerija = ukljuciGaleriju ? `<section class="section" id="galerija"><h2 class="section-title">Naš Rad</h2><div class="gallery-grid"><img src="${galerijaSlike[0]}"><img src="${galerijaSlike[1]}"><img src="${galerijaSlike[2]}</div></section>` : "";
+            var sekcijaIskustva = ukljuciIskustva ? `<section class="section" id="iskustva" style="background-color: rgba(0,0,0,0.02);"><h2 class="section-title">Zadovoljni Klijenti</h2><div class="review-card"><p style="font-style: italic;">"${recenzijaTekst}"</p><h4>- ${recenzijaIme}</h4></div></section>` : "";
 
             // --- 5. STILOVI DIZAJNA ---
             var CSS_STIL = "";
             if (stil === "moderan") {
-                CSS_STIL = `
-                    :root { --p-color: #3b82f6; }
-                    body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-                    header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: sticky; top:0; z-index: 999; }
-                    .logo-site { font-size: 1.5rem; font-weight: 700; color: #0f172a; } .logo-site span { color: var(--p-color); }
-                    header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 500; } header a:hover { color: var(--p-color); }
-                    .hero-img { width: 100%; max-width: 800px; height: 350px; margin: 2rem auto; border-radius: 16px; object-fit: cover; display: block; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-                    .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
-                    .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; }
-                    .section-title { font-size: 2rem; margin-bottom: 2.5rem; font-weight: 600; }
-                    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
-                    .menu-item { background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-                    .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.2rem; } .menu-item h3 span { color: var(--p-color); }
-                    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-                    .gallery-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; }
-                    .review-card { background: #ffffff; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-                    .info-card { background-color: #ffffff; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 4px solid var(--p-color); }
-                    footer { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.85rem; background: #ffffff; margin-top: 5rem; }
-                `;
+                CSS_STIL = `:root { --p-color: #3b82f6; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.5rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 500; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 800px; height: 350px; margin: 2rem auto; border-radius: 16px; object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; text-align: left; } .menu-item { background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); } .menu-item h3 { display: flex; justify-content: space-between; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; } .gallery-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; } .review-card { background: #ffffff; padding: 2.5rem; border-radius: 16px; } .info-card { background-color: #ffffff; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 4px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; }`;
             } else if (stil === "profesionalan") {
-                CSS_STIL = `
-                    :root { --p-color: #6fffe9; }
-                    body { background-color: #0b132b; color: #ffffff; font-family: 'Georgia', serif; scroll-behavior: smooth; }
-                    header { background-color: #1c2541; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; }
-                    .logo-site { font-size: 1.6rem; font-weight: bold; color: #ffffff; } .logo-site span { color: var(--p-color); }
-                    header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #cbd5e1; text-decoration: none; font-size: 1rem; } header a:hover { color: var(--p-color); }
-                    .hero-img { width: 100%; max-width: 900px; height: 380px; margin: 0 auto; object-fit: cover; border-bottom: 4px solid var(--p-color); display: block; }
-                    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
-                    .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
-                    .section-title { font-size: 2.2rem; margin-bottom: 3rem; color: #ffffff; border-bottom: 1px solid #1c2541; padding-bottom: 0.5rem; }
-                    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-                    .menu-item { background: #1c2541; padding: 2rem; border-left: 4px solid var(--p-color); }
-                    .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; } .menu-item h3 span { color: var(--p-color); }
-                    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-                    .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border: 1px solid var(--p-color); }
-                    .review-card { background: #1c2541; padding: 2.5rem; border-left: 4px solid var(--p-color); }
-                    .info-card { background-color: #1c2541; padding: 2.5rem; border-left: 4px solid var(--p-color); }
-                    footer { text-align: center; padding: 2.5rem; color: #5c677d; font-size: 0.9rem; background: #0b132b; border-top: 1px solid #1c2541; margin-top: 5rem; }
-                `;
+                CSS_STIL = `:root { --p-color: #6fffe9; } body { background-color: #0b132b; color: #ffffff; font-family: 'Georgia', serif; scroll-behavior: smooth; } header { background-color: #1c2541; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: bold; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #cbd5e1; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 900px; height: 380px; margin: 0 auto; object-fit: cover; border-bottom: 4px solid var(--p-color); display: block; } .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; } .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; } .section-title { font-size: 2.2rem; margin-bottom: 3rem; border-bottom: 1px solid #1c2541; padding-bottom: 0.5rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; } .menu-item { background: #1c2541; padding: 2rem; border-left: 4px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; } .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border: 1px solid var(--p-color); } .review-card { background: #1c2541; padding: 2.5rem; border-left: 4px solid var(--p-color); } .info-card { background-color: #1c2541; padding: 2.5rem; text-align:left; } footer { text-align: center; padding: 2.5rem; color: #5c677d; background: #0b132b; border-top: 1px solid #1c2541; margin-top: 5rem; }`;
             } else if (stil === "funky") {
-                CSS_STIL = `
-                    :root { --p-color: #00ffcc; }
-                    body { background-color: #000000; color: var(--p-color); font-family: 'Impact', sans-serif; letter-spacing: 1px; scroll-behavior: smooth; }
-                    header { background: linear-gradient(90deg, #ff007f, #7f00ff); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 999; }
-                    .logo-site { font-size: 2rem; color: #ffffff; text-shadow: 2px 2px #000000; } .logo-site span { color: var(--p-color); }
-                    header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #ffffff; text-decoration: none; font-size: 1.1rem; text-shadow: 1px 1px #000000; } header a:hover { color: var(--p-color); }
-                    .hero-img { width: 100%; max-width: 800px; height: 320px; margin: 2rem auto; border-radius: 25px; border: 4px solid var(--p-color); object-fit: cover; display: block; }
-                    .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
-                    .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; }
-                    .section-title { font-size: 2.5rem; margin-bottom: 3rem; color: #ffffff; text-shadow: 2px 2px #ff007f; }
-                    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-                    .menu-item { background: #111111; padding: 2rem; border-radius: 20px; border: 2px solid #7f00ff; }
-                    .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.5rem; color: #ffffff; } .menu-item h3 span { color: var(--p-color); }
-                    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-                    .gallery-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; border: 3px solid #ff007f; }
-                    .review-card { background: #111111; padding: 2.5rem; border-radius: 25px; border: 3px dashed #ff007f; color: #ffffff; }
-                    .info-card { background-color: #111111; padding: 2.5rem; border-radius: 25px; border: 3px solid var(--p-color); box-shadow: 0px 0px 15px var(--p-color); }
-                    footer { text-align: center; padding: 2rem; color: #7f00ff; font-size: 1.1rem; background: #111111; margin-top: 5rem; }
-                `;
+                CSS_STIL = `:root { --p-color: #00ffcc; } body { background-color: #000000; color: var(--p-color); font-family: 'Impact', sans-serif; letter-spacing: 1px; scroll-behavior: smooth; } header { background: linear-gradient(90deg, #ff007f, #7f00ff); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 999; } .logo-site { font-size: 2rem; color: #ffffff; text-shadow: 2px 2px #000000; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #ffffff; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 800px; height: 320px; margin: 2rem auto; border-radius: 25px; border: 4px solid var(--p-color); object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; } .section-title { font-size: 2.5rem; margin-bottom: 3rem; color: #ffffff; text-shadow: 2px 2px #ff007f; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; } .menu-item { background: #111111; padding: 2rem; border-radius: 20px; border: 2px solid #7f00ff; } .menu-item h3 { display: flex; justify-content: space-between; color: #ffffff; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; } .gallery-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; border: 3px solid #ff007f; } .review-card { background: #111111; padding: 2.5rem; border-radius: 25px; border: 3px dashed #ff007f; color: #ffffff; } .info-card { background-color: #111111; padding: 2.5rem; border-radius: 25px; border: 3px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #7f00ff; background: #111111; margin-top: 5rem; }`;
             }
 
-            // --- 6. SKLAPANJE FINALNOG KODA ---
+            // --- 6. SKLAPANJE FINALNOG KODA SA UPSELL I DOWNLOAD MEHANIZMOM ---
             var generisaniKod = `<!DOCTYPE html>
 <html lang='bs'>
 <head>
     <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>${naziv} | ${lokacija}</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ${CSS_STIL}
+        /* Stil za gornju komandnu traku */
+        .ai-top-bar { background-color: #1e293b; padding: 0.8rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #22c55e; font-family: sans-serif; color: white; }
+        .ai-bar-btns { display: flex; gap: 1rem; }
+        .ai-btn-dl { background-color: #22c55e; color: white; border: none; padding: 0.5rem 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 0.85rem; }
+        .ai-btn-up { background-color: #38bdf8; color: #0f172a; border: none; padding: 0.5rem 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
     </style>
 </head>
 <body>
+    <div class="ai-top-bar">
+        <span>🤖 Ai Bussines Šablon za: <b>${naziv}</b></span>
+        <div class="ai-bar-btns">
+            <button onclick="preuzmiSajt()" class="ai-btn-dl">Preuzmi Besplatan HTML 📥</button>
+            <button onclick="kupiPaket()" class="ai-btn-up">Poveži Domenu i AI bota 🚀</button>
+        </div>
+    </div>
+
     <header>
         <div class="logo-site">${naziv.split(' ')[0]}<span>${naziv.split(' ').slice(1).join(' ')}</span></div>
         <ul>${navLinkovi}</ul>
@@ -773,7 +694,7 @@
     <main id="pocetna" style="padding-top: 1rem;">
         <img src="${slikaPozadina}" alt="${naziv}" class="hero-img">
         <div class="container" style="margin-top: 2.5rem;">
-            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto; font-weight: 300; text-align: center;">${opisBranse}</p>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto; font-weight: 300;">${opisBranse}</p>
         </div>
     </main>
 
@@ -786,13 +707,41 @@
         <div class="info-card">
             <p><strong>📍 Sjedište firme:</strong> ${lokacija}</p>
             <p><strong>⏰ Radno Vrijeme:</strong> ${vrijeme}</p>
-            <p><strong>🔒 Sigurnost:</strong> Sajt je optimizovan i zaštićen od strane Ai Bussines mreže.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 ${naziv}. Sva prava zadržana. | Ponosni partner kompanije Ai Bussines</p>
+        <p>&copy; 2026 ${naziv}. Sva prava zadržana. | Pokreće Ai Bussines</p>
     </footer>
+
+    <script>
+        // Funkcija koja klijentu preuzima čisti HTML fajl na računar
+        function preuzmiSajt() {
+            var htmlSadrzaj = document.documentElement.outerHTML;
+            // Uklanjamo gornju kontrolnu traku iz koda koji klijent preuzima za sebe
+            htmlSadrzaj = htmlSadrzaj.replace(/<div class="ai-top-bar">[\\s\\S]*?<\\/div>/, "");
+            
+            var blob = new Blob([htmlSadrzaj], {type: "text/html;charset=utf-8"});
+            var link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "${naziv.replace(/\s+/g, '_')}_sajt.html";
+            link.click();
+        }
+
+        // Funkcija koja javlja glavnoj stranici da je klijent kliknuo na nadogradnju
+        function kupiPaket() {
+            if (window.opener) {
+                window.opener.postMessage({
+                    tip: "kupovina",
+                    naziv: "${naziv}",
+                    stil: "${stil}"
+                }, "*");
+                window.close(); // Zatvara tab i vraća ga na naš sajt
+            } else {
+                alert("Molimo vas vratite se na Ai Bussines sajt i pošaljite upit preko kontakt forme!");
+            }
+        }
+    <\/script>
 </body>
 </html>`;
 
