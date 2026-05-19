@@ -504,7 +504,6 @@
     </footer>
 
     <script>
-        // Funkcija koja prihvata povratni signal sa generisanog sajta i popunjava formu za kupovinu paketa
         window.addEventListener("message", function(event) {
             if (event.data && event.data.tip === "kupovina") {
                 document.getElementById('poruka').value = "Zdravo Ajdine! Generisao/la sam besplatan sajt za '" + event.data.naziv + "' u " + event.data.stil + " stilu. Želim da pređem na profesionalni plaćeni paket, ubacim bota i povežem svoju domenu. Molim vas javite mi se.";
@@ -521,7 +520,7 @@
             var ukljuciGaleriju = document.getElementById('chk-galerija').checked;
             var ukljuciIskustva = document.getElementById('chk-iskustva').checked;
 
-            // --- 1. PAMETNO IZVLAČENJE LOKACIJE IZ NAZIVA ---
+            // --- 1. IZVLAČENJE LOKACIJE ---
             var lokacija = "Naša Lokacija";
             var rijeci = naziv.split(' ');
             for (var i = 0; i < rijeci.length; i++) {
@@ -538,7 +537,7 @@
                 }
             }
 
-            // --- 2. BAZA ZNANJA ZA BRANŠE ---
+            // --- 2. BAZA BRANŠI ---
             var uvecaniNaziv = naziv.toLowerCase();
             var podnaslov = "Vrhunski kvalitet i profesionalna usluga kojoj vjerujete.";
             var opisBranse = "Nudimo vam vrhunske proizvode i usluge kreirane sa strašću i posvećenošću prema klijentima.";
@@ -555,7 +554,7 @@
 
             if (uvecaniNaziv.includes("riba") || uvecaniNaziv.includes("ribarnica") || uvecaniNaziv.includes("fish") || uvecaniNaziv.includes("tuna")) {
                 podnaslov = "Najsvježiji plodovi mora direktno iz plavih dubina!";
-                opisBranse = "Svakodnevno nudimo divlju, svježe ulovljenu jadransku ribu, škampe i školjke. Naša mreža garantuje vrhunsku svježinu na vašoj trpezi.";
+                opisBranse = "Svakodnevno nudimo divlju, svježe ulovljenu jadransku riba, škampe i školjke. Naša mreža garantuje vrhunsku svježinu na vašoj trpezi.";
                 slikaPozadina = "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?q=80&w=1200";
                 stavka1 = "Domaća Orada (Kg)"; cijena1 = "15.00€";
                 stavka2 = "Svježi Brancin (Kg)"; cijena2 = "16.00€";
@@ -646,22 +645,25 @@
             if (ukljuciIskustva) navLinkovi += `<li><a href="#iskustva">Utisci</a></li>`;
             navLinkovi += `<li><a href="#lokacija">Kontakt</a></li>`;
 
-            // --- 4. BLOKOVI SEKCIJA ---
+            // --- 4. BLOKOVI SEKCIJA (POPRAVLJENE OTVORENE ZAGRADE I STRUKTURA) ---
             var sekcijaPonuda = ukljuciMeni ? `<section class="section" id="ponuda"><h2 class="section-title">Naš Cjenovnik</h2><div class="menu-grid"><div class="menu-item"><h3>${stavka1} <span>${cijena1}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka2} <span>${cijena2}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka3} <span>${cijena3}</span></h3><p>${opisStavke}</p></div></div></section>` : "";
-            var sekcijaGalerija = ukljuciGaleriju ? `<section class="section" id="galerija"><h2 class="section-title">Naš Rad</h2><div class="gallery-grid"><img src="${galerijaSlike[0]}"><img src="${galerijaSlike[1]}"><img src="${galerijaSlike[2]}</div></section>` : "";
+            
+            # POPRAVLJENO: Zatvoren tag na trećoj slici slika (> na kraju)
+            var sekcijaGalerija = ukljuciGaleriju ? `<section class="section" id="galerija"><h2 class="section-title">Naš Rad</h2><div class="gallery-grid"><img src="${galerijaSlike[0]}"><img src="${galerijaSlike[1]}"><img src="${galerijaSlike[2]}"></div></section>` : "";
+            
             var sekcijaIskustva = ukljuciIskustva ? `<section class="section" id="iskustva" style="background-color: rgba(0,0,0,0.02);"><h2 class="section-title">Zadovoljni Klijenti</h2><div class="review-card"><p style="font-style: italic;">"${recenzijaTekst}"</p><h4>- ${recenzijaIme}</h4></div></section>` : "";
 
-            // --- 5. STILOVI DIZAJNA ---
+            // --- 5. STILOVI DIZAJNA (POPRAVLJEN GRID I RAZMAKNUTE SEKCIJE) ---
             var CSS_STIL = "";
             if (stil === "moderan") {
-                CSS_STIL = `:root { --p-color: #3b82f6; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.5rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 500; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 800px; height: 350px; margin: 2rem auto; border-radius: 16px; object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; text-align: left; } .menu-item { background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); } .menu-item h3 { display: flex; justify-content: space-between; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; } .gallery-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; } .review-card { background: #ffffff; padding: 2.5rem; border-radius: 16px; } .info-card { background-color: #ffffff; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 4px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; }`;
+                CSS_STIL = `:root { --p-color: #3b82f6; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.5rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 500; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 800px; height: 350px; margin: 2rem auto; border-radius: 16px; object-fit: cover; display: block; box-shadow: 0 10px 20px rgba(0,0,0,0.05); } .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; display: block; width: 100%; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; text-align: left; } .menu-item { background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); } .menu-item h3 { display: flex; justify-content: space-between; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; } .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block; } .review-card { background: #ffffff; padding: 2.5rem; border-radius: 16px; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.02); display: inline-block; } .info-card { background-color: #ffffff; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 4px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; }`;
             } else if (stil === "profesionalan") {
-                CSS_STIL = `:root { --p-color: #6fffe9; } body { background-color: #0b132b; color: #ffffff; font-family: 'Georgia', serif; scroll-behavior: smooth; } header { background-color: #1c2541; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: bold; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #cbd5e1; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 900px; height: 380px; margin: 0 auto; object-fit: cover; border-bottom: 4px solid var(--p-color); display: block; } .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; } .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; } .section-title { font-size: 2.2rem; margin-bottom: 3rem; border-bottom: 1px solid #1c2541; padding-bottom: 0.5rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; } .menu-item { background: #1c2541; padding: 2rem; border-left: 4px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; } .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border: 1px solid var(--p-color); } .review-card { background: #1c2541; padding: 2.5rem; border-left: 4px solid var(--p-color); } .info-card { background-color: #1c2541; padding: 2.5rem; text-align:left; } footer { text-align: center; padding: 2.5rem; color: #5c677d; background: #0b132b; border-top: 1px solid #1c2541; margin-top: 5rem; }`;
+                CSS_STIL = `:root { --p-color: #6fffe9; } body { background-color: #0b132b; color: #ffffff; font-family: 'Georgia', serif; scroll-behavior: smooth; } header { background-color: #1c2541; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: bold; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #cbd5e1; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 900px; height: 380px; margin: 0 auto; object-fit: cover; border-bottom: 4px solid var(--p-color); display: block; } .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; } .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; clear: both; text-align: center; } .section-title { font-size: 2.2rem; margin-bottom: 3rem; border-bottom: 1px solid #1c2541; padding-bottom: 0.5rem; display: block; width: 100%; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: left; } .menu-item { background: #1c2541; padding: 2rem; border-left: 4px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; } .gallery-grid img { width: 100%; height: 220px; object-fit: cover; border: 1px solid var(--p-color); display: block; } .review-card { background: #1c2541; padding: 2.5rem; border-left: 4px solid var(--p-color); text-align: left; width: 100%; display: inline-block; } .info-card { background-color: #1c2541; padding: 2.5rem; text-align:left; } footer { text-align: center; padding: 2.5rem; color: #5c677d; background: #0b132b; border-top: 1px solid #1c2541; margin-top: 5rem; }`;
             } else if (stil === "funky") {
-                CSS_STIL = `:root { --p-color: #00ffcc; } body { background-color: #000000; color: var(--p-color); font-family: 'Impact', sans-serif; letter-spacing: 1px; scroll-behavior: smooth; } header { background: linear-gradient(90deg, #ff007f, #7f00ff); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 999; } .logo-site { font-size: 2rem; color: #ffffff; text-shadow: 2px 2px #000000; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #ffffff; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 800px; height: 320px; margin: 2rem auto; border-radius: 25px; border: 4px solid var(--p-color); object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; } .section-title { font-size: 2.5rem; margin-bottom: 3rem; color: #ffffff; text-shadow: 2px 2px #ff007f; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; } .menu-item { background: #111111; padding: 2rem; border-radius: 20px; border: 2px solid #7f00ff; } .menu-item h3 { display: flex; justify-content: space-between; color: #ffffff; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; } .gallery-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; border: 3px solid #ff007f; } .review-card { background: #111111; padding: 2.5rem; border-radius: 25px; border: 3px dashed #ff007f; color: #ffffff; } .info-card { background-color: #111111; padding: 2.5rem; border-radius: 25px; border: 3px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #7f00ff; background: #111111; margin-top: 5rem; }`;
+                CSS_STIL = `:root { --p-color: #00ffcc; } body { background-color: #000000; color: var(--p-color); font-family: 'Impact', sans-serif; letter-spacing: 1px; scroll-behavior: smooth; } header { background: linear-gradient(90deg, #ff007f, #7f00ff); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 999; } .logo-site { font-size: 2rem; color: #ffffff; text-shadow: 2px 2px #000000; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.5rem; } header a { color: #ffffff; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 800px; height: 320px; margin: 2rem auto; border-radius: 25px; border: 4px solid var(--p-color); object-fit: cover; display: block; } .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2.5rem; margin-bottom: 3rem; color: #ffffff; text-shadow: 2px 2px #ff007f; display: block; width: 100%; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: left; } .menu-item { background: #111111; padding: 2rem; border-radius: 20px; border: 2px solid #7f00ff; } .menu-item h3 { display: flex; justify-content: space-between; color: #ffffff; } .menu-item h3 span { color: var(--p-color); } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; } .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 20px; border: 3px solid #ff007f; display: block; } .review-card { background: #111111; padding: 2.5rem; border-radius: 25px; border: 3px dashed #ff007f; color: #ffffff; width: 100%; display: inline-block; } .info-card { background-color: #111111; padding: 2.5rem; border-radius: 25px; border: 3px solid var(--p-color); text-align:left; box-shadow: 0px 0px 15px var(--p-color); } footer { text-align: center; padding: 2rem; color: #7f00ff; background: #111111; margin-top: 5rem; }`;
             }
 
-            // --- 6. SKLAPANJE FINALNOG KODA SA UPSELL I DOWNLOAD MEHANIZMOM ---
+            // --- 6. SKLAPANJE FINALNOG KODA ---
             var generisaniKod = `<!DOCTYPE html>
 <html lang='bs'>
 <head>
@@ -670,7 +672,6 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ${CSS_STIL}
-        /* Stil za gornju komandnu traku */
         .ai-top-bar { background-color: #1e293b; padding: 0.8rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #22c55e; font-family: sans-serif; color: white; }
         .ai-bar-btns { display: flex; gap: 1rem; }
         .ai-btn-dl { background-color: #22c55e; color: white; border: none; padding: 0.5rem 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 0.85rem; }
@@ -715,12 +716,9 @@
     </footer>
 
     <script>
-        // Funkcija koja klijentu preuzima čisti HTML fajl na računar
         function preuzmiSajt() {
             var htmlSadrzaj = document.documentElement.outerHTML;
-            // Uklanjamo gornju kontrolnu traku iz koda koji klijent preuzima za sebe
             htmlSadrzaj = htmlSadrzaj.replace(/<div class="ai-top-bar">[\\s\\S]*?<\\/div>/, "");
-            
             var blob = new Blob([htmlSadrzaj], {type: "text/html;charset=utf-8"});
             var link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
@@ -728,7 +726,6 @@
             link.click();
         }
 
-        // Funkcija koja javlja glavnoj stranici da je klijent kliknuo na nadogradnju
         function kupiPaket() {
             if (window.opener) {
                 window.opener.postMessage({
@@ -736,7 +733,7 @@
                     naziv: "${naziv}",
                     stil: "${stil}"
                 }, "*");
-                window.close(); // Zatvara tab i vraća ga na naš sajt
+                window.close();
             } else {
                 alert("Molimo vas vratite se na Ai Bussines sajt i pošaljite upit preko kontakt forme!");
             }
