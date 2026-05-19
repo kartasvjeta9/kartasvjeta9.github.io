@@ -464,14 +464,14 @@
                     <div class="price" id="p1-price">0€<span> / instant</span></div>
                     
                     <div class="template-inputs">
-                        <input type="text" id="temp-name" placeholder="Name (e.g. Fishmarket Tribunj or Gym Singen)">
-                        <input type="text" id="temp-phone" placeholder="Phone (e.g. +49 123 456789)">
-                        <input type="text" id="temp-insta" placeholder="Instagram (e.g. @pizzerianapoli)">
+                        <input type="text" id="temp-name" placeholder="Company Name">
+                        <input type="text" id="temp-phone" placeholder="Phone Number">
+                        <input type="text" id="temp-insta" placeholder="Instagram Profile">
                         
                         <select id="temp-language">
                             <option value="hr" id="opt-l1">Site in: Balkan (HR/BS/SR)</option>
                             <option value="de" id="opt-l2">Site in: German (Deutsch)</option>
-                            <option value="en" id="opt-l3">Site in: English</option>
+                            <option value="en" id="opt-l3" selected>Site in: English</option>
                             <option value="es" id="opt-l4">Site in: Spanish (Español)</option>
                             <option value="it" id="opt-l5">Site in: Italian (Italiano)</option>
                         </select>
@@ -580,7 +580,7 @@
                 c3T: "AI Integracije 24/7", c3D: "Ugrađujemo napredne sisteme prepoznavanja potreba klijenata i pametne asistente na vaše online platforme.",
                 pTitle: "Izaberite Vaš Paket", pSubtitle: "Isprobajte naš inteligentni generator besplatno ili pređite na profesionalni nivo.",
                 p1T: "Free Template", p1P: "0€<span> / instant</span>", lblElements: "Struktura i elementi:",
-                lblM1: "Meni / Ekskluzivni Cjenovnik", lblM2: "Galerija HD Fotografija", lblM3: "Recenzije Klijenata", lblM4: "Dugmad za Društvene Mreže", lblM5: "FAQ (Česta pitanja) harmonika",
+                lblM1: "Meni / Ekskluzivni Cjenovnik", lblM2: "Galerija HD Fotografija", lblM3: "Recenzije Klijenata", lblM4: "Dugmad za Društvene Mreže", lblM5: "FAQ (Česta pitanja)",
                 btnGen: "Generiši Sajt Uživo 🚀", p2T: "Starter Web", p2P: "150€<span> / fiksno</span>",
                 p2L: "<li>Moderna Landing stranica</li><li>Prilagođeno mobile uređajima</li><li>Osnovna kontakt forma</li><li>Lansiranje na internet (Hosting)</li>",
                 btnP2: "Izaberi Paket", p3T: "Smart Automation", p3P: "400€<span> / fiksno</span>",
@@ -589,14 +589,13 @@
                 p4L: "<li>Kompletna višestranačna stranica</li><li>Napredni AI Chatbot 24/7</li><li>Kompletna automatizacija taskova</li><li>Premium podrška i održavanje</li>",
                 btnP4: "Kontaktiraj Nas", conTitle: "Započnimo Projekat", lName: "Vaše Ime:", lEmail: "Vaš Email:", lMsg: "Vaša Poruka:",
                 phName: "Unesite vaše ime", phEmail: "Unesite vaš email", phMsg: "Kako vam možemo pomoći?",
-                phTitle: "Naziv (npr. Ribarnica Tribunj ili Gym Singen)",
-                phPhone: "Telefon (npr. +49 123 456789)", phInsta: "Instagram (npr. @pizzerianapoli)",
+                phTitle: "Naziv firme", phPhone: "Broj telefona", phInsta: "Instagram profil",
                 optL1: "Sajt na: Balkan (HR/BS/SR)", optL2: "Sajt na: Njemački (Deutsch)", optL3: "Sajt na: Engleski (English)", optL4: "Sajt na: Španski (Español)", optL5: "Sajt na: Italijanski (Italiano)",
                 optS1: "Stil: Moderan (Minimalizam)", optS2: "Stil: Profesionalan (Lux)", optS3: "Stil: Funky (Neon Cyberpunk)",
                 fTag: "Vaš partner za digitalnu revoluciju.",
                 // Template translations
                 t_home: "Početna", t_offer: "Ponuda", t_gallery: "Galerija", t_reviews: "Utisci", t_contact: "Kontakt",
-                t_hours: "Radno vrijeme:", t_location: "Glavno sjedište:", t_footerText: "Pokreće profesionalni Ai Bussines generator",
+                t_phoneLabel: "Telefon:", t_location: "Glavno sjedište:", t_footerText: "Pokreće profesionalni Ai Bussines generator",
                 t_faqTitle: "Često postavljana pitanja", t_q1: "Kako vas mogu kontaktirati?", t_a1: "Možete nas posjetiti direktno na našoj lokaciji ili nas pozvati telefonom tokom radnog vremena.",
                 t_q2: "Koji su rokovi isporuke?", t_a2: "Sve narudžbe i usluge izvršavamo u najkraćem mogućem roku.",
                 t_reviewName: "Zadovoljni Klijent", t_reviewText: "Izuzetna usluga, visoko profesionalni!",
@@ -607,14 +606,18 @@
                 t_d_food: "Uživajte u autentičnim pizzama iz prave krušne peći, sočnim domaćim burgerima ili vrhunskom roštilju kreiranom od strane naših kulinarskih majstora.",
                 t_b_gym: "Aktivirajte puni potencijal i transformišite svoje tijelo!",
                 t_d_gym: "Vrhunski opremljen prostor sa najmodernijim spravama za vježbanje. Naši sertifikovani treneri pružiće vam maksimalnu podršku na putu do cilja.",
+                t_b_bakery: "Miris svježeg hljeba i peciva svakog jutra!",
+                t_d_bakery: "Nudimo vam topla, ručno rađena peciva, hljeb od kiselog tijesta i ukusne kolače po tradicionalnoj recepturi.",
                 t_download: "Preuzmi HTML", t_premium: "Go Premium",
                 t_downloadAlert: "Vratite se na naš sajt i pošaljite upit preko kontakt forme!",
                 // Menu items
                 t_item1_fish: "Domaća Orada (Kg)", t_item2_fish: "Svježi Brancin (Kg)", t_item3_fish: "Plava Jadranska Tuna",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Gourmet Burger",
                 t_item1_gym: "Premium Članarina", t_item2_gym: "Personalni Trening", t_item3_gym: "Plan Ishrane",
+                t_item1_bakery: "Domaći Hljeb", t_item2_bakery: "Kroasani (Mix)", t_item3_bakery: "Torta po narudžbi",
                 t_itemDesc_food: "Pečeno sa svježim sastojcima i strašću.",
-                t_itemDesc_gym: "Potpuni pristup visokoj tehnologiji."
+                t_itemDesc_gym: "Potpuni pristup visokoj tehnologiji.",
+                t_itemDesc_bakery: "Pečeno sa ljubavlju svakog jutra."
             },
             de: {
                 navHome: "Startseite", navServices: "Leistungen", navPricing: "Preise", navContact: "Kontakt",
@@ -636,14 +639,13 @@
                 p4L: "<li>Komplette mehrseitige Website</li><li>Fortschrittlicher KI-Chatbot 24/7</li><li>Komplette Aufgaben-Automatisierung</li><li>Premium-Support und Wartung</li>",
                 btnP4: "Kontaktieren Sie uns", conTitle: "Projekt Starten", lName: "Ihr Name:", lEmail: "Ihre E-Mail:", lMsg: "Ihre Nachricht:",
                 phName: "Name eingeben", phEmail: "E-Mail eingeben", phMsg: "Wie können wir helfen?",
-                phTitle: "Name (z.B. Fischgeschäft Tribunj oder Gym Singen)",
-                phPhone: "Telefon (z.B. +49 123 456789)", phInsta: "Instagram (z.B. @gymsingen)",
+                phTitle: "Firmenname", phPhone: "Telefonnummer", phInsta: "Instagram-Profil",
                 optL1: "Seite auf: Balkan (HR/BS/SR)", optL2: "Seite auf: Deutsch", optL3: "Seite auf: Englisch", optL4: "Seite auf: Spanisch", optL5: "Seite auf: Italienisch",
                 optS1: "Stil: Modern (Minimalismus)", optS2: "Stil: Professionell (Lux)", optS3: "Stil: Funky (Neon Cyberpunk)",
                 fTag: "Ihr Partner für die digitale Revolution.",
                 // Template translations
                 t_home: "Startseite", t_offer: "Angebote", t_gallery: "Galerie", t_reviews: "Bewertungen", t_contact: "Kontakt",
-                t_hours: "Arbeitszeit:", t_location: "Hauptsitz:", t_footerText: "Unterstützt durch den Ai Bussines Generator",
+                t_phoneLabel: "Telefon:", t_location: "Hauptsitz:", t_footerText: "Unterstützt durch den Ai Bussines Generator",
                 t_faqTitle: "Häufig gestellte Fragen", t_q1: "Wie kann ich Sie kontaktieren?", t_a1: "Sie können uns direkt an unserem Standort besuchen oder uns anrufen.",
                 t_q2: "Wie sind die Lieferzeiten?", t_a2: "Wir führen alle Aufträge so schnell wie möglich aus.",
                 t_reviewName: "Zufriedener Kunde", t_reviewText: "Exzellenter Service, sehr professionell!",
@@ -654,14 +656,18 @@
                 t_d_food: "Genießen Sie authentische Pizzas aus dem echten Steinofen, saftige hausgemachte Burger oder erstklassige Grillgerichte, die von unseren Küchenmeistern kreiert wurden.",
                 t_b_gym: "Aktivieren Sie Ihr volles Potenzial und transformieren Sie Ihren Körper!",
                 t_d_gym: "Hervorragend ausgestatteter Raum mit modernsten Trainingsgeräten. Unsere zertifizierten Trainer unterstützen Sie maximal auf dem Weg zu Ihrem Ziel.",
+                t_b_bakery: "Der Duft von frischem Brot und Gebäck jeden Morgen!",
+                t_d_bakery: "Wir bieten Ihnen warmes, handgemachtes Gebäck, Sauerteigbrot und leckere Kuchen nach traditionellem Rezept.",
                 t_download: "HTML Herunterladen", t_premium: "Premium Buchen",
                 t_downloadAlert: "Kehren Sie zu unserer Website zurück und senden Sie eine Anfrage über das Kontaktformular!",
                 // Menu items
                 t_item1_fish: "Dorade / Goldbrasse (Kg)", t_item2_fish: "Wolfsbarsch (Kg)", t_item3_fish: "Blauflossen-Thunfisch (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Gourmet Burger",
                 t_item1_gym: "Premium Mitgliedschaft", t_item2_gym: "Personal Training", t_item3_gym: "Ernährungsplan",
+                t_item1_bakery: "Hausgemachtes Brot", t_item2_bakery: "Croissants (Mix)", t_item3_bakery: "Torte auf Bestellung",
                 t_itemDesc_food: "Mit frischen Zutaten und Leidenschaft zubereitet.",
-                t_itemDesc_gym: "Voller Hightech-Zugang."
+                t_itemDesc_gym: "Voller Hightech-Zugang.",
+                t_itemDesc_bakery: "Jeden Morgen mit Liebe gebacken."
             },
             en: {
                 navHome: "Home", navServices: "Services", navPricing: "Pricing", navContact: "Contact",
@@ -683,14 +689,13 @@
                 p4L: "<li>Complete multi-page website</li><li>Advanced AI Chatbot 24/7</li><li>Complete task automation</li><li>Premium support and maintenance</li>",
                 btnP4: "Contact Us", conTitle: "Start a Project", lName: "Your Name:", lEmail: "Your Email:", lMsg: "Your Message:",
                 phName: "Enter your name", phEmail: "Enter your email", phMsg: "How can we help you?",
-                phTitle: "Name (e.g., Fishmarket Tribunj or Gym Singen)",
-                phPhone: "Phone (e.g., +49 123 456789)", phInsta: "Instagram (e.g., @brandname)",
+                phTitle: "Company Name", phPhone: "Phone Number", phInsta: "Instagram Handle",
                 optL1: "Site in: Balkan (HR/BS/SR)", optL2: "Site in: German", optL3: "Site in: English", optL4: "Site in: Spanish", optL5: "Site in: Italian",
                 optS1: "Style: Modern (Minimalism)", optS2: "Style: Professional (Lux)", optS3: "Style: Funky (Neon Cyberpunk)",
                 fTag: "Your partner for the digital revolution.",
                 // Template translations
                 t_home: "Home", t_offer: "Offers", t_gallery: "Gallery", t_reviews: "Reviews", t_contact: "Contact",
-                t_hours: "Business Hours:", t_location: "Headquarters:", t_footerText: "Powered by Ai Bussines generator",
+                t_phoneLabel: "Phone:", t_location: "Headquarters:", t_footerText: "Powered by Ai Bussines generator",
                 t_faqTitle: "Frequently Asked Questions", t_q1: "How can I contact you?", t_a1: "You can visit us directly at our location or call us during business hours.",
                 t_q2: "What are the delivery times?", t_a2: "We execute all orders as quickly as possible.",
                 t_reviewName: "Satisfied Customer", t_reviewText: "Excellent service, highly professional!",
@@ -701,14 +706,18 @@
                 t_d_food: "Enjoy authentic pizzas from a real wood-fired oven, juicy homemade burgers, or premium barbecue created by our master chefs.",
                 t_b_gym: "Activate your full potential and transform your body!",
                 t_d_gym: "Superbly equipped facility with the most modern exercise machines. Our certified trainers will provide maximum support on your journey.",
+                t_b_bakery: "The smell of fresh bread and pastries every morning!",
+                t_d_bakery: "We offer warm, handmade pastries, sourdough bread, and delicious cakes made from traditional recipes.",
                 t_download: "Download HTML", t_premium: "Go Premium",
                 t_downloadAlert: "Go back to our site and send an inquiry through the contact form!",
                 // Menu items
                 t_item1_fish: "Sea Bream (Kg)", t_item2_fish: "Sea Bass (Kg)", t_item3_fish: "Adriatic Bluefin Tuna (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Gourmet Burger",
                 t_item1_gym: "Premium Membership", t_item2_gym: "Personal Training", t_item3_gym: "Nutrition Plan",
+                t_item1_bakery: "Artisan Bread", t_item2_bakery: "Croissants (Mix)", t_item3_bakery: "Custom Cake",
                 t_itemDesc_food: "Baked with fresh ingredients and passion.",
-                t_itemDesc_gym: "Full high tech access."
+                t_itemDesc_gym: "Full high tech access.",
+                t_itemDesc_bakery: "Baked with love every morning."
             },
             es: {
                 navHome: "Inicio", navServices: "Servicios", navPricing: "Precios", navContact: "Contacto",
@@ -730,15 +739,14 @@
                 p4L: "<li>Sitio web completo de varias páginas</li><li>Chatbot de IA avanzado 24/7</li><li>Automatización completa de tareas</li><li>Soporte y mantenimiento premium</li>",
                 btnP4: "Contáctanos", conTitle: "Iniciar un Proyecto", lName: "Tu Nombre:", lEmail: "Tu Email:", lMsg: "Tu Mensaje:",
                 phName: "Introduce tu nombre", phEmail: "Introduce tu email", phMsg: "¿Cómo podemos ayudarte?",
-                phTitle: "Nombre (ej. Pescadería Tribunj o Gym Singen)",
-                phPhone: "Teléfono (ej. +49 123 456789)", phInsta: "Instagram (ej. @tu_marca)",
+                phTitle: "Nombre de la empresa", phPhone: "Número de teléfono", phInsta: "Perfil de Instagram",
                 optL1: "Sitio en: Balcánico (HR/BS/SR)", optL2: "Sitio en: Alemán", optL3: "Sitio en: Inglés", optL4: "Sitio en: Español", optL5: "Sitio en: Italiano",
                 optS1: "Estilo: Moderno (Minimalismo)", optS2: "Estilo: Profesional (Lux)", optS3: "Estilo: Funky (Neon Cyberpunk)",
                 fTag: "Tu socio para la revolución digital.",
                 // Template translations
                 t_home: "Inicio", t_offer: "Ofertas", t_gallery: "Galería", t_reviews: "Opiniones", t_contact: "Contacto",
-                t_hours: "Horario de servicio:", t_location: "Sede central:", t_footerText: "Desarrollado por Ai Bussines",
-                t_faqTitle: "Preguntas frecuentes", t_q1: "¿Cómo puedo contactar?", t_a1: "Puede visitarnos directamente en nuestra ubicación o llamarnos durante las horas de trabajo.",
+                t_phoneLabel: "Teléfono:", t_location: "Sede central:", t_footerText: "Desarrollado por Ai Bussines",
+                t_faqTitle: "Preguntas frecuentes", t_q1: "¿Cómo puedo contactar?", t_a1: "Puede visitarnos directamente en nuestra ubicación o llamarnos por teléfono.",
                 t_q2: "¿Cuáles son los plazos de entrega?", t_a2: "Ejecutamos todos los pedidos en el menor tiempo posible.",
                 t_reviewName: "Cliente Satisfecho", t_reviewText: "¡Excelente servicio, muy profesional!",
                 t_itemDesc: "Alta calidad garantizada.",
@@ -748,14 +756,18 @@
                 t_d_food: "Disfrute de auténticas pizzas de horno de leña, hamburguesas caseras jugosas o parrilladas premium creadas por nuestros maestros chefs.",
                 t_b_gym: "¡Activa todo tu potencial y transforma tu cuerpo!",
                 t_d_gym: "Espacio excelentemente equipado con máquinas de última generación. Nuestros entrenadores certificados te darán el máximo apoyo.",
+                t_b_bakery: "¡El olor a pan fresco y pasteles cada mañana!",
+                t_d_bakery: "Ofrecemos pasteles calientes y hechos a mano, pan de masa madre y deliciosos pasteles con recetas tradicionales.",
                 t_download: "Descargar HTML", t_premium: "Ir a Premium",
                 t_downloadAlert: "¡Vuelva a nuestro sitio y envíe una consulta a través del formulario de contacto!",
                 // Menu items
-                t_item1_fish: "Dorada (Kg)", t_item2_fish: "Lubina (Kg)", t_item3_fish: "Atún Rojo del Adriático (Kg)",
+                t_item1_fish: "Dorada (Kg)", t_item2_fish: "Lubina (Kg)", t_item3_fish: "Atún Rojo (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Hamburguesa Gourmet",
                 t_item1_gym: "Membresía Premium", t_item2_gym: "Entrenamiento Personal", t_item3_gym: "Plan Nutricional",
+                t_item1_bakery: "Pan Artesanal", t_item2_bakery: "Croissants (Mix)", t_item3_bakery: "Pastel Personalizado",
                 t_itemDesc_food: "Preparado con ingredientes frescos y pasión.",
-                t_itemDesc_gym: "Acceso total a alta tecnología."
+                t_itemDesc_gym: "Acceso total a alta tecnología.",
+                t_itemDesc_bakery: "Horneado con amor cada mañana."
             },
             it: {
                 navHome: "Home", navServices: "Servizi", navPricing: "Prezzi", navContact: "Contatto",
@@ -777,14 +789,13 @@
                 p4L: "<li>Sito web completo multi-pagina</li><li>Chatbot IA avanzato 24/7</li><li>Automazione completa delle attività</li><li>Supporto e manutenzione premium</li>",
                 btnP4: "Contattaci", conTitle: "Avvia un Progetto", lName: "Il Tuo Nome:", lEmail: "La Tua Email:", lMsg: "Il Tuo Messaggio:",
                 phName: "Inserisci il tuo nome", phEmail: "Inserisci la tua email", phMsg: "Come possiamo aiutarti?",
-                phTitle: "Nome (es. Pescheria Tribunj o Gym Singen)",
-                phPhone: "Telefono (es. +49 123 456789)", phInsta: "Instagram (es. @nomebrand)",
+                phTitle: "Nome azienda", phPhone: "Numero di telefono", phInsta: "Profilo Instagram",
                 optL1: "Sito in: Balcanico (HR/BS/SR)", optL2: "Sito in: Tedesco", optL3: "Sito in: Inglese", optL4: "Sito in: Spagnolo", optL5: "Sito in: Italiano",
                 optS1: "Stile: Moderno (Minimalismo)", optS2: "Stile: Professionale (Lux)", optS3: "Stile: Funky (Neon Cyberpunk)",
                 fTag: "Il tuo partner per la rivoluzione digitale.",
                 // Template translations
                 t_home: "Home", t_offer: "Offerte", t_gallery: "Galleria", t_reviews: "Recensioni", t_contact: "Contatti",
-                t_hours: "Orario di lavoro:", t_location: "Sede principale:", t_footerText: "Alimentato da Ai Bussines",
+                t_phoneLabel: "Telefono:", t_location: "Sede principale:", t_footerText: "Alimentato da Ai Bussines",
                 t_faqTitle: "Domande frequenti", t_q1: "Come posso contattarvi?", t_a1: "Puoi visitarci direttamente nella nostra sede o chiamarci al telefono durante l'orario di lavoro.",
                 t_q2: "Tempi di consegna?", t_a2: "Eseguiamo tutti gli ordini nel minor tempo possibile.",
                 t_reviewName: "Cliente Soddisfatto", t_reviewText: "Servizio eccellente, altamente professionale!",
@@ -795,14 +806,18 @@
                 t_d_food: "Gusta autentiche pizze dal vero forno a legna, succosi hamburger fatti in casa o grigliate premium create dai nostri maestri chef.",
                 t_b_gym: "Attiva il tuo potenziale e trasforma il tuo corpo!",
                 t_d_gym: "Spazio ottimamente attrezzato con macchinari all'avanguardia. I nostri allenatori certificati ti daranno il massimo supporto.",
+                t_b_bakery: "Il profumo del pane fresco e dei dolci ogni mattina!",
+                t_d_bakery: "Offriamo pasticceria calda e fatta a mano, pane a lievitazione naturale e deliziose torte secondo le ricette tradizionali.",
                 t_download: "Scarica HTML", t_premium: "Vai Premium",
                 t_downloadAlert: "Torna al nostro sito e invia una richiesta tramite il modulo di contatto!",
                 // Menu items
-                t_item1_fish: "Orata (Kg)", t_item2_fish: "Branzino (Kg)", t_item3_fish: "Tonno Rosso Adriatico (Kg)",
+                t_item1_fish: "Orata (Kg)", t_item2_fish: "Branzino (Kg)", t_item3_fish: "Tonno Rosso (Kg)",
                 t_item1_food: "Pizza Capricciosa", t_item2_food: "Pizza Margherita", t_item3_food: "Hamburger Gourmet",
                 t_item1_gym: "Abbonamento Premium", t_item2_gym: "Allenamento Personale", t_item3_gym: "Piano Nutrizionale",
+                t_item1_bakery: "Pane Artigianale", t_item2_bakery: "Croissant (Mix)", t_item3_bakery: "Torta su Ordinazione",
                 t_itemDesc_food: "Preparato con ingredienti freschi e passione.",
-                t_itemDesc_gym: "Accesso completo all'alta tecnologia."
+                t_itemDesc_gym: "Accesso completo all'alta tecnologia.",
+                t_itemDesc_bakery: "Sfornato con amore ogni mattina."
             }
         };
 
@@ -885,7 +900,7 @@
 
         // --- GENERATE CLIENT'S LIVE SITE ---
         function openLiveSite() {
-            var name = document.getElementById('temp-name').value || "Gourmet Company";
+            var name = document.getElementById('temp-name').value || "Premium Business";
             var phone = document.getElementById('temp-phone').value || "+49 123 456789";
             var instaUser = document.getElementById('temp-insta').value || "@brandname";
             
@@ -898,7 +913,6 @@
             var includeSocial = document.getElementById('chk-social').checked;
             var includeFaq = document.getElementById('chk-faq').checked;
 
-            // Use the siteDictionary for template translations to ensure language consistency
             var T = siteDictionary[language];
 
             var words = name.split(' ');
@@ -921,17 +935,18 @@
             }
 
             var loweredName = name.toLowerCase();
-            // Default values using translations
+            
+            // Default General setup
             var subtitle = "Premium Quality";
-            var industryDesc = T.t_itemDesc;
-            var bgImage = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"; 
+            var industryDesc = "Professional services customized for you.";
+            var bgImage = "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"; 
             var industryIcon = "fa-briefcase";
             var item1 = "Premium Service A", item2 = "Premium Service B", item3 = "Premium Service C", 
                 price1 = "20€", price2 = "40€", price3 = "60€", itemDesc = T.t_itemDesc;
             var galleryImages = ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500", "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=500", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=500"];
             var reviewName = T.t_reviewName, reviewText = T.t_reviewText;
 
-            // Industry detection with translated strings
+            // Industry Specific Overrides
             if (loweredName.includes("fish") || loweredName.includes("seafood") || loweredName.includes("tuna") || 
                 loweredName.includes("riba") || loweredName.includes("ribarnica") || loweredName.includes("pescadería") || 
                 loweredName.includes("pescheria") || loweredName.includes("fisch")) {
@@ -944,7 +959,8 @@
                 item3 = T.t_item3_fish; price3 = "22.00€";
                 itemDesc = T.t_itemDesc;
                 galleryImages = ["https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=500", "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=500", "https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500"];
-            } else if (loweredName.includes("pizza") || loweredName.includes("restaurant") || loweredName.includes("burger") || 
+            } 
+            else if (loweredName.includes("pizza") || loweredName.includes("restaurant") || loweredName.includes("burger") || 
                        loweredName.includes("food") || loweredName.includes("pizzerija") || loweredName.includes("picerija") || 
                        loweredName.includes("hrana") || loweredName.includes("ristorante")) {
                 subtitle = T.t_b_food;
@@ -956,7 +972,8 @@
                 item3 = T.t_item3_food; price3 = "9.50€";
                 itemDesc = T.t_itemDesc_food;
                 galleryImages = ["https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500", "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500"];
-            } else if (loweredName.includes("gym") || loweredName.includes("fitness") || loweredName.includes("training") || 
+            } 
+            else if (loweredName.includes("gym") || loweredName.includes("fitness") || loweredName.includes("training") || 
                        loweredName.includes("teretana") || loweredName.includes("fitnes") || loweredName.includes("trening") ||
                        loweredName.includes("palestra")) {
                 subtitle = T.t_b_gym;
@@ -968,6 +985,19 @@
                 item3 = T.t_item3_gym; price3 = "30.00€";
                 itemDesc = T.t_itemDesc_gym;
                 galleryImages = ["https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=500", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=500", "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500"];
+            }
+            // --- NEW BAKERY LOGIC ---
+            else if (loweredName.includes("bäckerei") || loweredName.includes("bakery") || loweredName.includes("pekara") || 
+                       loweredName.includes("panaderia") || loweredName.includes("panetteria") || loweredName.includes("pastry")) {
+                subtitle = T.t_b_bakery;
+                industryDesc = T.t_d_bakery;
+                bgImage = "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200";
+                industryIcon = "fa-bread-slice";
+                item1 = T.t_item1_bakery; price1 = "3.50€";
+                item2 = T.t_item2_bakery; price2 = "4.00€";
+                item3 = T.t_item3_bakery; price3 = "25.00€";
+                itemDesc = T.t_itemDesc_bakery;
+                galleryImages = ["https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500", "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500", "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=500"];
             }
 
             var navLinks = `<li><a href="#home"><i class="fa-solid fa-house"></i> ${T.t_home}</a></li>`;
@@ -1049,7 +1079,7 @@
         <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> ${T.t_contact}</h2>
         <div class="info-card">
             <p style="margin-bottom: 1.2rem; font-size: 1.15rem;"><i class="fa-solid fa-location-crosshairs" style="color: var(--p-color); margin-right: 0.5rem;"></i> <strong>${T.t_location}</strong> ${location}</p>
-            <p style="font-size: 1.15rem;"><i class="fa-solid fa-phone" style="color: #22c55e; margin-right: 0.5rem;"></i> <strong>${T.t_hours}</strong> <a href="tel:${phone}" style="color:inherit; text-decoration:none; font-weight:bold;">${phone}</a></p>
+            <p style="font-size: 1.15rem;"><i class="fa-solid fa-phone" style="color: #22c55e; margin-right: 0.5rem;"></i> <strong>${T.t_phoneLabel}</strong> <a href="tel:${phone}" style="color:inherit; text-decoration:none; font-weight:bold;">${phone}</a></p>
         </div>
     </section>
 
