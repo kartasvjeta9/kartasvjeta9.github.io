@@ -280,7 +280,7 @@
         .template-inputs {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.8rem;
             margin-bottom: 1rem;
             text-align: left;
         }
@@ -434,7 +434,7 @@
             <div class="service-card">
                 <i class="fa-solid fa-laptop-code"></i>
                 <h3 id="card1-title">Premium Web Dizajn</h3>
-                <p id="card1-desc">Razvijamo moderne, responzivne i unikatne stranice opremljene najnaprednijim kodom i brzim učitavanjem.</p>
+                <p id="card1-desc">Razvijamo moderne, responzivnih i unikatne stranice opremljene najnaprednijim kodom i brzim učitavanjem.</p>
             </div>
 
             <div class="service-card">
@@ -465,10 +465,11 @@
                     
                     <div class="template-inputs">
                         <input type="text" id="temp-naziv" placeholder="Naziv (npr. Ribarnica Tribunj ili Gym Singen)">
-                        <input type="text" id="temp-vrijeme" placeholder="Radno vrijeme (npr. Pon-Pet 09-15H)">
+                        <input type="text" id="temp-telefon" placeholder="Telefon (npr. +49 123 456789)">
+                        <input type="text" id="temp-insta" placeholder="Instagram (npr. @pizzerianapoli)">
                         
                         <select id="temp-jezik">
-                            <option value="hr">Sajt na: Hrvatski / Bosanski</option>
+                            <option value="hr">Sajt na: Balkan (HR/BS/SR)</option>
                             <option value="de">Sajt na: Njemački (Deutsch)</option>
                             <option value="en">Sajt na: Engleski (English)</option>
                             <option value="es">Sajt na: Španski (Español)</option>
@@ -567,7 +568,7 @@
     </footer>
 
     <script>
-        // --- 1. RJEČNIK ZA PREVOD NAŠE POČETNE STRANICE (5 JEZIKA) ---
+        // Rječnik prevoda naše početne stranice
         var rjecnikSajta = {
             hr: {
                 navHome: "Početna", navServices: "Usluge", navPricing: "Cjenovnik", navContact: "Kontakt",
@@ -579,8 +580,8 @@
                 c2T: "Python Automatizacija", c2D: "Kreiramo pozadinske botove koji presreću upite, automatski komuniciraju i rješavaju zadatke umjesto vas.",
                 c3T: "AI Integracije 24/7", c3D: "Ugrađujemo napredne sisteme prepoznavanja potreba klijenata i pametne asistente na vaše online platforme.",
                 pTitle: "Izaberite Vaš Paket", pSubtitle: "Isprobajte naš inteligentni generator besplatno ili pređite na profesionalni nivo.",
-                p1T: "Free Template", p1P: "0€<span> / instant</span>", lblElements: "Struktura i elementi:",
-                lblM1: "Meni / Cjenovnik", lblM2: "Galerija HD fotografija", lblM3: "Recenzije klijenata", lblM4: "Društvene mreže", lblM5: "FAQ Harmonika",
+                p1T: "Kostenlose Vorlage", p1P: "0€<span> / instant</span>", lblElements: "Struktura i elementi:",
+                lblM1: "Meni / Ekskluzivni Cjenovnik", lblM2: "Galerija HD Fotografija", lblM3: "Recenzije Klijenata", lblM4: "Dugmad za Društvene Mreže", lblM5: "FAQ (Česta pitanja) harmonika",
                 btnGen: "Generiši Sajt Uživo 🚀", p2T: "Starter Web", p2P: "150€<span> / fiksno</span>",
                 p2L: "<li>Moderna Landing stranica</li><li>Prilagođeno mobilnim uređajima</li><li>Osnovna kontakt forma</li><li>Lansiranje na internet (Hosting)</li>",
                 btnP2: "Izaberi Paket", p3T: "Smart Automation", p3P: "400€<span> / fiksno</span>",
@@ -589,7 +590,8 @@
                 p4L: "<li>Kompletna višestranačna stranica</li><li>Napredni AI Chatbot 24/7</li><li>Kompletna automatizacija taskova</li><li>Premium podrška i održavanje</li>",
                 btnP4: "Kontaktiraj Nas", conTitle: "Započnimo Projekat", lName: "Vaše Ime:", lEmail: "Vaš Email:", lMsg: "Vaša Poruka:",
                 btnSend: "Pošalji Upit", fTag: "Vaš partner za digitalnu revoluciju.",
-                phName: "Unesite vaše ime", phEmail: "Unesite vaš email", phMsg: "Kako vam možemo pomoći?"
+                phName: "Unesite vaše ime", phEmail: "Unesite vaš email", phMsg: "Kako vam možemo pomoći?",
+                phPhone: "Telefon (npr. +49 123 456789)", phInsta: "Instagram (npr. @pizzerianapoli)"
             },
             de: {
                 navHome: "Startseite", navServices: "Leistungen", navPricing: "Preise", navContact: "Kontakt",
@@ -611,7 +613,8 @@
                 p4L: "<li>Komplette mehrseitige Website</li><li>Fortschrittlicher KI-Chatbot 24/7</li><li>Komplette Aufgaben-Automatisierung</li><li>Premium-Support und Wartung</li>",
                 btnP4: "Kontaktieren Sie uns", conTitle: "Projekt Starten", lName: "Ihr Name:", lEmail: "Ihre E-Mail:", lMsg: "Ihre Nachricht:",
                 btnSend: "Anfrage Senden", fTag: "Ihr Partner für die digitale Revolution.",
-                phName: "Geben Sie Ihren Namen ein", phEmail: "Geben Sie Ihre E-Mail ein", phMsg: "Wie können wir Ihnen helfen?"
+                phName: "Name eingeben", phEmail: "E-Mail eingeben", phMsg: "Wie können wir helfen?",
+                phPhone: "Telefon (z.B. +49 123 456789)", phInsta: "Instagram (z.B. @gymsingen)"
             },
             en: {
                 navHome: "Home", navServices: "Services", navPricing: "Pricing", navContact: "Contact",
@@ -633,7 +636,8 @@
                 p4L: "<li>Complete multi-page website</li><li>Advanced AI Chatbot 24/7</li><li>Complete task automation</li><li>Premium support and maintenance</li>",
                 btnP4: "Contact Us", conTitle: "Start a Project", lName: "Your Name:", lEmail: "Your Email:", lMsg: "Your Message:",
                 btnSend: "Send Inquiry", fTag: "Your partner for the digital revolution.",
-                phName: "Enter your name", phEmail: "Enter your email", phMsg: "How can we help you?"
+                phName: "Enter your name", phEmail: "Enter your email", phMsg: "How can we help you?",
+                phPhone: "Phone (e.g., +49 123 456789)", phInsta: "Instagram (e.g., @brandname)"
             },
             es: {
                 navHome: "Inicio", navServices: "Servicios", navPricing: "Precios", navContact: "Contacto",
@@ -655,7 +659,8 @@
                 p4L: "<li>Sitio web completo de varias páginas</li><li>Chatbot de IA avanzado 24/7</li><li>Automatización completa de tareas</li><li>Soporte y mantenimiento premium</li>",
                 btnP4: "Contáctanos", conTitle: "Iniciar un Proyecto", lName: "Tu Nombre:", lEmail: "Tu Email:", lMsg: "Tu Mensaje:",
                 btnSend: "Enviar Consulta", fTag: "Tu socio para la revolución digital.",
-                phName: "Introduce tu nombre", phEmail: "Introduce tu email", phMsg: "¿Cómo podemos ayudarte?"
+                phName: "Introduce tu nombre", phEmail: "Introduce tu email", phMsg: "¿Cómo podemos ayudarte?",
+                phPhone: "Teléfono (ej. +49 123 456789)", phInsta: "Instagram (ej. @tu_marca)"
             },
             it: {
                 navHome: "Home", navServices: "Servizi", navPricing: "Prezzi", navContact: "Contatto",
@@ -677,27 +682,25 @@
                 p4L: "<li>Sito web completo multi-pagina</li><li>Chatbot IA avanzato 24/7</li><li>Automazione completa delle attività</li><li>Supporto e manutenzione premium</li>",
                 btnP4: "Contattaci", conTitle: "Avvia un Progetto", lName: "Il Tuo Nome:", lEmail: "La Tua Email:", lMsg: "Il Tuo Messaggio:",
                 btnSend: "Invia Richiesta", fTag: "Il tuo partner per la rivoluzione digitale.",
-                phName: "Inserisci il tuo nome", phEmail: "Inserisci la tua email", phMsg: "Come possiamo aiutarti?"
+                phName: "Inserisci il tuo nome", phEmail: "Inserisci la tua email", phMsg: "Come possiamo aiutarti?",
+                phPhone: "Telefono (es. +49 123 456789)", phInsta: "Instagram (es. @nomebrand)"
             }
         };
 
-        // FUNKCIJA KOJA INSTANT PREVODI NAŠ SAJT NA KLIK SELEKTORA
+        // Funkcija koja prevodi naš sajt na klik selektora i popravlja preostale tekstove kod free template-a
         function promijeniJezikSajta() {
             var odabraniJezik = document.getElementById("main-lang-select").value;
             var ML = rjecnikSajta[odabraniJezik];
 
-            // Prijevod navigacije
             document.getElementById("nav-home").innerText = ML.navHome;
             document.getElementById("nav-services").innerText = ML.navServices;
             document.getElementById("nav-pricing").innerText = ML.navPricing;
             document.getElementById("nav-contact").innerHTML = ML.navContact;
 
-            // Prijevod hero sekcije
             document.getElementById("hero-title").innerHTML = ML.heroTitle;
             document.getElementById("hero-desc").innerText = ML.heroDesc;
             document.getElementById("hero-btn").innerHTML = ML.heroBtn;
 
-            // Prijevod usluga
             document.getElementById("services-title").innerText = ML.sTitle;
             document.getElementById("services-subtitle").innerText = ML.sSubtitle;
             document.getElementById("card1-title").innerText = ML.c1T;
@@ -707,7 +710,6 @@
             document.getElementById("card3-title").innerText = ML.c3T;
             document.getElementById("card3-desc").innerText = ML.c3D;
 
-            // Prijevod cjenovnika i bildera
             document.getElementById("pricing-title").innerText = ML.pTitle;
             document.getElementById("pricing-subtitle").innerText = ML.pSubtitle;
             document.getElementById("p1-title").innerText = ML.p1T;
@@ -720,7 +722,10 @@
             document.getElementById("lbl-m5").innerText = ML.lblM5;
             document.getElementById("btn-generate").innerText = ML.btnGen;
 
-            // Prijevod paketa
+            // POPRAVLJENO: Dinamički prevod placeholder-a za nove ulaze u free template-u
+            document.getElementById("temp-telefon").placeholder = ML.phPhone;
+            document.getElementById("temp-insta").placeholder = ML.phInsta;
+
             document.getElementById("p2-title").innerText = ML.p2T;
             document.getElementById("p2-price").innerHTML = ML.p2P;
             document.getElementById("p2-list").innerHTML = ML.p2L;
@@ -736,7 +741,6 @@
             document.getElementById("p4-list").innerHTML = ML.p4L;
             document.getElementById("btn-p4").innerText = ML.btnP4;
 
-            // Prijevod forme
             document.getElementById("contact-title").innerText = ML.conTitle;
             document.getElementById("lbl-name").innerText = ML.lName;
             document.getElementById("lbl-email").innerText = ML.lEmail;
@@ -749,14 +753,16 @@
 
             document.getElementById("footer-tag").innerText = ML.fTag;
 
-            // Automatski sinhronizuj i postavi jezik i unutar samog Sajt Bildera!
             document.getElementById("temp-jezik").value = odabraniJezik;
         }
 
-        // --- 2. BILDER ZA GENERISANJE KLIJENTOVOG SAJTA ---
+        // --- BILDER ZA GENERISANJE KLIJENTOVOG SAJTA ---
         function otvoriSajtUzivo() {
-            var naziv = document.getElementById('temp-naziv').value || "Naš Novi Biznis";
-            var vrijeme = document.getElementById('temp-vrijeme').value || "Pon-Pet 09-17H";
+            var naziv = document.getElementById('temp-naziv').value || "Gourmet Company";
+            // Prikupljanje novih personalizovanih inputa
+            var telefon = document.getElementById('temp-telefon').value || "+49 123 456789";
+            var instaKorisnik = document.getElementById('temp-insta').value || "@brandname";
+            
             var stil = document.getElementById('temp-stil').value;
             var jezik = document.getElementById('temp-jezik').value;
 
@@ -770,7 +776,7 @@
             var prvaRijec = rijeci[0];
             var ostatakNaziva = rijeci.slice(1).join(' ');
             
-            var lokacija = "Naša Lokacija";
+            var lokacija = "Europe";
             for (var i = 0; i < rijeci.length; i++) {
                 var r = rijeci[i].toLowerCase();
                 if ((r === "u" || r === "iz" || r === "na" || r === "in") && i + 1 < rijeci.length) {
@@ -778,20 +784,60 @@
                     break;
                 }
             }
-            if (lokacija === "Naša Lokacija" && rijeci.length > 1) {
+            if (lokacija === "Europe" && rijeci.length > 1) {
                 var zadnjaRijec = rijeci[rijeci.length - 1];
                 if (zadnjaRijec[0] === zadnjaRijec[0].toUpperCase()) {
                     lokacija = zadnjaRijec;
                 }
             }
 
-            // Rječnik prevoda unutar generisanog klijentovog šablona (Dodati i ES i IT)
+            // POPRAVLJENO: Puni i detaljni rječnik za sve unutrašnje opise na 5 jezika
             var prevodiKlijent = {
-                hr: { home: "Početna", offer: "Ponuda", gallery: "Galerija", reviews: "Utisci", contact: "Kontakt", welcome: "Dobrodošli na našu zvaničnu prezentaciju. Nudimo vam vrhunske proizvode i usluge.", hours: "Otvoreni smo:", location: "Glavno sjedište:", footerText: "Pokreće profesionalni Ai Bussines generator", faqTitle: "Često postavljana pitanja", q1: "Kako vas mogu kontaktirati?", a1: "Možete nas posjetiti direktno na našoj lokaciji ili nas pozvati telefonom tokom radnog vremena.", q2: "Koji su rokovi isporuke?", a2: "Sve narudžbe i usluge izvršavamo u najkraćem mogućem roku." },
-                de: { home: "Startseite", offer: "Angebote", gallery: "Galerie", reviews: "Bewertungen", contact: "Kontakt", welcome: "Willkommen auf unserer offiziellen Präsentation. Wir bieten Ihnen erstklassige Dienstleistungen.", hours: "Öffnungszeiten:", location: "Hauptsitz:", footerText: "Unterstützt durch den Ai Bussines Generator", faqTitle: "Häufig gestellte Fragen", q1: "Wie kann ich Sie kontaktieren?", a1: "Sie können uns direkt an unserem Standort besuchen oder uns anrufen.", q2: "Wie sind die Lieferzeiten?", a2: "Wir führen alle Aufträge so schnell wie möglich aus." },
-                en: { home: "Home", offer: "Offers", gallery: "Gallery", reviews: "Reviews", contact: "Contact", welcome: "Welcome to our official presentation. We offer you top-quality products and services.", hours: "Opening Hours:", location: "Headquarters:", footerText: "Powered by Ai Bussines generator", faqTitle: "Frequently Asked Questions", q1: "How can I contact you?", a1: "You can visit us directly at our location or call us during business hours.", q2: "What are the delivery times?", a2: "We execute all orders as quickly as possible." },
-                es: { home: "Inicio", offer: "Ofertas", gallery: "Galería", reviews: "Opiniones", contact: "Contacto", welcome: "Bienvenido a nuestra presentación oficial. Ofrecemos productos y servicios de alta calidad.", hours: "Horario de apertura:", location: "Sede central:", footerText: "Desarrollato por Ai Bussines", faqTitle: "Preguntas frecuentes", q1: "¿Cómo puedo contactar?", a1: "Puede visitarnos directamente en nuestra ubicación o llamarnos por teléfono.", q2: "¿Plazos de entrega?", a2: "Ejecutamos todos los pedidos a la mayor brevedad posible." },
-                it: { home: "Home", offer: "Offerte", gallery: "Galleria", reviews: "Recensioni", contact: "Contatti", welcome: "Benvenuto nella nostra presentazione ufficiale. Offriamo prodotti e servizi di alta qualità.", hours: "Orario di apertura:", location: "Sede principale:", footerText: "Alimentato da Ai Bussines", faqTitle: "Domande frequenti", q1: "Come posso contattarvi?", a1: "Puoi visitarci direttamente nella nostra sede o chiamarci al telefono.", q2: "Tempi di consegna?", a2: "Eseguiamo tutti gli ordini nel minor tempo possibile." }
+                hr: { 
+                    home: "Početna", offer: "Ponuda", gallery: "Galerija", reviews: "Utisci", contact: "Kontakt", 
+                    welcome: "Dobrodošli na našu zvaničnu prezentaciju. Nudimo vam vrhunske proizvode i usluge.", 
+                    hours: "Radno vrijeme:", location: "Glavno sjedište:", footerText: "Pokreće profesionalni Ai Bussines generator", 
+                    faqTitle: "Često postavljana pitanja", q1: "Kako vas mogu kontaktirati?", a1: "Možete nas posjetiti direktno na našoj lokaciji ili nas pozvati telefonom tokom radnog vremena.", q2: "Koji su rokovi isporuke?", a2: "Sve narudžbe i usluge izvršavamo u najkraćem mogućem roku.",
+                    b_fish: "Najsvježiji plodovi mora direktno iz plavih jadranskih dubina!", d_fish: "Svakodnevno nudimo divlju, svježe ulovljenu jadransku ribu, škampe i školjke. Naša flota garantuje vrhunsku svježinu na vašoj trpezi.",
+                    b_food: "Tradicionalni recepti i vrhunski gastronomski užitak za pamćenje!", d_food: "Uživajte u autentičnim pizzama iz prave krušne peći, sočnim domaćim burgerima ili vrhunskom roštilju kreiranom od strane naših kulinarskih majstora.",
+                    b_gym: "Aktivirajte puni potencijal i transformišite svoje tijelo!", d_gym: "Vrhunski opremljen prostor sa najmodernijim spravama za vježbanje. Naši sertifikovani treneri pružiće vam maksimalnu podršku na putu do cilja."
+                },
+                de: { 
+                    home: "Startseite", offer: "Angebote", gallery: "Galerie", reviews: "Bewertungen", contact: "Kontakt", 
+                    welcome: "Willkommen auf unserer offiziellen Präsentation. Wir bieten Ihnen erstklassige Dienstleistungen.", 
+                    hours: "Arbeitszeit:", location: "Hauptsitz:", footerText: "Unterstützt durch den Ai Bussines Generator", 
+                    faqTitle: "Häufig gestellte Fragen", q1: "Wie kann ich Sie kontaktieren?", a1: "Sie können uns direkt an unserem Standort besuchen oder uns anrufen.", q2: "Wie sind die Lieferzeiten?", a2: "Wir führen alle Aufträge so schnell wie möglich aus.",
+                    b_fish: "Frische Meeresfrüchte direkt aus den blauen Tiefen der Adria!", d_fish: "Täglich bieten wir wilden, frisch gefangenen Fisch aus der Adria, Garnelen und Muscheln. Unsere Flotte garantiert höchste Frische auf Ihrem Tisch.",
+                    b_food: "Traditionelle Rezepte und unvergesslicher kulinarischer Genuss!", d_food: "Genießen Sie authentische Pizzas aus dem echten Steinofen, saftige hausgemachte Burger oder erstklassige Grillgerichte, die von unseren Küchenmeistern kreiert wurden.",
+                    b_gym: "Aktivieren Sie Ihr volles Potenzial und transformieren Sie Ihren Körper!", d_gym: "Hervorragend ausgestatteter Raum mit modernsten Trainingsgeräten. Unsere zertifizierten Trainer unterstützen Sie maximal auf dem Weg zu Ihrem Ziel."
+                },
+                en: { 
+                    home: "Home", offer: "Offers", gallery: "Gallery", reviews: "Reviews", contact: "Contact", 
+                    welcome: "Welcome to our official presentation. We offer you top-quality products and services.", 
+                    hours: "Business Hours:", location: "Headquarters:", footerText: "Powered by Ai Bussines generator", 
+                    faqTitle: "Frequently Asked Questions", q1: "How can I contact you?", a1: "You can visit us directly at our location or call us during business hours.", q2: "What are the delivery times?", a2: "We execute all orders as quickly as possible.",
+                    b_fish: "Fresh seafood directly from the blue Adriatic depths!", d_fish: "Daily offering wild, freshly caught Adriatic fish, shrimp, and shellfish. Our fleet guarantees supreme freshness on your table.",
+                    b_food: "Traditional recipes and ultimate gourmet experience to remember!", d_food: "Enjoy authentic pizzas from a real wood-fired oven, juicy homemade burgers, or premium barbecue created by our master chefs.",
+                    b_gym: "Activate your full potential and transform your body!", d_gym: "Superbly equipped facility with the most modern exercise machines. Our certified trainers will provide maximum support on your journey."
+                },
+                es: { 
+                    home: "Inicio", offer: "Ofertas", gallery: "Galería", reviews: "Opiniones", contact: "Contacto", 
+                    welcome: "Bienvenido a nuestra presentación oficial. Ofrecemos productos y servicios de alta calidad.", 
+                    hours: "Horario de atención:", location: "Sede central:", footerText: "Desarrollato por Ai Bussines", 
+                    faqTitle: "Preguntas frecuentes", q1: "¿Cómo puedo contactar?", a1: "Puede visitarnos directamente en nuestra ubicación o llamarnos por teléfono.", q2: "¿Plazos de entrega?", a2: "Ejecutamos todos los pedidos a la mayor brevedad posible.",
+                    b_fish: "¡Mariscos frescos directamente de las profundidades del Adriático!", d_fish: "Ofrecemos diariamente pescado salvaje del Adriático recién capturado, camarones y mariscos. Nuestra flota garantiza la máxima frescura.",
+                    b_food: "¡Recetas tradicionales y una experiencia culinaria inolvidable!", d_food: "Disfrute de auténticas pizzas de horno de leña, hamburguesas caseras jugosas o parrilladas premium creadas por nuestros maestros chefs.",
+                    b_gym: "¡Activa todo tu potencial y transforma tu cuerpo!", d_gym: "Espacio excelentemente equipado con máquinas de ejercicio de última generación. Nuestros entrenadores certificados te darán el máximo apoyo."
+                },
+                it: { 
+                    home: "Home", offer: "Offerte", gallery: "Galleria", reviews: "Recensioni", contact: "Contatti", 
+                    welcome: "Benvenuto nella nostra presentazione ufficiale. Offriamo prodotti e servizi di alta qualità.", 
+                    hours: "Orario di lavoro:", location: "Sede principale:", footerText: "Alimentato da Ai Bussines", 
+                    faqTitle: "Domande frequenti", q1: "Come posso contattarvi?", a1: "Puoi visitarci direttamente nella nostra sede o chiamarci al telefono.", q2: "Tempi di consegna?", a2: "Eseguiamo tutti gli ordini nel minor tempo possibile.",
+                    b_fish: "Pesce fresco direttamente dalle profondità dell'Adriatico!", d_fish: "Offriamo ogni giorno pesce selvaggio dell'Adriatico appena pescato, gamberi e frutti di mare. La nostra flotta garantisce la massima freschezza.",
+                    b_food: "Ricette tradizionali e un'esperienza culinaria indimenticable!", d_food: "Gusta autentiche pizze dal vero forno a legna, succosi hamburger fatti in casa o grigliate premium create dai nostri maestri chef.",
+                    b_gym: "Attiva il tuo potenziale e trasforma il tuo corpo!", d_gym: "Spazio ottimamente attrezzato con macchinari all'avanguardia. I nostri allenatori certificati ti daranno il massimo supporto."
+                }
             };
 
             var L = prevodiKlijent[jezik];
@@ -800,53 +846,56 @@
             var opisBranse = L.welcome;
             var slikaPozadina = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"; 
             var ikonicaBranse = "fa-briefcase";
-            var stavka1 = "Service A", stavka2 = "Service B", stavka3 = "Service C", cijena1 = "20€", cijena2 = "40€", cijena3 = "60€", opisStavke = "High quality guaranteed.";
+            var stavka1 = "Premium Service A", stavka2 = "Premium Service B", stavka3 = "Premium Service C", cijena1 = "20€", cijena2 = "40€", cijena3 = "60€", opisStavke = "High quality guaranteed.";
             var galerijaSlike = ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500", "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=500", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=500"];
             var recenzijaIme = "Customer", recenzijaTekst = "Excellent service, highly professional!";
 
-            // Filteri branši
+            // POPRAVLJENO: Potpuni prevod za sve ugrađene industrijske filtere
             if (uvecaniNaziv.includes("riba") || uvecaniNaziv.includes("ribarnica") || uvecaniNaziv.includes("fish") || uvecaniNaziv.includes("tuna")) {
-                opisBranse = jezik==='de' ? "Frische Meeresfrüchte direkt aus der Adria!" : (jezik==='en' ? "Fresh seafood directly from the blue Adriatic!" : "Najsvježiji plodovi mora direktno iz plavih jadranskih dubina!");
+                podnaslov = L.b_fish;
+                opisBranse = L.d_fish;
                 slikaPozadina = "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?q=80&w=1200";
                 ikonicaBranse = "fa-fish";
                 stavka1 = jezik==='hr' ? "Domaća Orada (Kg)" : "Orada / Sea Bream (Kg)"; cijena1 = "15.00€";
                 stavka2 = jezik==='hr' ? "Svježi Brancin (Kg)" : "Brancin / Sea Bass (Kg)"; cijena2 = "16.00€";
                 stavka3 = jezik==='hr' ? "Plava Jadranska Tuna" : "Adriatic Bluefin Tuna (Kg)"; cijena3 = "22.00€";
-                opisStavke = "Fresh quality, caught early this morning.";
+                opisStavke = "Fresh standard quality.";
                 galerijaSlike = ["https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=500", "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=500", "https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500"];
-                recenzijaIme = "Ante K."; recenzijaTekst = "Top quality fish and ultra fast delivery. Highly recommended!";
             } else if (uvecaniNaziv.includes("pizza") || uvecaniNaziv.includes("pizzerija") || uvecaniNaziv.includes("picerija") || uvecaniNaziv.includes("restoran") || uvecaniNaziv.includes("burger") || uvecaniNaziv.includes("hrana")) {
-                opisBranse = "Traditional gourmet kitchen recipes and premium taste experience!";
+                podnaslov = L.b_food;
+                opisBranse = L.d_food;
                 slikaPozadina = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200";
                 ikonicaBranse = "fa-utensils";
                 stavka1 = "Pizza Capricciosa"; cijena1 = "8.50€";
                 stavka2 = "Pizza Margherita"; cijena2 = "7.50€";
                 stavka3 = "Gourmet Burger"; cijena3 = "9.50€";
-                opisStavke = "Baked with fresh ingredients and passion.";
+                opisStavke = "Baked over real fire.";
                 galerijaSlike = ["https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500", "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500"];
-                recenzijaIme = "Emina S."; recenzijaTekst = "The wood-fired pizza here is absolutely fantastic!";
             } else if (uvecaniNaziv.includes("teretana") || uvecaniNaziv.includes("gym") || uvecaniNaziv.includes("fitnes") || uvecaniNaziv.includes("trening")) {
-                opisBranse = "Activate your maximum potential and transform your body with us!";
+                podnaslov = L.b_gym;
+                opisBranse = L.d_gym;
                 slikaPozadina = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200";
                 ikonicaBranse = "fa-dumbbell";
                 stavka1 = "Premium Membership"; cijena1 = "40.00€";
-                stavka2 = "Personal Training Session"; cijena2 = "20.00€";
-                stavka3 = "Custom Nutrition Plan"; cijena3 = "30.00€";
-                opisStavke = "Access to professional equipment and elite coaching.";
+                stavka2 = "Personal Training"; cijena2 = "20.00€";
+                stavka3 = "Nutrition Plan"; cijena3 = "30.00€";
+                opisStavke = "Full high tech access.";
                 galerijaSlike = ["https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=500", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=500", "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500"];
-                recenzijaIme = "Nemanja B."; recenzijaTekst = "Super clean gym, high-end environment and great atmosphere.";
             }
 
             var navLinkovi = `<li><a href="#pocetna"><i class="fa-solid fa-house"></i> ${L.home}</a></li>`;
             if (ukljuciMeni) navLinkovi += `<li><a href="#ponuda"><i class="fa-solid fa-list-check"></i> ${L.offer}</a></li>`;
-            if (ukljuciActive = ukljuciGaleriju) navLinkovi += `<li><a href="#galerija"><i class="fa-solid fa-images"></i> ${L.gallery}</a></li>`;
+            if (ukljuciGaleriju) navLinkovi += `<li><a href="#galerija"><i class="fa-solid fa-images"></i> ${L.gallery}</a></li>`;
             if (ukljuciIskustva) navLinkovi += `<li><a href="#iskustva"><i class="fa-solid fa-comments"></i> ${L.reviews}</a></li>`;
             navLinkovi += `<li><a href="#lokacija"><i class="fa-solid fa-location-dot"></i> ${L.contact}</a></li>`;
 
             var sekcijaPonuda = ukljuciMeni ? `<section class="section" id="ponuda"><h2 class="section-title"><i class="fa-solid ${ikonicaBranse}"></i> ${L.offer}</h2><div class="menu-grid"><div class="menu-item"><h3>${stavka1} <span>${cijena1}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka2} <span>${cijena2}</span></h3><p>${opisStavke}</p></div><div class="menu-item"><h3>${stavka3} <span>${cijena3}</span></h3><p>${opisStavke}</p></div></div></section>` : "";
             var sekcijaGalerija = ukljuciGaleriju ? `<section class="section" id="galerija"><h2 class="section-title"><i class="fa-solid fa-camera-retro"></i> ${L.gallery}</h2><div class="gallery-grid"><div class="gallery-card"><img src="${galerijaSlike[0]}"></div><div class="gallery-card"><img src="${galerijaSlike[1]}"></div><div class="gallery-card"><img src="${galerijaSlike[2]}"></div></div></section>` : "";
             var sekcijaIskustva = ukljuciIskustva ? `<section class="section" id="iskustva"><h2 class="section-title"><i class="fa-solid fa-quote-left"></i> ${L.reviews}</h2><div class="review-card"><p style="font-style: italic; font-size: 1.25rem;">"${recenzijaTekst}"</p><h4 style="margin-top:1.5rem;">- ${recenzijaIme}</h4></div></section>` : "";
-            var sekcijaSocial = ukljuciSocial ? `<div style="margin: 2rem 0; display:flex; gap:1rem; justify-content:center; font-size:1.5rem;"><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-facebook"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-instagram"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-tiktok"></i></a></div>` : "";
+            
+            // POPRAVLJENO: Dinamičko generisanje pravih personalizovanih linkova za društvene mreže klijenta
+            var cistiInsta = instaKorisnik.replace('@', '');
+            var sekcijaSocial = ukljuciSocial ? `<div style="margin: 2rem 0; display:flex; gap:1.5rem; justify-content:center; font-size:1.8rem;"><a href="https://instagram.com/${cistiInsta}" target="_blank" style="color:var(--p-color);"><i class="fa-brands fa-instagram"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-facebook"></i></a><a href="#" style="color:var(--p-color);"><i class="fa-brands fa-tiktok"></i></a></div>` : "";
             
             var sekcijaFaq = ukljuciFaq ? `
             <section class="section">
@@ -859,7 +908,7 @@
 
             var CSS_STIL = "";
             if (stil === "moderan") {
-                CSS_STIL = `:root { --p-color: #3b82f6; --bg-card: #ffffff; --text-main: #0f172a; } body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: 800; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 600; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 850px; height: 380px; margin: 2rem auto; border-radius: 20px; object-fit: cover; display: block; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .container { max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 850px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 5px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #64748b; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; } .gallery-card { overflow: hidden; border-radius: 16px; height: 220px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; } .gallery-card:hover img { transform: scale(1.05); } .review-card { background: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; display: block; } .info-card { background-color: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-top: 5px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; border-top: 1px solid #f1f5f9; }`;
+                CSS_STIL = `:root { --p-color: #3b82f6; --bg-card: #ffffff; --text-main: #0f172a; } body { background-color: #f8fafc; color: var(--text-main); font-family: 'Inter', sans-serif; scroll-behavior: smooth; } header { background-color: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.6rem; font-weight: 800; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 1.8rem; } header a { color: #475569; text-decoration: none; font-size: 0.95rem; font-weight: 600; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 850px; height: 380px; margin: 2rem auto; border-radius: 20px; object-fit: cover; display: block; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .container { max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; } .section { padding: 5rem 1.5rem; max-width: 850px; margin: 0 auto; text-align: center; clear: both; } .section-title { font-size: 2rem; margin-bottom: 2.5rem; font-weight: 700; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 5px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #64748b; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; } .gallery-card { overflow: hidden; border-radius: 16px; height: 220px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; } .gallery-card:hover img { transform: scale(1.05); } .review-card { background: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; display: block; } .info-card { background-color: var(--bg-card); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-top: 5px solid var(--p-color); text-align:left; } footer { text-align: center; padding: 2rem; color: #94a3b8; background: #ffffff; margin-top: 5rem; border-top: 1px solid #f1f5f9; }`;
             } else if (stil === "profesionalan") {
                 CSS_STIL = `:root { --p-color: #06b6d4; --bg-card: #1e293b; } body { background-color: #0f172a; color: #f8fafc; font-family: Georgia, serif; scroll-behavior: smooth; } header { background-color: #1e293b; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--p-color); position: sticky; top:0; z-index: 999; } .logo-site { font-size: 1.7rem; font-weight: 700; } .logo-site span { color: var(--p-color); } header ul { list-style: none; display: flex; gap: 2rem; } header a { color: #cbd5e1; text-decoration: none; } header a:hover { color: var(--p-color); } .hero-img { width: 100%; max-width: 900px; height: 400px; margin: 0 auto; object-fit: cover; border-bottom: 5px solid var(--p-color); display: block; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); } .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; } .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; clear: both; text-align: center; } .section-title { font-size: 2.2rem; margin-bottom: 3rem; border-bottom: 1px solid #1e293b; padding-bottom: 1rem; } .menu-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: left; } .menu-item { background: var(--bg-card); padding: 2.5rem; border-left: 6px solid var(--p-color); } .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.4rem; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #94a3b8; margin-top: 0.5rem; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; } .gallery-card { border: 2px solid #334155; height: 230px; } .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; } .review-card { background: var(--bg-card); padding: 3.5rem; border-right: 6px solid var(--p-color); text-align: left; width: 100%; display: inline-block; } .info-card { background-color: var(--bg-card); padding: 3rem; text-align:left; border: 1px solid #334155; } footer { text-align: center; padding: 3rem; color: #64748b; background: #0f172a; border-top: 1px solid #1e293b; margin-top: 5rem; }`;
             } else if (stil === "funky") {
@@ -899,6 +948,7 @@
     <main id="pocetna" style="padding-top: 1rem;">
         <img src="${slikaPozadina}" alt="${naziv}" class="hero-img">
         <div class="container" style="margin-top: 1.5rem;">
+            <h2 style="font-size:2.2rem; margin-bottom:1rem; color:var(--p-color);">${podnaslov}</h2>
             <p style="font-size: 1.35rem; max-width: 750px; margin: 0 auto; font-weight: 300;">${opisBranse}</p>
             ${sekcijaSocial}
         </div>
@@ -913,7 +963,7 @@
         <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> ${L.contact}</h2>
         <div class="info-card">
             <p style="margin-bottom: 1.2rem; font-size: 1.15rem;"><i class="fa-solid fa-location-crosshairs" style="color: var(--p-color); margin-right: 0.5rem;"></i> <strong>${L.location}</strong> ${lokacija}</p>
-            <p style="font-size: 1.15rem;"><i class="fa-solid fa-clock" style="color: var(--p-color); margin-right: 0.5rem;"></i> <strong>${L.hours}</strong> ${vrijeme}</p>
+            <p style="font-size: 1.15rem;"><i class="fa-solid fa-phone" style="color: #22c55e; margin-right: 0.5rem;"></i> <strong>${L.hours}</strong> <a href="tel:${telefon}" style="color:inherit; text-decoration:none; font-weight:bold;">${telefon}</a></p>
         </div>
     </section>
 
