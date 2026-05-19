@@ -600,6 +600,9 @@
                 t_q2: "Koji su rokovi isporuke?", t_a2: "Sve narudžbe i usluge izvršavamo u najkraćem mogućem roku.",
                 t_reviewName: "Zadovoljni Klijent", t_reviewText: "Izuzetna usluga, visoko profesionalni!",
                 t_itemDesc: "Vrhunski kvalitet zagarantovan.",
+                // DODOANO: Otključane default/fallback opcije za sve jezike
+                t_def_subtitle: "Vrhunski Kvalitet", t_def_desc: "Profesionalne usluge prilagođene isključivo vama.", 
+                t_def_item1: "Premium Usluga A", t_def_item2: "Premium Usluga B", t_def_item3: "Premium Usluga C",
                 t_b_fish: "Najsvježiji plodovi mora direktno iz plavih jadranskih dubina!",
                 t_d_fish: "Svakodnevno nudimo divlju, svježe ulovljenu jadransku ribu, škampe i školjke. Naša flota garantuje vrhunsku svježinu na vašoj trpezi.",
                 t_b_food: "Tradicionalni recepti i vrhunski gastronomski užitak za pamćenje!",
@@ -650,6 +653,8 @@
                 t_q2: "Wie sind die Lieferzeiten?", t_a2: "Wir führen alle Aufträge so schnell wie möglich aus.",
                 t_reviewName: "Zufriedener Kunde", t_reviewText: "Exzellenter Service, sehr professionell!",
                 t_itemDesc: "Höchste Qualität garantiert.",
+                t_def_subtitle: "Premium Qualität", t_def_desc: "Professionelle Dienstleistungen für Sie maßgeschneidert.", 
+                t_def_item1: "Premium Service A", t_def_item2: "Premium Service B", t_def_item3: "Premium Service C",
                 t_b_fish: "Frische Meeresfrüchte direkt aus den blauen Tiefen der Adria!",
                 t_d_fish: "Täglich bieten wir wilden, frisch gefangenen Fisch aus der Adria, Garnelen und Muscheln. Unsere Flotte garantiert höchste Frische auf Ihrem Tisch.",
                 t_b_food: "Traditionelle Rezepte und unvergleichlicher kulinarischer Genuss!",
@@ -700,6 +705,8 @@
                 t_q2: "What are the delivery times?", t_a2: "We execute all orders as quickly as possible.",
                 t_reviewName: "Satisfied Customer", t_reviewText: "Excellent service, highly professional!",
                 t_itemDesc: "High quality guaranteed.",
+                t_def_subtitle: "Premium Quality", t_def_desc: "Professional services customized for you.", 
+                t_def_item1: "Premium Service A", t_def_item2: "Premium Service B", t_def_item3: "Premium Service C",
                 t_b_fish: "Fresh seafood directly from the blue Adriatic depths!",
                 t_d_fish: "Daily offering wild, freshly caught Adriatic fish, shrimp, and shellfish. Our fleet guarantees supreme freshness on your table.",
                 t_b_food: "Traditional recipes and ultimate gourmet experience to remember!",
@@ -750,6 +757,8 @@
                 t_q2: "¿Cuáles son los plazos de entrega?", t_a2: "Ejecutamos todos los pedidos en el menor tiempo posible.",
                 t_reviewName: "Cliente Satisfecho", t_reviewText: "¡Excelente servicio, muy profesional!",
                 t_itemDesc: "Alta calidad garantizada.",
+                t_def_subtitle: "Calidad Premium", t_def_desc: "Servicios profesionales adaptados a usted.", 
+                t_def_item1: "Servicio Premium A", t_def_item2: "Servicio Premium B", t_def_item3: "Servicio Premium C",
                 t_b_fish: "¡Pesca fresca directamente desde las profundidades del Adriático!",
                 t_d_fish: "Ofrecemos diariamente pescado fresco del Adriático, camarones y mariscos. Nuestra flota garantiza la máxima frescura en su mesa.",
                 t_b_food: "¡Recetas tradicionales y una experiencia culinaria inolvidable!",
@@ -800,6 +809,8 @@
                 t_q2: "Tempi di consegna?", t_a2: "Eseguiamo tutti gli ordini nel minor tempo possibile.",
                 t_reviewName: "Cliente Soddisfatto", t_reviewText: "Servizio eccellente, altamente professionale!",
                 t_itemDesc: "Alta qualità garantita.",
+                t_def_subtitle: "Qualità Premium", t_def_desc: "Servizi professionali su misura per te.", 
+                t_def_item1: "Servizio Premium A", t_def_item2: "Servizio Premium B", t_def_item3: "Servizio Premium C",
                 t_b_fish: "Pesce freschissimo direttamente dalle profondità dell'Adriatico!",
                 t_d_fish: "Offriamo ogni giorno pesce selvaggio dell'Adriatico appena pescato, gamberi e frutti di mare. La nostra flotta garantisce la massima freschezza.",
                 t_b_food: "Ricette tradizionali e un'esperienza culinaria indimenticabile!",
@@ -936,12 +947,12 @@
 
             var loweredName = name.toLowerCase();
             
-            // Default General setup
-            var subtitle = "Premium Quality";
-            var industryDesc = "Professional services customized for you.";
+            // Default General setup using translations
+            var subtitle = T.t_def_subtitle;
+            var industryDesc = T.t_def_desc;
             var bgImage = "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"; 
             var industryIcon = "fa-briefcase";
-            var item1 = "Premium Service A", item2 = "Premium Service B", item3 = "Premium Service C", 
+            var item1 = T.t_def_item1, item2 = T.t_def_item2, item3 = T.t_def_item3, 
                 price1 = "20€", price2 = "40€", price3 = "60€", itemDesc = T.t_itemDesc;
             var galleryImages = ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500", "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=500", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=500"];
             var reviewName = T.t_reviewName, reviewText = T.t_reviewText;
@@ -986,9 +997,10 @@
                 itemDesc = T.t_itemDesc_gym;
                 galleryImages = ["https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=500", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=500", "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500"];
             }
-            // --- NEW BAKERY LOGIC ---
-            else if (loweredName.includes("bäckerei") || loweredName.includes("bakery") || loweredName.includes("pekara") || 
-                       loweredName.includes("panaderia") || loweredName.includes("panetteria") || loweredName.includes("pastry")) {
+            // NEW BAKERY LOGIC ADDED HERE (Includes typos like "backery", "baker")
+            else if (loweredName.includes("bäckerei") || loweredName.includes("bakery") || loweredName.includes("backery") || 
+                       loweredName.includes("pekara") || loweredName.includes("pekar") || loweredName.includes("panaderia") || 
+                       loweredName.includes("panetteria") || loweredName.includes("pastry") || loweredName.includes("baker")) {
                 subtitle = T.t_b_bakery;
                 industryDesc = T.t_d_bakery;
                 bgImage = "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200";
