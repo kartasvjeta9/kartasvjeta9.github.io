@@ -281,7 +281,7 @@
         <h2 class="section-title">Započnimo Projekat</h2>
         <div class="contact-container">
             <!-- Povezivanje sa Formspree servisom -->
-            <form action="https://formspree.io/f/OVDJE_IDE_TVOJ_ID" method="POST" class="contact-form">
+            <form action="https://formspree.io/f/xojbvzwr" method="POST" class="contact-form">
                 
                 <div class="form-group">
                     <label for="ime">Vaše Ime:</label>
