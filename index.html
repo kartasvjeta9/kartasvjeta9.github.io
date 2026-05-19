@@ -506,13 +506,6 @@
     </footer>
 
     <script>
-        window.addEventListener("message", function(event) {
-            if (event.data && event.data.tip === "kupovina") {
-                document.getElementById('poruka').value = "Zdravo Ajdine! Generisao/la sam besplatan sajt za '" + event.data.naziv + "' u " + event.data.stil + " stilu. Želim da pređem na profesionalni plaćeni paket, ubacim bota i povežem svoju domenu. Molim vas javite mi se.";
-                document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-
         function otvoriSajtUzivo() {
             var naziv = document.getElementById('temp-naziv').value || "Naš Novi Biznis";
             var vrijeme = document.getElementById('temp-vrijeme').value || "Pon-Pet 09-17H";
@@ -522,9 +515,13 @@
             var ukljuciGaleriju = document.getElementById('chk-galerija').checked;
             var ukljuciIskustva = document.getElementById('chk-iskustva').checked;
 
-            // --- 1. NAPREDNO LOCIRANJE GRADA ---
-            var lokacija = "Naša Lokacija";
+            // --- 1. POPRAVLJENO: PAMETNO RAZDVAJANJE NAZIVA ZA LOGO ---
             var rijeci = naziv.split(' ');
+            var prvaRijec = rijeci[0];
+            var ostatakNaziva = rijeci.slice(1).join(' ');
+            
+            // Izvlačenje lokacije iz teksta naziva
+            var lokacija = "Naša Lokacija";
             for (var i = 0; i < rijeci.length; i++) {
                 var r = rijeci[i].toLowerCase();
                 if ((r === "u" || r === "iz" || r === "na") && i + 1 < rijeci.length) {
@@ -539,7 +536,7 @@
                 }
             }
 
-            // --- 2. PROFESIONALNA BAZA ZNANJA (6 PROŠIRENIH BRANŠI) ---
+            // --- 2. BAZA BRANŠI ---
             var uvecaniNaziv = naziv.toLowerCase();
             var podnaslov = "Vrhunski kvalitet i profesionalna usluga kojoj vjerujete.";
             var opisBranse = "Nudimo vam vrhunske proizvode i usluge kreirane sa strašću i posvećenošću prema klijentima.";
@@ -557,7 +554,6 @@
             ];
             var recenzijaIme = "Marko M.", recenzijaTekst = "Sve preporuke za profesionalnost i brzinu realizacije!";
 
-            // Ribarstvo
             if (uvecaniNaziv.includes("riba") || uvecaniNaziv.includes("ribarnica") || uvecaniNaziv.includes("fish") || uvecaniNaziv.includes("tuna")) {
                 podnaslov = "Najsvježiji plodovi mora direktno iz plavih jadranskih dubina!";
                 opisBranse = "Svakodnevno nudimo divlju, svježe ulovljenu jadransku ribu, škampe i školjke. Naša flota garantuje vrhunsku svježinu na vašoj trpezi.";
@@ -572,9 +568,8 @@
                     "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=500",
                     "https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=500"
                 ];
-                recenzijaIme = "Ante K. (Vlasnik restorana)"; recenzijaTekst = "Riba je uvijek vanserijskog kvaliteta, isporuka brza, a svježina nevjerovatna. Saradnja čista desetka!";
+                recenzijaIme = "Ante K."; recenzijaTekst = "Riba je uvijek vanserijskog kvaliteta, isporuka brza, a svježina nevjerovatna. Saradnja čista desetka!";
             } 
-            // Restorani i hrana
             else if (uvecaniNaziv.includes("pizza") || uvecaniNaziv.includes("pizzerija") || uvecaniNaziv.includes("picerija") || uvecaniNaziv.includes("restoran") || uvecaniNaziv.includes("burger") || uvecaniNaziv.includes("hrana") || uvecaniNaziv.includes("konoba")) {
                 podnaslov = "Tradicionalni recepti i vrhunski gastronomski užitak za pamćenje!";
                 opisBranse = "Uživajte u autentičnim pizzama iz prave krušne peći, sočnim domaćim burgerima ili vrhunskom roštilju kreiranom od strane naših kulinarskih majstora.";
@@ -583,16 +578,15 @@
                 stavka1 = "Ekskluzivna Pizza Capricciosa"; cijena1 = "8.50€";
                 stavka2 = "Domaća Pizza Margherita"; cijena2 = "7.50€";
                 stavka3 = "Gourmet Burger sa Pomfritom"; cijena3 = "9.50€";
-                opisStavke = "Vrhunski svježi sastojci, domaći soso-vi i priprema po narudžbi.";
+                opisStavke = "Vrhunski svježi sastojci, domaći sosovi i priprema po narudžbi.";
                 galerijaSlike = [
                     "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500",
                     "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500",
                     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500"
                 ];
-                recenzijaIme = "Emina S. (Gost)"; recenzijaTekst = "Ambijent je savršen, usluga brza, a hrana... Najbolji burger i pizza koje sam probala u zadnje vrijeme!";
+                recenzijaIme = "Emina S."; recenzijaTekst = "Ambijent je prelijep, hrana čista desetka. Pizza iz krušne peći je prosto savršena!";
             } 
-            // Auto-moto
-            else if (uvecaniNaziv.includes("auto") || uvecaniNaziv.includes("servis") || uvecaniNaziv.includes("mehanicar") || uvecaniNaziv.includes("gume") || uvecaniNaziv.includes("vulkanizer")) {
+            else if (uvecaniNaziv.includes("auto") || uvecaniNaziv.includes("servis") || uvecaniNaziv.includes("mehanicar") || uvecaniNaziv.includes("gume")) {
                 podnaslov = "Brza dijagnostika, pouzdan i profesionalan servis za Vaše vozilo!";
                 opisBranse = "Nudimo kompletan spektar auto-mehaničarskih usluga: od kompjuterske dijagnostike, malog i velikog servisa, pa sve do vulkanizerskih usluga najnovije generacije.";
                 slikaPozadina = "https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=1200";
@@ -606,26 +600,25 @@
                     "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=500",
                     "https://images.unsplash.com/photo-1617886322168-72b886573c3c?q=80&w=500"
                 ];
-                recenzijaIme = "Ivan J. (Klijent)"; recenzijaTekst = "Izuzetno profesionalni momci. Kvar lociran u roku od 5 minuta i popravljen isti dan. Cijene skroz poštene.";
+                recenzijaIme = "Ivan J."; recenzijaTekst = "Izuzetno profesionalni momci. Kvar lociran brzo i popravljen isti dan. Cijene poštene.";
             } 
-            // Ljepota
             else if (uvecaniNaziv.includes("frizerski") || uvecaniNaziv.includes("salon") || uvecaniNaziv.includes("frizura") || uvecaniNaziv.includes("nokti") || uvecaniNaziv.includes("masaza")) {
                 podnaslov = "Ekskluzivna oaza opuštanja, vrhunske njege i modernog stila!";
                 opisBranse = "Prepustite se timu vrhunskih kozmetičara i stilista. Nudimo napredne tehnike šišanja, vrhunski manikir, pedikir, masaže i luksuzne tretmane lica.";
                 slikaPozadina = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200";
                 ikonicaBranse = "fa-sparkles";
-                stavka1 = "Dizajnersko Šišanje & Premium Nega"; cijena1 = "30.00€";
+                stavka1 = "Dizajnersko Šišanje & Premium Njega"; cijena1 = "30.00€";
                 stavka2 = "Estetski Manikir (Gel tehnika)"; cijena2 = "35.00€";
-                stavka3 = "Relaks Masaža Cijelog Tijela (60 min)"; cijena3 = "45.00€";
+                stavka3 = "Relaks Masaža Cijelog Tijela"; cijena3 = "45.00€";
                 opisStavke = "Korištenje isključivo sertifikovanih i visokokvalitetnih kozmetičkih brendova.";
                 galerijaSlike = [
                     "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=500",
                     "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=500",
                     "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=500"
                 ];
-                recenzijaIme = "Elena R."; recenzijaTekst = "Ambijent u kojem se zaista odmorite, a kosa nakon tretmana izgleda fantastično i zdravo. Sve preporuke!";
+                recenzijaIme = "Elena R."; recenzijaTekst = "Ambijent u kojem se zaista odmorite, a kosa nakon tretmana izgleda fantastično i zdravo.";
             } 
-            // Teretane / Gym
+            // --- POPRAVLJENO: POTPUNO ISPRAVAN TREĆI LINK ZA PROVJERENU SLIKU TERETANE ---
             else if (uvecaniNaziv.includes("teretana") || uvecaniNaziv.includes("gym") || uvecaniNaziv.includes("fitnes") || uvecaniNaziv.includes("trening")) {
                 podnaslov = "Aktivirajte puni potencijal i transformišite svoje tijelo!";
                 opisBranse = "Vrhunski opremljen prostor sa najmodernijim spravama za vježbanje. Naši sertifikovani treneri pružiće vam maksimalnu podršku na putu do cilja.";
@@ -638,11 +631,10 @@
                 galerijaSlike = [
                     "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=500",
                     "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=500",
-                    "https://images.unsplash.com/photo-141534741688-6078c6bfb5c5?q=80&w=500"
+                    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500"
                 ];
                 recenzijaIme = "Nemanja B."; recenzijaTekst = "Teretana je vrhunski čista, sprave nove i odlično održavane. Treneri su puni znanja i motivacije.";
             } 
-            // Građevina / Zanati
             else if (uvecaniNaziv.includes("gradnja") || uvecaniNaziv.includes("krov") || uvecaniNaziv.includes("moler") || uvecaniNaziv.includes("vodoinstalater") || uvecaniNaziv.includes("keramika")) {
                 podnaslov = "Kvalitetni građevinski i unutrašnji zanatski radovi sa garancijom!";
                 opisBranse = "Pružamo kompletne usluge adaptacije prostora, postavljanja podnih i zidnih obloga, gipsarskih radova, te hitnih vodovodnih i elektro instalacija.";
@@ -657,7 +649,7 @@
                     "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=500",
                     "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=500"
                 ];
-                recenzijaIme = "Mirko V. (Vlasnik stana)"; recenzijaTekst = "Renovirali su mi čitavo kupatilo i hodnik. Sve je urađeno hirurški precizno, čisto i završeno prije roka!";
+                recenzijaIme = "Nikola P."; recenzijaTekst = "Momci su mi renovirali kupatilo. Uradili su sve hirurški precizno, čisto i završili prije roka!";
             }
 
             // --- 3. STRUKTURA NAVIGACIJE ---
@@ -667,7 +659,7 @@
             if (ukljuciIskustva) navLinkovi += `<li><a href="#iskustva"><i class="fa-solid fa-comments"></i> Utisci</a></li>`;
             navLinkovi += `<li><a href="#lokacija"><i class="fa-solid fa-location-dot"></i> Kontakt</a></li>`;
 
-            // --- 4. NAPREDNI DIZAJN SEKCIJA (FLEX & GRID KOJI SE NE PREKLAPAJU) ---
+            // --- 4. BLOKOVI SEKCIJA ---
             var sekcijaPonuda = ukljuciMeni ? `
             <section class="section" id="ponuda">
                 <h2 class="section-title"><i class="fa-solid ${ikonicaBranse}"></i> Naš Ekskluzivni Cjenovnik</h2>
@@ -711,7 +703,7 @@
                     .section { padding: 6rem 1.5rem; max-width: 850px; margin: 0 auto; text-align: center; clear: both; }
                     .section-title { font-size: 2.2rem; margin-bottom: 3.5rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; }
                     .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; text-align: left; }
-                    .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01); border-left: 5px solid var(--p-color); }
+                    .menu-item { background: var(--bg-card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 5px solid var(--p-color); }
                     .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #64748b; margin-top: 0.5rem; }
                     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
                     .gallery-card { overflow: hidden; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); height: 220px; }
@@ -757,7 +749,7 @@
                     .menu-item h3 { display: flex; justify-content: space-between; font-size: 1.6rem; color: #ffffff; text-shadow: 2px 2px #000000; } .menu-item h3 span { color: var(--p-color); } .menu-item p { color: #00ffcc; opacity: 0.8; font-family: Arial, sans-serif; font-size: 1rem; margin-top: 0.5rem; }
                     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
                     .gallery-card { border-radius: 24px; border: 3px solid var(--s-color); overflow: hidden; height: 200px; box-shadow: 0 0 15px var(--s-color); }
-                    .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); } .gallery-card:hover img { transform: scale(1.1) rotate(2deg); }
+                    .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; } .gallery-card:hover img { transform: scale(1.1) rotate(2deg); }
                     .review-card { background: #111111; padding: 3rem; border-radius: 30px; border: 4px dashed var(--s-color); color: #ffffff; width: 100%; display: inline-block; box-shadow: 0px 0px 25px rgba(255,0,127,0.2); } .review-card h4 { color: var(--p-color); font-size: 1.2rem; }
                     .info-card { background-color: #111111; padding: 3rem; border-radius: 30px; border: 3px solid var(--p-color); text-align:left; box-shadow: 0px 0px 25px rgba(0,255,204,0.2); } .info-card p { font-family: Arial, sans-serif; font-size: 1.1rem; }
                     footer { text-align: center; padding: 2.5rem; color: #7f00ff; background: #000000; border-top: 2px dashed #111111; margin-top: 6rem; font-size: 1.1rem; }
@@ -791,7 +783,7 @@
     </div>
 
     <header>
-        <div class="logo-site"><i class="fa-solid ${ikonicaBranse}"></i> ${naziv.split(' ')[0]}<span>${naziv.split(' ').slice(1).join(' ')}</span></div>
+        <div class="logo-site"><i class="fa-solid ${ikonicaBranse}"></i> ${prvaRijec}&nbsp;<span>${ostatakNaziva}</span></div>
         <ul>${navLinkovi}</ul>
     </header>
     
