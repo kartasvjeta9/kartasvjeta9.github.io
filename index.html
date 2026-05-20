@@ -905,47 +905,44 @@
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         }
 
-// // ============ GLAVNA FORMA – SAMO MAKE WEBHOOK ============
+// ============ GLAVNA FORMA – FORMPREE (RADI ODMAH) ============
 var form = document.getElementById("my-form");
 var button = document.getElementById("submit-button");
 
 form.addEventListener("submit", function(ev) {
     ev.preventDefault();
-
-    button.innerHTML = "Processing...";
+    button.innerHTML = "Slanje...";
     button.disabled = true;
 
-    var makeUrl = 'https://hook.eu1.make.com/chfgbd88bgalfkdg1eolb3yqsvzeiwrf';
-    var formDataObj = {};
-    new FormData(form).forEach(function(value, key) {
-        formDataObj[key] = value;
-    });
-
-    fetch(makeUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formDataObj)
+    var data = new FormData(form);
+    fetch("https://formspree.io/f/xojbvzwr", {
+        method: "POST",
+        body: data,
+        headers: { 'Accept': 'application/json' }
     })
-    .then(function() {
-        form.reset();
-        button.innerHTML = "✅ Success!";
-        button.style.backgroundColor = "#22c55e";
-        setTimeout(function() {
+    .then(response => {
+        if (response.ok) {
+            form.reset();
+            button.innerHTML = "✅ Poslano!";
+            button.style.backgroundColor = "#22c55e";
+            setTimeout(() => {
+                button.innerHTML = "Send Inquiry";
+                button.style.backgroundColor = "#38bdf8";
+                button.disabled = false;
+            }, 3000);
+        } else {
+            throw new Error("Greška");
+        }
+    })
+    .catch(error => {
+        button.innerHTML = "❌ Greška";
+        button.style.backgroundColor = "#ef4444";
+        setTimeout(() => {
             button.innerHTML = "Send Inquiry";
             button.style.backgroundColor = "#38bdf8";
             button.disabled = false;
         }, 3000);
-    })
-    .catch(function(err) {
-        button.innerHTML = "❌ Error!";
-        button.style.backgroundColor = "#ef4444";
-        setTimeout(function() {
-            button.innerHTML = "Try Again";
-            button.style.backgroundColor = "#38bdf8";
-            button.disabled = false;
-        }, 3000);
-        console.log('Error:', err);
+        console.log("Greška:", error);
     });
 });
 
