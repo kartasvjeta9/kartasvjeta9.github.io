@@ -905,51 +905,49 @@
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // ============ GLAVNA FORMA – SAMO MAKE WEBHOOK (FORMSPREE UKLONJEN) ============
-        var form = document.getElementById("my-form");
-        console.log('Form element:', form);
-        var button = document.getElementById("submit-button");
-        form.addEventListener("submit", function(ev) {
-            ev.preventDefault();
+// ============ GLAVNA FORMA – DIREKTNO NA MAKE (FORMSPREE UKLONJEN) ============
+function handleFormSubmit(ev) {
+    ev.preventDefault();
+    var form = document.getElementById("my-form");
+    var button = document.getElementById("submit-button");
+    button.innerHTML = "Processing...";
+    button.disabled = true;
 
-            // Prikaži "Processing..."
-            button.innerHTML = "Processing...";
-            button.disabled = true;
+    var makeUrl = 'https://hook.eu1.make.com/chfgbd88bgalfkdg1eolb3yqsvzeiwrf';
+    var formDataObj = {};
+    new FormData(form).forEach(function(value, key) {
+        formDataObj[key] = value;
+    });
 
-            // Pošalji podatke na Make webhook
-            var makeUrl = 'https://hook.eu1.make.com/chfgbd88bgalfkdg1eolb3yqsvzeiwrf';
-            var formDataObj = {};
-            new FormData(form).forEach(function(value, key) {
-                formDataObj[key] = value;
-            });
+    fetch(makeUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formDataObj)
+    })
+    .then(function() {
+        form.reset();
+        button.innerHTML = "✅ Success!";
+        button.style.backgroundColor = "#22c55e";
+        setTimeout(function() {
+            button.innerHTML = "Send Inquiry";
+            button.style.backgroundColor = "#38bdf8";
+            button.disabled = false;
+        }, 3000);
+    })
+    .catch(function(err) {
+        button.innerHTML = "❌ Error!";
+        button.style.backgroundColor = "#ef4444";
+        setTimeout(function() {
+            button.innerHTML = "Try Again";
+            button.style.backgroundColor = "#38bdf8";
+            button.disabled = false;
+        }, 3000);
+        console.log('Error:', err);
+    });
 
-            fetch(makeUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formDataObj)
-            })
-            .then(function() {
-                // Uspeh
-                form.reset();
-                button.innerHTML = "✅ Success!";
-                button.style.backgroundColor = "#22c55e";
-                setTimeout(function() {
-                    button.innerHTML = "Send Inquiry";
-                    button.style.backgroundColor = "#38bdf8";
-                    button.disabled = false;
-                }, 3000);
-            })
-            .catch(function(err) {
-                // Greška
-                button.innerHTML = "❌ Error!";
-                button.style.backgroundColor = "#ef4444";
-                setTimeout(function() {
-                    button.innerHTML = "Try Again";
-                    button.style.backgroundColor = "#38bdf8";
-                    button.disabled = false;
-                }, 3000);
-                console.log('Make webhook error:', err);
-            });
+    return false; // dodatna sigurnost da ne ode na server
+}
         });
     </script>
 </body>
