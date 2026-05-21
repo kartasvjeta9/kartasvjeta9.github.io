@@ -222,18 +222,21 @@
     <section class="contact" id="contact">
         <h2 class="section-title" id="contact-title">Start a Project</h2>
         <div class="contact-container">
-            <form id="my-form" class="contact-form">
+            <form id="my-form" class="contact-form" action="https://formsubmit.co/aibussines26@gmail.com" method="POST">
+                <!-- Hidden fields for FormSubmit (free, no limits) -->
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_next" value="https://kartasvjeta9.github.io/#contact">
                 <div class="form-group">
                     <label for="name" id="lbl-name">Your Name:</label>
-                    <input type="text" id="name" name="Name" required placeholder="Enter your name" autocomplete="name">
+                    <input type="text" id="name" name="name" required placeholder="Enter your name" autocomplete="name">
                 </div>
                 <div class="form-group">
                     <label for="email" id="lbl-email">Your Email:</label>
-                    <input type="email" id="email" name="Email" required placeholder="Enter your email" autocomplete="email">
+                    <input type="email" id="email" name="email" required placeholder="Enter your email" autocomplete="email">
                 </div>
                 <div class="form-group">
                     <label for="message" id="lbl-msg">Your Message:</label>
-                    <textarea id="message" name="Message" rows="5" required placeholder="How can we help you?" autocomplete="off"></textarea>
+                    <textarea id="message" name="message" rows="5" required placeholder="How can we help you?" autocomplete="off"></textarea>
                 </div>
                 <button type="submit" id="submit-button" class="btn" style="width: 100%;">Send Inquiry</button>
             </form>
@@ -877,47 +880,6 @@
             newWindow.document.write(generatedCode);
             newWindow.document.close();
         }
-
-        // ==================== GLAVNA KONTAKT FORMA – FORMPREE ====================
-        var form = document.getElementById("my-form");
-        var button = document.getElementById("submit-button");
-
-        form.addEventListener("submit", function(ev) {
-            ev.preventDefault();
-            button.innerHTML = "Slanje...";
-            button.disabled = true;
-
-            var data = new FormData(form);
-            fetch("https://formspree.io/f/xojbvzwr", {
-                method: "POST",
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    form.reset();
-                    button.innerHTML = "✅ Poslano!";
-                    button.style.backgroundColor = "#22c55e";
-                    setTimeout(() => {
-                        button.innerHTML = "Send Inquiry";
-                        button.style.backgroundColor = "#38bdf8";
-                        button.disabled = false;
-                    }, 3000);
-                } else {
-                    throw new Error("Greška");
-                }
-            })
-            .catch(error => {
-                button.innerHTML = "❌ Greška";
-                button.style.backgroundColor = "#ef4444";
-                setTimeout(() => {
-                    button.innerHTML = "Send Inquiry";
-                    button.style.backgroundColor = "#38bdf8";
-                    button.disabled = false;
-                }, 3000);
-                console.log("Greška:", error);
-            });
-        });
 
         // ==================== DETALJNA FORMA ZA PLAĆENE PAKETE ====================
         function openDetailedForm(packageName, packagePrice) {
