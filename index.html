@@ -138,15 +138,15 @@
         <p class="section-subtitle" id="pricing-subtitle">Try our intelligent generator for free or upgrade to a professional level.</p>
         
         <div class="pricing-grid">
-            <!-- FREE TEMPLATE - NETAKNUT -->
+            <!-- FREE TEMPLATE -->
             <div class="pricing-card">
                 <div>
                     <h3 id="p1-title">Free Template</h3>
                     <div class="price" id="p1-price">0€<span> / instant</span></div>
                     <div class="template-inputs">
-                        <input type="text" id="temp-name" placeholder="Company Name">
-                        <input type="text" id="temp-phone" placeholder="Phone Number">
-                        <input type="text" id="temp-insta" placeholder="Instagram Profile">
+                        <input type="text" id="temp-name" placeholder="Company Name" autocomplete="organization">
+                        <input type="text" id="temp-phone" placeholder="Phone Number" autocomplete="tel">
+                        <input type="text" id="temp-insta" placeholder="Instagram Profile" autocomplete="off">
                         <select id="temp-language">
                             <option value="hr" id="opt-l1">Site in: Balkan (HR/BS/SR)</option>
                             <option value="de" id="opt-l2">Site in: German (Deutsch)</option>
@@ -225,15 +225,15 @@
             <form id="my-form" class="contact-form">
                 <div class="form-group">
                     <label for="name" id="lbl-name">Your Name:</label>
-                    <input type="text" id="name" name="Name" required placeholder="Enter your name">
+                    <input type="text" id="name" name="Name" required placeholder="Enter your name" autocomplete="name">
                 </div>
                 <div class="form-group">
                     <label for="email" id="lbl-email">Your Email:</label>
-                    <input type="email" id="email" name="Email" required placeholder="Enter your email">
+                    <input type="email" id="email" name="Email" required placeholder="Enter your email" autocomplete="email">
                 </div>
                 <div class="form-group">
                     <label for="message" id="lbl-msg">Your Message:</label>
-                    <textarea id="message" name="Message" rows="5" required placeholder="How can we help you?"></textarea>
+                    <textarea id="message" name="Message" rows="5" required placeholder="How can we help you?" autocomplete="off"></textarea>
                 </div>
                 <button type="submit" id="submit-button" class="btn" style="width: 100%;">Send Inquiry</button>
             </form>
@@ -246,6 +246,7 @@
     </footer>
 
     <script>
+        // ==================== SITE DICTIONARY (sve je isto kao prije) ====================
         var siteDictionary = {
             hr: {
                 navHome: "Početna", navServices: "Usluge", navPricing: "Cjenovnik", navContact: "Kontakt",
@@ -754,6 +755,7 @@
             }
         };
 
+        // ==================== JEZIČKE FUNKCIJE ====================
         function changeSiteLanguage() {
             var selectedLanguage = document.getElementById("main-lang-select").value;
             var ML = siteDictionary[selectedLanguage];
@@ -817,7 +819,7 @@
             document.getElementById("temp-language").value = selectedLanguage;
         }
 
-        // ============ FREE TEMPLATE ============
+        // ==================== FREE TEMPLATE GENERATOR ====================
         function openLiveSite() {
             var name = document.getElementById('temp-name').value || "Premium Business";
             var phone = document.getElementById('temp-phone').value || "+49 123 456789";
@@ -876,7 +878,48 @@
             newWindow.document.close();
         }
 
-        // ============ DETALJNA FORMA ZA PLAĆENE PAKETE (ŠALJE U FORMSPREE + MAKE) ============
+        // ==================== GLAVNA KONTAKT FORMA – FORMPREE ====================
+        var form = document.getElementById("my-form");
+        var button = document.getElementById("submit-button");
+
+        form.addEventListener("submit", function(ev) {
+            ev.preventDefault();
+            button.innerHTML = "Slanje...";
+            button.disabled = true;
+
+            var data = new FormData(form);
+            fetch("https://formspree.io/f/xojbvzwr", {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    form.reset();
+                    button.innerHTML = "✅ Poslano!";
+                    button.style.backgroundColor = "#22c55e";
+                    setTimeout(() => {
+                        button.innerHTML = "Send Inquiry";
+                        button.style.backgroundColor = "#38bdf8";
+                        button.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error("Greška");
+                }
+            })
+            .catch(error => {
+                button.innerHTML = "❌ Greška";
+                button.style.backgroundColor = "#ef4444";
+                setTimeout(() => {
+                    button.innerHTML = "Send Inquiry";
+                    button.style.backgroundColor = "#38bdf8";
+                    button.disabled = false;
+                }, 3000);
+                console.log("Greška:", error);
+            });
+        });
+
+        // ==================== DETALJNA FORMA ZA PLAĆENE PAKETE ====================
         function openDetailedForm(packageName, packagePrice) {
             var selectedLanguage = document.getElementById("main-lang-select").value;
             var F = siteDictionary[selectedLanguage];
@@ -888,7 +931,7 @@
             var phColors = F.f_phColors || "npr. tamno plava #1e293b, zlatna #f59e0b, bijela";
             var phInfo = F.f_phInfo || "Sve dodatne informacije koje bi nam pomogle...";
 
-            var formHTML = `<!DOCTYPE html><html lang='${selectedLanguage}'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>${F.f_title} - Ai Bussines</title><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'><style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}body{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#f8fafc;min-height:100vh;padding:2rem;}.form-container{max-width:800px;margin:0 auto;background-color:#1e293b;border:2px solid #38bdf8;border-radius:16px;padding:3rem 2.5rem;box-shadow:0 25px 50px rgba(0,0,0,0.4);}h1{text-align:center;color:#38bdf8;margin-bottom:0.5rem;font-size:2rem;}.subtitle{text-align:center;color:#94a3b8;margin-bottom:2rem;font-size:1rem;}.package-badge{background:linear-gradient(135deg,#38bdf8,#0284c7);color:#0f172a;display:inline-block;padding:0.5rem 1.5rem;border-radius:50px;font-weight:bold;margin-bottom:2rem;font-size:1.1rem;}.form-group{margin-bottom:1.5rem;}.form-group label{display:block;color:#94a3b8;font-weight:600;margin-bottom:0.4rem;font-size:0.95rem;}.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.85rem;border-radius:8px;border:1px solid #334155;background-color:#0f172a;color:#f8fafc;font-size:0.95rem;font-family:inherit;}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#38bdf8;}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}.checkbox-group{display:flex;flex-wrap:wrap;gap:0.8rem;}.checkbox-group label{display:flex;align-items:center;gap:0.5rem;color:#cbd5e1;font-weight:normal;cursor:pointer;background:#0f172a;padding:0.6rem 1rem;border-radius:8px;border:1px solid #334155;font-size:0.85rem;}.checkbox-group input[type="checkbox"]{width:auto;accent-color:#38bdf8;}.radio-group{display:flex;gap:2rem;}.radio-group label{display:flex;align-items:center;gap:0.5rem;color:#cbd5e1;font-weight:normal;cursor:pointer;}.radio-group input[type="radio"]{width:auto;accent-color:#38bdf8;}.btn-submit{width:100%;padding:1rem;background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);color:white;border:none;border-radius:8px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;margin-top:1rem;}.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(34,197,94,0.3);}.btn-submit:disabled{opacity:0.7;cursor:not-allowed;}.success-msg{display:none;text-align:center;color:#22c55e;padding:2rem;font-size:1.2rem;}@media(max-width:600px){.form-row{grid-template-columns:1fr;}}</style></head><body><div class="form-container" id="form-container"><h1><i class="fa-solid fa-file-signature"></i> ${F.f_title}</h1><p class="subtitle">${F.f_subtitle}</p><div style="text-align:center;"><span class="package-badge"><i class="fa-solid fa-box"></i> ${F.f_packageLabel}: ${packageName} (${packagePrice})</span></div><form id="detailed-form" action="https://formspree.io/f/xojbvzwr" method="POST"><input type="hidden" name="Package" value="${packageName} (${packagePrice})"><input type="hidden" name="Language" value="${selectedLanguage}"><div class="form-row"><div class="form-group"><label>${F.f_businessName} *</label><input type="text" name="BusinessName" required placeholder="Nike / Figma / OpenAI"></div><div class="form-group"><label>${F.f_businessType} *</label><select name="BusinessType" required><option value="">-- ${F.f_businessType} --</option>${businessTypeOptions}</select></div></div><div class="form-row"><div class="form-group"><label>${F.f_industry}</label><select name="Industry"><option value="">-- ${F.f_industry} --</option>${industryOptions}</select></div><div class="form-group"><label>${F.f_websiteGoal} *</label><select name="WebsiteGoal" required><option value="">-- ${F.f_websiteGoal} --</option>${goalsOptions}</select></div></div><div class="form-group"><label>${F.f_targetAudience}</label><input type="text" name="TargetAudience" placeholder="${phAudience}"></div><div class="form-group"><label>${F.f_preferredColors}</label><input type="text" name="PreferredColors" placeholder="${phColors}"></div><div class="form-group"><label>${F.f_hasLogo}</label><div class="radio-group"><label><input type="radio" name="HasLogo" value="Yes" checked> ${F.f_yes}</label><label><input type="radio" name="HasLogo" value="No"> ${F.f_no}</label></div></div><div class="form-group"><label>${F.f_logoUpload}</label><input type="text" name="LogoLink" placeholder="https://drive.google.com/... ili pošaljite emailom"></div><div class="form-group"><label>${F.f_desiredPages}</label><div class="checkbox-group"><label><input type="checkbox" name="Page_Home" checked> ${F.f_homepage}</label><label><input type="checkbox" name="Page_About" checked> ${F.f_aboutUs}</label><label><input type="checkbox" name="Page_Services" checked> ${F.f_services}</label><label><input type="checkbox" name="Page_Pricing"> ${F.f_pricing}</label><label><input type="checkbox" name="Page_Contact" checked> ${F.f_contactForm}</label><label><input type="checkbox" name="Page_Blog"> ${F.f_blog}</label></div></div><div class="form-group"><label>${F.f_additionalFeatures}</label><div class="checkbox-group"><label><input type="checkbox" name="Feature_Multilingual"> ${F.f_multilingual}</label><label><input type="checkbox" name="Feature_Chatbot"> ${F.f_chatbot}</label><label><input type="checkbox" name="Feature_Booking"> ${F.f_booking}</label><label><input type="checkbox" name="Feature_Shop"> ${F.f_shop}</label><label><input type="checkbox" name="Feature_SEO"> ${F.f_seo}</label></div></div><div class="form-group"><label>${F.f_referenceSites}</label><textarea name="ReferenceSites" rows="3" placeholder="www.apple.com, www.nike.com, www.airbnb.com..."></textarea></div><div class="form-group"><label>${F.f_additionalInfo}</label><textarea name="AdditionalInfo" rows="3" placeholder="${phInfo}"></textarea></div><hr style="border-color:#334155;margin:2rem 0;"><div class="form-row"><div class="form-group"><label>${F.f_clientName} *</label><input type="text" name="ClientName" required placeholder="John Smith"></div><div class="form-group"><label>${F.f_clientEmail} *</label><input type="email" name="ClientEmail" required placeholder="john@example.com"></div></div><div class="form-group"><label>${F.f_clientPhone}</label><input type="tel" name="ClientPhone" placeholder="+49 123 456789"></div><button type="submit" class="btn-submit" id="submit-btn"><i class="fa-solid fa-paper-plane"></i> ${F.f_submit}</button></form></div><div class="success-msg" id="success-msg"><i class="fa-solid fa-circle-check" style="font-size:4rem;color:#22c55e;margin-bottom:1.5rem;display:block;"></i><h2 style="color:#22c55e;margin-bottom:1rem;">${F.f_successMsg}</h2></div><script>var form=document.getElementById('detailed-form');var submitBtn=document.getElementById('submit-btn');var formContainer=document.getElementById('form-container');var successMsg=document.getElementById('success-msg');form.addEventListener('submit',function(ev){ev.preventDefault();var makeUrl='https://hook.eu1.make.com/chfgbd88bgalfkdg1eolb3yqsvzeiwrf';var formDataObj={};new FormData(form).forEach(function(value,key){formDataObj[key]=value;});fetch(makeUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(formDataObj)}).catch(function(err){console.log('Make webhook error (ignored):',err);});var data=new FormData(form);submitBtn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Sending...';submitBtn.disabled=true;var xhr=new XMLHttpRequest();xhr.open('POST',form.action);xhr.setRequestHeader('Accept','application/json');xhr.onreadystatechange=function(){if(xhr.readyState!==XMLHttpRequest.DONE)return;if(xhr.status===200){formContainer.style.display='none';successMsg.style.display='block';if(window.opener){setTimeout(function(){window.close();},3000);}}else{submitBtn.innerHTML='<i class="fa-solid fa-paper-plane"></i> ${F.f_submit}';submitBtn.disabled=false;alert('Error! Please try again or contact us directly.');}};xhr.send(data);});<\/script></body></html>`;
+            var formHTML = `<!DOCTYPE html><html lang='${selectedLanguage}'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>${F.f_title} - Ai Bussines</title><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'><style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}body{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#f8fafc;min-height:100vh;padding:2rem;}.form-container{max-width:800px;margin:0 auto;background-color:#1e293b;border:2px solid #38bdf8;border-radius:16px;padding:3rem 2.5rem;box-shadow:0 25px 50px rgba(0,0,0,0.4);}h1{text-align:center;color:#38bdf8;margin-bottom:0.5rem;font-size:2rem;}.subtitle{text-align:center;color:#94a3b8;margin-bottom:2rem;font-size:1rem;}.package-badge{background:linear-gradient(135deg,#38bdf8,#0284c7);color:#0f172a;display:inline-block;padding:0.5rem 1.5rem;border-radius:50px;font-weight:bold;margin-bottom:2rem;font-size:1.1rem;}.form-group{margin-bottom:1.5rem;}.form-group label{display:block;color:#94a3b8;font-weight:600;margin-bottom:0.4rem;font-size:0.95rem;}.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.85rem;border-radius:8px;border:1px solid #334155;background-color:#0f172a;color:#f8fafc;font-size:0.95rem;font-family:inherit;}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#38bdf8;}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}.checkbox-group{display:flex;flex-wrap:wrap;gap:0.8rem;}.checkbox-group label{display:flex;align-items:center;gap:0.5rem;color:#cbd5e1;font-weight:normal;cursor:pointer;background:#0f172a;padding:0.6rem 1rem;border-radius:8px;border:1px solid #334155;font-size:0.85rem;}.checkbox-group input[type="checkbox"]{width:auto;accent-color:#38bdf8;}.radio-group{display:flex;gap:2rem;}.radio-group label{display:flex;align-items:center;gap:0.5rem;color:#cbd5e1;font-weight:normal;cursor:pointer;}.radio-group input[type="radio"]{width:auto;accent-color:#38bdf8;}.btn-submit{width:100%;padding:1rem;background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);color:white;border:none;border-radius:8px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;margin-top:1rem;}.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(34,197,94,0.3);}.btn-submit:disabled{opacity:0.7;cursor:not-allowed;}.success-msg{display:none;text-align:center;color:#22c55e;padding:2rem;font-size:1.2rem;}@media(max-width:600px){.form-row{grid-template-columns:1fr;}}</style></head><body><div class="form-container" id="form-container"><h1><i class="fa-solid fa-file-signature"></i> ${F.f_title}</h1><p class="subtitle">${F.f_subtitle}</p><div style="text-align:center;"><span class="package-badge"><i class="fa-solid fa-box"></i> ${F.f_packageLabel}: ${packageName} (${packagePrice})</span></div><form id="detailed-form" method="POST"><input type="hidden" name="Package" value="${packageName} (${packagePrice})"><input type="hidden" name="Language" value="${selectedLanguage}"><div class="form-row"><div class="form-group"><label>${F.f_businessName} *</label><input type="text" name="BusinessName" required placeholder="Nike / Figma / OpenAI" autocomplete="organization"></div><div class="form-group"><label>${F.f_businessType} *</label><select name="BusinessType" required><option value="">-- ${F.f_businessType} --</option>${businessTypeOptions}</select></div></div><div class="form-row"><div class="form-group"><label>${F.f_industry}</label><select name="Industry"><option value="">-- ${F.f_industry} --</option>${industryOptions}</select></div><div class="form-group"><label>${F.f_websiteGoal} *</label><select name="WebsiteGoal" required><option value="">-- ${F.f_websiteGoal} --</option>${goalsOptions}</select></div></div><div class="form-group"><label>${F.f_targetAudience}</label><input type="text" name="TargetAudience" placeholder="${phAudience}" autocomplete="off"></div><div class="form-group"><label>${F.f_preferredColors}</label><input type="text" name="PreferredColors" placeholder="${phColors}" autocomplete="off"></div><div class="form-group"><label>${F.f_hasLogo}</label><div class="radio-group"><label><input type="radio" name="HasLogo" value="Yes" checked> ${F.f_yes}</label><label><input type="radio" name="HasLogo" value="No"> ${F.f_no}</label></div></div><div class="form-group"><label>${F.f_logoUpload}</label><input type="text" name="LogoLink" placeholder="https://drive.google.com/... ili pošaljite emailom" autocomplete="off"></div><div class="form-group"><label>${F.f_desiredPages}</label><div class="checkbox-group"><label><input type="checkbox" name="Page_Home" checked> ${F.f_homepage}</label><label><input type="checkbox" name="Page_About" checked> ${F.f_aboutUs}</label><label><input type="checkbox" name="Page_Services" checked> ${F.f_services}</label><label><input type="checkbox" name="Page_Pricing"> ${F.f_pricing}</label><label><input type="checkbox" name="Page_Contact" checked> ${F.f_contactForm}</label><label><input type="checkbox" name="Page_Blog"> ${F.f_blog}</label></div></div><div class="form-group"><label>${F.f_additionalFeatures}</label><div class="checkbox-group"><label><input type="checkbox" name="Feature_Multilingual"> ${F.f_multilingual}</label><label><input type="checkbox" name="Feature_Chatbot"> ${F.f_chatbot}</label><label><input type="checkbox" name="Feature_Booking"> ${F.f_booking}</label><label><input type="checkbox" name="Feature_Shop"> ${F.f_shop}</label><label><input type="checkbox" name="Feature_SEO"> ${F.f_seo}</label></div></div><div class="form-group"><label>${F.f_referenceSites}</label><textarea name="ReferenceSites" rows="3" placeholder="www.apple.com, www.nike.com, www.airbnb.com..." autocomplete="off"></textarea></div><div class="form-group"><label>${F.f_additionalInfo}</label><textarea name="AdditionalInfo" rows="3" placeholder="${phInfo}" autocomplete="off"></textarea></div><hr style="border-color:#334155;margin:2rem 0;"><div class="form-row"><div class="form-group"><label>${F.f_clientName} *</label><input type="text" name="ClientName" required placeholder="John Smith" autocomplete="name"></div><div class="form-group"><label>${F.f_clientEmail} *</label><input type="email" name="ClientEmail" required placeholder="john@example.com" autocomplete="email"></div></div><div class="form-group"><label>${F.f_clientPhone}</label><input type="tel" name="ClientPhone" placeholder="+49 123 456789" autocomplete="tel"></div><button type="submit" class="btn-submit" id="submit-btn"><i class="fa-solid fa-paper-plane"></i> ${F.f_submit}</button></form></div><div class="success-msg" id="success-msg"><i class="fa-solid fa-circle-check" style="font-size:4rem;color:#22c55e;margin-bottom:1.5rem;display:block;"></i><h2 style="color:#22c55e;margin-bottom:1rem;">${F.f_successMsg}</h2></div><script>var form=document.getElementById('detailed-form');var submitBtn=document.getElementById('submit-btn');var formContainer=document.getElementById('form-container');var successMsg=document.getElementById('success-msg');form.addEventListener('submit',function(ev){ev.preventDefault();var makeUrl='https://hook.eu1.make.com/chfgbd88bgalfkdg1eolb3yqsvzeiwrf';var formDataObj={};new FormData(form).forEach(function(value,key){formDataObj[key]=value;});fetch(makeUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(formDataObj)}).catch(function(err){console.log('Make webhook error (ignored):',err);});formContainer.style.display='none';successMsg.style.display='block';if(window.opener){setTimeout(function(){window.close();},3000);}});<\/script></body></html>`;
             var newWindow = window.open();
             newWindow.document.open();
             newWindow.document.write(formHTML);
@@ -904,73 +947,6 @@
             else document.getElementById('message').value = "Zainteresovan/a sam za paket: " + packageName + ". Molim vas da me kontaktirate sa detaljima.";
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         }
-
-// ============ GLAVNA FORMA – FORMPREE (RADI ODMAH) ============
-var form = document.getElementById("my-form");
-var button = document.getElementById("submit-button");
-
-form.addEventListener("submit", function(ev) {
-    ev.preventDefault();
-    button.innerHTML = "Slanje...";
-    button.disabled = true;
-
-    var data = new FormData(form);
-    fetch("https://formspree.io/f/xojbvzwr", {
-        method: "POST",
-        body: data,
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-        if (response.ok) {
-            form.reset();
-            button.innerHTML = "✅ Poslano!";
-            button.style.backgroundColor = "#22c55e";
-            setTimeout(() => {
-                button.innerHTML = "Send Inquiry";
-                button.style.backgroundColor = "#38bdf8";
-                button.disabled = false;
-            }, 3000);
-        } else {
-            throw new Error("Greška");
-        }
-    })
-    .catch(error => {
-        button.innerHTML = "❌ Greška";
-        button.style.backgroundColor = "#ef4444";
-        setTimeout(() => {
-            button.innerHTML = "Send Inquiry";
-            button.style.backgroundColor = "#38bdf8";
-            button.disabled = false;
-        }, 3000);
-        console.log("Greška:", error);
-    });
-});
-
-// ============ DETALJNA FORMA ZA PLAĆENE PAKETE (ŠALJE U MAKE) ============
-function openDetailedForm(packageName, packagePrice) {
-    var selectedLanguage = document.getElementById("main-lang-select").value;
-    var F = siteDictionary[selectedLanguage];
-    var businessTypeOptions = "", industryOptions = "", goalsOptions = "";
-    for (var key in F.f_businessTypes) { businessTypeOptions += `<option value="${key}">${F.f_businessTypes[key]}</option>`; }
-    for (var key in F.f_industries) { industryOptions += `<option value="${key}">${F.f_industries[key]}</option>`; }
-    for (var key in F.f_goals) { goalsOptions += `<option value="${key}">${F.f_goals[key]}</option>`; }
-    var phAudience = F.f_phAudience || "npr. mladi 18-35, poduzetnici, majke...";
-    var phColors = F.f_phColors || "npr. tamno plava #1e293b, zlatna #f59e0b, bijela";
-    var phInfo = F.f_phInfo || "Sve dodatne informacije koje bi nam pomogle...";
-
-    var formHTML = `<!DOCTYPE html><html lang='${selectedLanguage}'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>${F.f_title} - Ai Bussines</title><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'><style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}body{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#f8fafc;min-height:100vh;padding:2rem;}.form-container{max-width:800px;margin:0 auto;background-color:#1e293b;border:2px solid #38bdf8;border-radius:16px;padding:3rem 2.5rem;box-shadow:0 25px 50px rgba(0,0,0,0.4);}h1{text-align:center;color:#38bdf8;margin-bottom:0.5rem;font-size:2rem;}.subtitle{text-align:center;color:#94a3b8;margin-bottom:2rem;font-size:1rem;}.package-badge{background:linear-gradient(135deg,#38bdf8,#0284c7);color:#0f172a;display:inline-block;padding:0.5rem 1.5rem;border-radius:50px;font-weight:bold;margin-bottom:2rem;font-size:1.1rem;}.form-group{margin-bottom:1.5rem;}.form-group label{display:block;color:#94a3b8;font-weight:600;margin-bottom:0.4rem;font-size:0.95rem;}.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.85rem;border-radius:8px;border:1px solid #334155;background-color:#0f172a;color:#f8fafc;font-size:0.95rem;font-family:inherit;}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#38bdf8;}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}.checkbox-group{display:flex;flex-wrap:wrap;gap:0.8rem;}.checkbox-group label{display:flex;align-items:center;gap:0.5rem;color:#cbd5e1;font-weight:normal;cursor:pointer;background:#0f172a;padding:0.6rem 1rem;border-radius:8px;border:1px solid #334155;font-size:0.85rem;}.checkbox-group input[type="checkbox"]{width:auto;accent-color:#38bdf8;}.radio-group{display:flex;gap:2rem;}.radio-group label{display:flex;align-items:center;gap:0.5rem;color:#cbd5e1;font-weight:normal;cursor:pointer;}.radio-group input[type="radio"]{width:auto;accent-color:#38bdf8;}.btn-submit{width:100%;padding:1rem;background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);color:white;border:none;border-radius:8px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;margin-top:1rem;}.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(34,197,94,0.3);}.btn-submit:disabled{opacity:0.7;cursor:not-allowed;}.success-msg{display:none;text-align:center;color:#22c55e;padding:2rem;font-size:1.2rem;}@media(max-width:600px){.form-row{grid-template-columns:1fr;}}</style></head><body><div class="form-container" id="form-container"><h1><i class="fa-solid fa-file-signature"></i> ${F.f_title}</h1><p class="subtitle">${F.f_subtitle}</p><div style="text-align:center;"><span class="package-badge"><i class="fa-solid fa-box"></i> ${F.f_packageLabel}: ${packageName} (${packagePrice})</span></div><form id="detailed-form" method="POST"><input type="hidden" name="Package" value="${packageName} (${packagePrice})"><input type="hidden" name="Language" value="${selectedLanguage}"><div class="form-row"><div class="form-group"><label>${F.f_businessName} *</label><input type="text" name="BusinessName" required placeholder="Nike / Figma / OpenAI"></div><div class="form-group"><label>${F.f_businessType} *</label><select name="BusinessType" required><option value="">-- ${F.f_businessType} --</option>${businessTypeOptions}</select></div></div><div class="form-row"><div class="form-group"><label>${F.f_industry}</label><select name="Industry"><option value="">-- ${F.f_industry} --</option>${industryOptions}</select></div><div class="form-group"><label>${F.f_websiteGoal} *</label><select name="WebsiteGoal" required><option value="">-- ${F.f_websiteGoal} --</option>${goalsOptions}</select></div></div><div class="form-group"><label>${F.f_targetAudience}</label><input type="text" name="TargetAudience" placeholder="${phAudience}"></div><div class="form-group"><label>${F.f_preferredColors}</label><input type="text" name="PreferredColors" placeholder="${phColors}"></div><div class="form-group"><label>${F.f_hasLogo}</label><div class="radio-group"><label><input type="radio" name="HasLogo" value="Yes" checked> ${F.f_yes}</label><label><input type="radio" name="HasLogo" value="No"> ${F.f_no}</label></div></div><div class="form-group"><label>${F.f_logoUpload}</label><input type="text" name="LogoLink" placeholder="https://drive.google.com/... ili pošaljite emailom"></div><div class="form-group"><label>${F.f_desiredPages}</label><div class="checkbox-group"><label><input type="checkbox" name="Page_Home" checked> ${F.f_homepage}</label><label><input type="checkbox" name="Page_About" checked> ${F.f_aboutUs}</label><label><input type="checkbox" name="Page_Services" checked> ${F.f_services}</label><label><input type="checkbox" name="Page_Pricing"> ${F.f_pricing}</label><label><input type="checkbox" name="Page_Contact" checked> ${F.f_contactForm}</label><label><input type="checkbox" name="Page_Blog"> ${F.f_blog}</label></div></div><div class="form-group"><label>${F.f_additionalFeatures}</label><div class="checkbox-group"><label><input type="checkbox" name="Feature_Multilingual"> ${F.f_multilingual}</label><label><input type="checkbox" name="Feature_Chatbot"> ${F.f_chatbot}</label><label><input type="checkbox" name="Feature_Booking"> ${F.f_booking}</label><label><input type="checkbox" name="Feature_Shop"> ${F.f_shop}</label><label><input type="checkbox" name="Feature_SEO"> ${F.f_seo}</label></div></div><div class="form-group"><label>${F.f_referenceSites}</label><textarea name="ReferenceSites" rows="3" placeholder="www.apple.com, www.nike.com, www.airbnb.com..."></textarea></div><div class="form-group"><label>${F.f_additionalInfo}</label><textarea name="AdditionalInfo" rows="3" placeholder="${phInfo}"></textarea></div><hr style="border-color:#334155;margin:2rem 0;"><div class="form-row"><div class="form-group"><label>${F.f_clientName} *</label><input type="text" name="ClientName" required placeholder="John Smith"></div><div class="form-group"><label>${F.f_clientEmail} *</label><input type="email" name="ClientEmail" required placeholder="john@example.com"></div></div><div class="form-group"><label>${F.f_clientPhone}</label><input type="tel" name="ClientPhone" placeholder="+49 123 456789"></div><button type="submit" class="btn-submit" id="submit-btn"><i class="fa-solid fa-paper-plane"></i> ${F.f_submit}</button></form></div><div class="success-msg" id="success-msg"><i class="fa-solid fa-circle-check" style="font-size:4rem;color:#22c55e;margin-bottom:1.5rem;display:block;"></i><h2 style="color:#22c55e;margin-bottom:1rem;">${F.f_successMsg}</h2></div><script>var form=document.getElementById('detailed-form');var submitBtn=document.getElementById('submit-btn');var formContainer=document.getElementById('form-container');var successMsg=document.getElementById('success-msg');form.addEventListener('submit',function(ev){ev.preventDefault();var makeUrl='https://hook.eu1.make.com/chfgbd88bgalfkdg1eolb3yqsvzeiwrf';var formDataObj={};new FormData(form).forEach(function(value,key){formDataObj[key]=value;});fetch(makeUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(formDataObj)}).catch(function(err){console.log('Make webhook error (ignored):',err);});formContainer.style.display='none';successMsg.style.display='block';if(window.opener){setTimeout(function(){window.close();},3000);}});<\/script></body></html>`;
-    var newWindow = window.open();
-    newWindow.document.open();
-    newWindow.document.write(formHTML);
-    newWindow.document.close();
-}
-
-function choosePackage(packageName) {
-    var selectedLanguage = document.getElementById("main-lang-select").value;
-    if(selectedLanguage === 'de') document.getElementById('message').value = "Hallo Ajdin! Ich interessiere mich für das Paket: " + packageName + ". Bitte kontaktieren Sie mich mit Details.";
-    else if(selectedLanguage === 'en') document.getElementById('message').value = "Hello Ajdin! I am interested in the package: " + packageName + ". Please contact me with details.";
-    else if(selectedLanguage === 'es') document.getElementById('message').value = "Hola Ajdin! Estoy interesado en el paquete: " + packageName + ". Por favor contáctame con detalles.";
-    else if(selectedLanguage === 'it') document.getElementById('message').value = "Ciao Ajdin! Sono interessato al pacchetto: " + packageName + ". Per favore contattami con i dettagli.";
-    else document.getElementById('message').value = "Zainteresovan/a sam za paket: " + packageName + ". Molim vas da me kontaktirate sa detaljima.";
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-}
+    </script>
+</body>
+</html>
